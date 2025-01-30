@@ -1,0 +1,261 @@
+/* Fuente Moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fb;
+  color: #333;
+}
+
+/* Encabezado */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+  height: 50px;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #007BFF;
+}
+
+/* Introducción */
+.introduccion {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 1.3rem;
+  color: #444;
+}
+
+.introduccion h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.introduccion p {
+  font-size: 1.1rem;
+  color: #777;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Galería de Tarjetas */
+.card-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-evenly;
+  padding: 30px 20px;
+}
+
+.card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos de las Imágenes */
+.card img {
+  width: 100%;
+  height: 200px;  /* Ajusta la altura de la imagen según lo necesites */
+  object-fit: cover; /* Mantiene la proporción y cubre el área de la tarjeta */
+  object-position: center; /* Asegura que la imagen se centre dentro del contenedor */
+  border-bottom: 4px solid #fff;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 12px 12px 0 0;
+}
+
+.card:hover img {
+  transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
+}
+
+/* Títulos y Texto de las Tarjetas */
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  padding: 15px;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #777;
+  padding: 0 15px 15px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Colores Específicos para los Equipos NBA */
+.card.lakers {
+  background-color: #552583; /* Púrpura de Los Angeles Lakers */
+}
+
+.card.lakers h3, .card.lakers p {
+  color: white;
+}
+
+.card.warriors {
+  background-color: #006BB6; /* Azul de Golden State Warriors */
+}
+
+.card.warriors h3, .card.warriors p {
+  color: white;
+}
+
+.card.suns {
+  background-color: #E56024; /* Naranja de Phoenix Suns */
+}
+
+.card.suns h3, .card.suns p {
+  color: white;
+}
+
+.card.bucks {
+  background-color: #00471B; /* Verde de Milwaukee Bucks */
+}
+
+.card.bucks h3, .card.bucks p {
+  color: white;
+}
+
+.card.sixers {
+  background-color: #006BB6; /* Azul de Philadelphia 76ers */
+}
+
+.card.sixers h3, .card.sixers p {
+  color: white;
+}
+
+.card.grizzlies {
+  background-color: #5D76A9; /* Azul de Memphis Grizzlies */
+}
+
+.card.grizzlies h3, .card.grizzlies p {
+  color: white;
+}
+
+.card.mavs {
+  background-color: #007A33; /* Verde de Dallas Mavericks */
+}
+
+.card.mavs h3, .card.mavs p {
+  color: white;
+}
+
+.card.celtics {
+  background-color: #007A33; /* Verde de Boston Celtics */
+}
+
+.card.celtics h3, .card.celtics p {
+  color: white;
+}
+
+/* Pie de Página */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem;
+}
+
+footer a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Diseño Responsivo */
+@media (max-width: 1024px) {
+  .card-gallery {
+    justify-content: space-between;
+  }
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-gallery {
+    gap: 20px;
+  }
+  .card {
+    width: 48%;
+  }
+  .card h3 {
+    font-size: 1rem;
+  }
+  .card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-gallery {
+    gap: 15px;
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
+    max-width: none;
+  }
+  .card h3 {
+    font-size: 1rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card h3 {
+    font-size: 1rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+}
+
+  
