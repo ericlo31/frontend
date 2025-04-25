@@ -1,15 +1,13 @@
 # Frontend 🖥️
  
-# Control de acceso para residenciales
+## Control de acceso para residenciales
  
  Repositorio del proyecto final "SecurePass", desarrollado con React como parte del Bootcamp Full-Stack de Talendig SOFT-1 2025. Incluye implementación de autenticación segura y buenas prácticas en desarrollo web.
  
  
  ## 🛠 Tecnologias
- Javascript, HTML, CSS, React, React Native
- 
-
-# React + Vite
+ Javascript, HTML, CSS, React, React Native, React + Vite
+  
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
