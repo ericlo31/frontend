@@ -7,7 +7,7 @@ const Sidebar = () => {
       <div className={styles.logo}>SecurePass</div>
       <nav className={styles.nav}>
         <ul>
-          <li>Dashboard</li>
+          <li className={styles.activeNavItem}>Dashboard</li>
           <li>Authorizations</li>
           <li>Visit History</li>
           <li>Settings</li>

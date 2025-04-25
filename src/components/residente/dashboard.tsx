@@ -1,6 +1,10 @@
 import React from "react";
 import Sidebar from "./sidebar";
 import Header from "./header";
+import StatCards from "./statCards";
+import QuickActions from "./quickActions";
+import Authorizations from "./activeAuthorizations";
+import History from "./visitHistory";
 
 const Dashboard = () => {
   return (
@@ -8,10 +12,10 @@ const Dashboard = () => {
       <Sidebar />
       <div>
         <Header />
-        {/* <statCards />
-        <quickActions />
-        <activeAuthorizations />
-        <visitHistory /> */}
+        <StatCards />
+        <QuickActions />
+        <Authorizations />
+        <History />
       </div>
     </div>
   );

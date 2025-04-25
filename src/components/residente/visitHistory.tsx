@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./resident.module.css";
+import styles from "./residente.module.css";
 
-const VisitHistory = () => {
+const visitHistory = () => {
   const visits = [
     { name: "Darwin Castillo", time: "Apr 21, 10:15 AM", status: "Completed" },
     { name: "Alexander Medina", time: "Apr 20, 3:45 PM", status: "Completed" },
@@ -32,4 +32,4 @@ const VisitHistory = () => {
   );
 };
 
-export default VisitHistory;
+export default visitHistory;
