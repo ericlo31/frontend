@@ -1,9 +1,12 @@
-# Frontend 🖥️
+# React + Vite
 
-# Control de acceso para residenciales
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Repositorio del proyecto final "SecurePass", desarrollado con React como parte del Bootcamp Full-Stack de Talendig SOFT-1 2025. Incluye implementación de autenticación segura y buenas prácticas en desarrollo web.
+Currently, two official plugins are available:
 
-## 🛠 Tecnologias
-Javascript, HTML, CSS, React, React Native
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
