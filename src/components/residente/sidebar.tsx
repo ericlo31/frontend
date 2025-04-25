@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./resident.module.css";
+import styles from "./residente.module.css";
 
 const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.logo}>🔒 SecurePass</div>
+      <div className={styles.logo}>SecurePass</div>
       <nav className={styles.nav}>
         <ul>
           <li>Dashboard</li>
