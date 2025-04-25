@@ -1,0 +1,50 @@
+.home-container {
+    height: 100vh;
+    background: linear-gradient(120deg, #caf0f8, #ffffff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  
+  .home-container h1 {
+    margin-bottom: 2rem;
+    color: #023e8a;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .home-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: #0077b6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-btn:hover {
+    background-color: #005f87;
+  }
+  @media screen and (max-width: 768px) {
+    .button-group {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .home-btn, .role-selector {
+      width: 80%;
+      font-size: 1rem;
+    }
+  
+    .home-container h1 {
+      font-size: 1.5rem;
+      padding: 0 1rem;
+    }
+  }
