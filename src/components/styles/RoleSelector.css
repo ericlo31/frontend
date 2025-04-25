@@ -1,0 +1,26 @@
+.role-selector {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .buttons button {
+    margin: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .buttons button:first-child {
+    background-color: #0077ff;
+    color: white;
+  }
+  .buttons button:last-child {
+    background-color: #ff5e5e;
+    color: white;
+  }
+  .buttons button:hover {
+    opacity: 0.8;
+  }
+  
