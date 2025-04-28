@@ -1,34 +1,8 @@
-.mainContent {
-  margin-left: 220px;
-  padding: 24px;
-  overflow-y: auto;
-  flex: 1;
-}
-
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #374151;
-}
-
-.logoArea {
-  width: 100%;
+.dashboardContainer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 100vh;
+  background-color: #f9fafb;
 }
-
-.topBar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
 
 .sidebar {
   width: 220px;
@@ -45,20 +19,49 @@
   z-index: 1000;
 }
 
-/* Mobile hidden */
 .sidebarClosed {
   transform: translateX(-100%);
 }
 
-/* Mobile visible */
 .sidebarOpen {
   transform: translateX(0);
+}
+
+.mainContent {
+  margin-left: 15rem;
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #374151;
 }
 
 .logo {
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 2rem;
+}
+
+.logoArea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
 }
 
 .navArea {
@@ -209,40 +212,23 @@
   color: #6b7280;
 }
 
-.dashboardContainer {
-  display: flex;
-  height: 100vh;
-  background-color: #f9fafb;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .dashboardContainer {
     flex-direction: column;
   }
 
-  .hamburger {
-    display: block;
-  }
-
   .sidebar {
     width: 180px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #ffffff;
-    border-right: 1px solid #e5e7eb;
-    flex-direction: column;
     padding-top: 60px;
-    transition: transform 0.3s ease;
-    z-index: 1000;
   }
 
   .mainContent {
     margin-left: 0;
     padding: 16px;
-    overflow-x: hidden;
+  }
+
+  .hamburger {
+    display: block;
   }
 
   .statGrid {
@@ -257,9 +243,5 @@
 
   .actionBtn {
     width: 100%;
-  }
-
-  .hamburger {
-    display: block;
   }
 }

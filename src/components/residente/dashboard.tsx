@@ -5,12 +5,13 @@ import StatCards from "./statCards";
 import QuickActions from "./quickActions";
 import Authorizations from "./activeAuthorizations";
 import History from "./visitHistory";
+import styles from "./residente.module.css";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className={styles.dashboardContainer}>
       <Sidebar />
-      <div>
+      <div className={styles.mainContent}>
         <Header />
         <StatCards />
         <QuickActions />
