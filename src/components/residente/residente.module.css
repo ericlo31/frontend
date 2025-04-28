@@ -5,6 +5,31 @@
   flex: 1;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #374151;
+}
+
+.logoArea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+
 .sidebar {
   width: 220px;
   height: 100vh;
@@ -16,35 +41,49 @@
   display: flex;
   flex-direction: column;
   padding: 24px 16px;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+/* Mobile hidden */
+.sidebarClosed {
+  transform: translateX(-100%);
+}
+
+/* Mobile visible */
+.sidebarOpen {
+  transform: translateX(0);
 }
 
 .logo {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #111827;
   margin-bottom: 2rem;
 }
 
-.nav {
-  flex: 1;
+.navArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .nav li {
   display: flex;
   align-items: center;
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: #374151;
-  font-weight: 500;
   gap: 10px;
+  padding: 12px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  font-size: 1rem;
 }
 
 .nav li:hover {
@@ -54,16 +93,18 @@
 .activeNavItem {
   background-color: #e0f2fe;
   color: #0284c7;
+  font-weight: 600;
+  border-radius: 8px;
 }
 
 .logout {
-  background-color: #ef4444;
+  background-color: #0787f6;
   color: white;
-  border: none;
   padding: 10px;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 1rem;
+  font-weight: 600;
 }
 
 .header {
@@ -138,7 +179,6 @@
   background-color: #f3f4f6;
 }
 
-
 .section {
   background: white;
   padding: 16px;
@@ -175,37 +215,51 @@
   background-color: #f9fafb;
 }
 
-.mainContent {
-  flex: 1;
-  padding: 24px;
-  overflow-y: auto;
-}
-
+/* Responsive */
 @media (max-width: 768px) {
   .dashboardContainer {
     flex-direction: column;
   }
 
+  .hamburger {
+    display: block;
+  }
+
   .sidebar {
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    border-radius: 0;
+    width: 180px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
   }
 
   .mainContent {
-    padding: 10px;
+    margin-left: 0;
+    padding: 16px;
+    overflow-x: hidden;
   }
 
   .statGrid {
     flex-direction: column;
+    gap: 16px;
   }
 
   .actionsWrapper {
     flex-direction: column;
+    gap: 12px;
   }
 
   .actionBtn {
     width: 100%;
+  }
+
+  .hamburger {
+    display: block;
   }
 }
