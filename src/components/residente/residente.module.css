@@ -165,8 +165,8 @@
 
 .actionsWrapper {
   display: flex;
-  gap: 12px;
-  margin-bottom: 1rem;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .actionBtn {
@@ -174,15 +174,26 @@
   background-color: #ffffff;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  padding: 12px;
+  padding: 16px;
   font-weight: 600;
   color: #111827;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .actionBtn:hover {
   background-color: #f3f4f6;
+  border-color: #cbd5e1;
+}
+
+.actionIcon {
+  font-size: 1.2rem;
+  color: #0787f6;
 }
 
 .section {
