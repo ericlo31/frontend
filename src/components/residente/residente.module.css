@@ -196,6 +196,28 @@
   color: #0787f6;
 }
 
+.actionGroup {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actionBtn {
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.actionBtn:hover {
+  background-color: #e0f2fe;
+}
+
+.actionAuthIcon {
+  font-size: 0.8rem;
+}
+
 .section {
   background: white;
   padding: 1px 20px 20px 20px;
@@ -239,6 +261,42 @@
   background-color: #f1f5f9;
   transition: background-color 0.2s;
 }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Colores Status */
+.activo {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.expirado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.pendiente {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.revocado {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.completado {
+  background-color: #f3f4f6;
+  color: #0284c7;
+}
+
 
 
 @media (max-width: 768px) {

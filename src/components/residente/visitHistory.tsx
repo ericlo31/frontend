@@ -3,8 +3,8 @@ import styles from "./residente.module.css";
 
 const visitHistory = () => {
   const visits = [
-    { name: "Darwin Castillo", time: "Apr 21, 10:15 AM", status: "Completed" },
-    { name: "Alexander Medina", time: "Apr 20, 3:45 PM", status: "Completed" },
+    { name: "Darwin Castillo", time: "Apr 21, 10:15 AM", status: "Completado" },
+    { name: "Alexander Medina", time: "Apr 20, 3:45 PM", status: "Completado" },
   ];
 
   return (
@@ -23,7 +23,15 @@ const visitHistory = () => {
             <tr key={i}>
               <td>{v.name}</td>
               <td>{v.time}</td>
-              <td>{v.status}</td>
+              <td>
+                <span
+                  className={`${styles.badge} ${
+                    styles[v.status.toLowerCase()]
+                  }`}
+                >
+                  {v.status}
+                </span>
+              </td>
             </tr>
           ))}
         </tbody>
