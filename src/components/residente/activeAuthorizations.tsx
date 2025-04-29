@@ -30,6 +30,7 @@ const ActiveAuthorizations = () => {
   return (
     <div className={styles.section}>
       <h3>Autorizaciones Activas</h3>
+      <h3>Autorizaciones Activas</h3>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -38,6 +39,9 @@ const ActiveAuthorizations = () => {
             <th>Status</th>
             <th>Expira</th>
             <th>Acciones</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Expira</th>
           </tr>
         </thead>
         <tbody>
