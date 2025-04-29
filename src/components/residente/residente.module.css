@@ -297,8 +297,22 @@
   color: #0284c7;
 }
 
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+}
 
+.navLink:hover {
+  background-color: #f3f4f6;
+}
 
+/* Responsive */
 @media (max-width: 768px) {
   .dashboardContainer {
     flex-direction: column;

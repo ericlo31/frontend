@@ -7,9 +7,10 @@ import {
   FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [activeItem, setActiveItem] = useState("Dashboard");
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -29,32 +30,43 @@ const Sidebar = () => {
         <nav className={styles.nav}>
           <ul>
             <li
-              className={activeItem === "Dashboard" ? styles.activeNavItem : ""}
-              onClick={() => setActiveItem("Dashboard")}
+              className={location.pathname === "/" ? styles.activeNavItem : ""}
             >
-              <FaHome /> Dashboard
+              <Link to="/" className={styles.navLink}>
+                <FaHome /> Dashboard
+              </Link>
             </li>
             <li
               className={
-                activeItem === "Authorizations" ? styles.activeNavItem : ""
+                location.pathname === "/authorizations"
+                  ? styles.activeNavItem
+                  : ""
               }
-              onClick={() => setActiveItem("Authorizations")}
             >
-              <FaUserShield /> Autorizaciones
+              <Link to="/authorizations" className={styles.navLink}>
+                <FaUserShield /> Autorizaciones
+              </Link>
             </li>
             <li
               className={
-                activeItem === "Visit History" ? styles.activeNavItem : ""
+                location.pathname === "/visit-history"
+                  ? styles.activeNavItem
+                  : ""
               }
-              onClick={() => setActiveItem("Visit History")}
             >
-              <FaHistory /> Historial
+              <Link to="/visit-history" className={styles.navLink}>
+                <FaHistory /> Historial
+              </Link>
             </li>
+
             <li
-              className={activeItem === "Settings" ? styles.activeNavItem : ""}
-              onClick={() => setActiveItem("Settings")}
+              className={
+                location.pathname === "/settings" ? styles.activeNavItem : ""
+              }
             >
-              <FaCog /> Ajustes
+              <Link to="/settings" className={styles.navLink}>
+                <FaCog /> Ajustes
+              </Link>
             </li>
           </ul>
         </nav>
