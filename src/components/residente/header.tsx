@@ -4,7 +4,7 @@ import styles from "./residente.module.css";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.title}>Resident Dashboard</div>
+      <div className={styles.title}>Residente Dashboard</div>
       <div className={styles.userProfile}>
         <span>Eric Lorenzo</span>
         <img

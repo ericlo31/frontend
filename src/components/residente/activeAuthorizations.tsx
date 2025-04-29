@@ -9,13 +9,13 @@ const ActiveAuthorizations = () => {
 
   return (
     <div className={styles.section}>
-      <h3>Active Authorizations</h3>
+      <h3>Autorizaciones Activas</h3>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Expires</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Expira</th>
           </tr>
         </thead>
         <tbody>
