@@ -39,9 +39,6 @@ const ActiveAuthorizations = () => {
             <th>Status</th>
             <th>Expira</th>
             <th>Acciones</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Expira</th>
           </tr>
         </thead>
         <tbody>

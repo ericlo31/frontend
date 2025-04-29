@@ -1,10 +1,10 @@
 import React from "react";
-import Sidebar from "./sidebar";
-import Header from "./header";
-import StatCards from "./statCards";
-import QuickActions from "./quickActions";
-import Authorizations from "./activeAuthorizations";
-import History from "./visitHistory";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
+import StatCards from "./StatCards";
+import QuickActions from "./QuickActions";
+import Authorizations from "./ActiveAuthorizations";
+import History from "./VisitHistory";
 import styles from "./residente.module.css";
 
 const Dashboard = () => {
