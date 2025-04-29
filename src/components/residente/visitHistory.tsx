@@ -9,12 +9,12 @@ const visitHistory = () => {
 
   return (
     <div className={styles.section}>
-      <h3>Visit History</h3>
+      <h3>Historial de Visitas</h3>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Visitor</th>
-            <th>Time</th>
+            <th>Visitante</th>
+            <th>Hora</th>
             <th>Status</th>
           </tr>
         </thead>

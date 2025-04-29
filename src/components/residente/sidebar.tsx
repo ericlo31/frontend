@@ -40,7 +40,7 @@ const Sidebar = () => {
               }
               onClick={() => setActiveItem("Authorizations")}
             >
-              <FaUserShield /> Authorizations
+              <FaUserShield /> Autorizaciones
             </li>
             <li
               className={
@@ -48,13 +48,13 @@ const Sidebar = () => {
               }
               onClick={() => setActiveItem("Visit History")}
             >
-              <FaHistory /> Visit History
+              <FaHistory /> Historial
             </li>
             <li
               className={activeItem === "Settings" ? styles.activeNavItem : ""}
               onClick={() => setActiveItem("Settings")}
             >
-              <FaCog /> Settings
+              <FaCog /> Ajustes
             </li>
           </ul>
         </nav>
