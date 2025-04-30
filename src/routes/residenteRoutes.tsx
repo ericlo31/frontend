@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "../components/residente/dashboardd";
+import Dashboard from "../components/residente/Dashboard";
 
 export default function ResidentRoutes() {
   return (
