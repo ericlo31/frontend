@@ -1,7 +1,16 @@
 import React from "react";
+import styles from "../components/residente/residente.module.css";
 
 const Settings = () => {
-  return <h2>Settings Page</h2>;
+  return (
+    <div className={styles.section}>
+      <h2>Ajustes</h2>
+      <p>
+        Esta pagina será para que el usuario actualice el email, la contraseña y
+        otras cosas.
+      </p>
+    </div>
+  );
 };
 
 export default Settings;
