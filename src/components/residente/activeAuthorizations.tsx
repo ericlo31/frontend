@@ -5,7 +5,7 @@ import { FaEdit, FaQrcode, FaShare, FaTrash } from "react-icons/fa";
 const ActiveAuthorizations = () => {
   const auths = [
     {
-      name: "Jose Danny",
+      name: "Jose Rosario",
       type: "Visita",
       status: "Activo",
       expires: "Today 5:00 PM",

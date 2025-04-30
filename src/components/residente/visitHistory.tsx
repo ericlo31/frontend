@@ -4,7 +4,7 @@ import styles from "./residente.module.css";
 const visitHistory = () => {
   const visits = [
     { name: "Darwin Castillo", time: "Apr 21, 10:15 AM", status: "Completado" },
-    { name: "Alexander Medina", time: "Apr 20, 3:45 PM", status: "Completado" },
+    { name: "Alexander Medina", time: "Apr 20, 3:35 PM", status: "Completado" },
   ];
 
   return (

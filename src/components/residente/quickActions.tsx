@@ -1,4 +1,3 @@
-import React from "react";
 import { FaEdit, FaFileExport, FaClipboardList } from "react-icons/fa";
 import styles from "./residente.module.css";
 

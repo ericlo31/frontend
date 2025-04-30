@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
+/* Prueba */
+
 const Sidebar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(true);

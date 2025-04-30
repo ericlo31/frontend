@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./residente.module.css";
 
 const Header = () => {

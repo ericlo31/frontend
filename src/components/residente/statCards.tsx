@@ -5,7 +5,7 @@ const statCards = () => {
   const stats = [
     { label: "Autorizaciones", value: 3 },
     { label: "Visitas Pendientes", value: 5 },
-    { label: "Visitors Today", value: 2 },
+    { label: "Visitas Hoy", value: 2 },
   ];
 
   return (
