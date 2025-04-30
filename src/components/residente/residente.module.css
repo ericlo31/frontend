@@ -1,0 +1,348 @@
+.dashboardContainer {
+  display: flex;
+  height: 100vh;
+  background-color: #f9fafb;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebarClosed {
+  transform: translateX(-100%);
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.mainContent {
+  margin-left: 15rem;
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #374151;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.logoArea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.navArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.nav li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.nav li:hover {
+  background-color: #f3f4f6;
+}
+
+.activeNavItem {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.logout {
+  background-color: #0787f6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.header {
+  background: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userProfile {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.statGrid {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.statCard {
+  flex: 1;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+}
+
+.statLabel {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.actionsWrapper {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.actionBtn {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.actionBtn:hover {
+  background-color: #f3f4f6;
+  border-color: #cbd5e1;
+}
+
+.actionIcon {
+  font-size: 1.2rem;
+  color: #0787f6;
+}
+
+.actionGroup {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actionBtn {
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.actionBtn:hover {
+  background-color: #e0f2fe;
+}
+
+.actionAuthIcon {
+  font-size: 0.8rem;
+}
+
+.section {
+  background: white;
+  padding: 1px 20px 20px 20px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.section h3 {
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table th, .table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table th {
+  background-color: #f9fafb;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.table tr:hover td {
+  background-color: #f1f5f9;
+  transition: background-color 0.2s;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Colores Status */
+.activo {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.expirado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.pendiente {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.revocado {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.completado {
+  background-color: #f3f4f6;
+  color: #0284c7;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.navLink:hover {
+  background-color: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboardContainer {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 180px;
+    padding-top: 60px;
+  }
+
+  .mainContent {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .statGrid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .actionsWrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .actionBtn {
+    width: 100%;
+  }
+}
