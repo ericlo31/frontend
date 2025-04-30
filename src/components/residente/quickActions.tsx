@@ -10,7 +10,7 @@ const QuickActions = () => {
           <FaEdit className={styles.actionIcon} /> Crear Autorización
         </button>
         <button className={styles.actionBtn}>
-          <FaClipboardList className={styles.actionIcon} /> Ver Historial de
+          <FaClipboardList className={styles.actionIcon} /> Ver el Historial de
           Visitas
         </button>
         <button className={styles.actionBtn}>
