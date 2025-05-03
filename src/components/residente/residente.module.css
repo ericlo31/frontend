@@ -1,7 +1,17 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* para prevenir el scroll horizontal */
+}
+
 .dashboardContainer {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
   background-color: #f9fafb;
+  position: relative;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -17,6 +27,7 @@
   padding: 24px 16px;
   transition: transform 0.3s ease;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .sidebarClosed {
@@ -28,10 +39,12 @@
 }
 
 .mainContent {
-  margin-left: 15rem;
+  margin-left: 220px;
   padding: 24px;
+  width: calc(100% - 220px);
+  min-height: 100vh;
+  box-sizing: border-box;
   overflow-y: auto;
-  flex: 1;
 }
 
 .hamburger {
@@ -87,6 +100,11 @@
   border-radius: 8px;
   transition: background-color 0.2s;
   font-size: 1rem;
+
+}
+
+.nav {
+  color: #65c9fb;
 }
 
 .nav li:hover {
@@ -120,6 +138,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .userProfile {
@@ -247,6 +266,7 @@
   padding: 16px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
+  color: #111827;
 }
 
 .table th {
@@ -260,6 +280,10 @@
 .table tr:hover td {
   background-color: #f1f5f9;
   transition: background-color 0.2s;
+}
+
+.table, .section, .statGrid {
+  max-width: 100%;
 }
 
 .badge {
@@ -313,36 +337,66 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .dashboardContainer {
-    flex-direction: column;
+
+
+/* Mobil */
+
+@media (max-width: 640px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 220px;
+    padding-top: 1rem;
   }
 
-  .sidebar {
-    width: 180px;
-    padding-top: 60px;
+  .sidebarOpen {
+    transform: translateX(0);
   }
 
   .mainContent {
     margin-left: 0;
+    width: 100%;
     padding: 16px;
   }
+}
+/* Tablet y Laptop */
 
-  .hamburger {
-    display: block;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
   }
 
-  .statGrid {
-    flex-direction: column;
-    gap: 16px;
+  .mainContent {
+    padding: 24px;
+    width: calc(200% - 220px);
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
   }
 
-  .actionsWrapper {
-    flex-direction: column;
-    gap: 12px;
+  .table th, .table td {
+    padding: 14px 10px;
+  }
+}
+
+/* Desktop 1025px+ */
+@media (min-width: 1025px) {
+
+  .sidebar {
+    width: 240px;
   }
 
-  .actionBtn {
-    width: 100%;
+  .mainContent {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 32px;
+  }
+
+  .table th, .table td {
+    padding: 16px 12px;
+    font-size: 0.9rem;
+  }
+
+  .section h3 {
+    font-size: 1.25rem;
   }
 }
