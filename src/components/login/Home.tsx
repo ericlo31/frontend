@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Home.css';
-import '../styles/animations.css';
+import '../styles/home.module.css';
+import '../styles/animations.module.css';
 
 const Home: React.FC = () => {
   return (

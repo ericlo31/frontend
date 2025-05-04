@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/RoleSelector.css';
-import '../styles/animations.css';
+import '../styles/roleSelector.module.css';
+import '../styles/animations.module.css';
 
 function RoleSelector() {
   const navigate = useNavigate();
