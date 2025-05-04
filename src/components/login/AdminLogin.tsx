@@ -31,3 +31,5 @@ const AdminLogin: React.FC = () => {
     </div>
   );
 };
+
+export default AdminLogin;
