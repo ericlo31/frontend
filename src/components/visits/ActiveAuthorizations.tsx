@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "../styles/residente.module.css";
+import styles from "../../styles/visits.module.css";
 import { FaEdit, FaQrcode, FaShare, FaTrash } from "react-icons/fa";
 
 const ActiveAuthorizations = () => {
