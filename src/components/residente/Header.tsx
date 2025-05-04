@@ -1,4 +1,4 @@
-import styles from "./residente.module.css";
+import styles from "../styles/residente.module.css";
 
 const Header = () => {
   return (

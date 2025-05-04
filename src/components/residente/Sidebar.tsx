@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./residente.module.css";
+import styles from "../styles/residente.module.css";
 import {
   FaHome,
   FaUserShield,
