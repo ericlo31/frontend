@@ -15,7 +15,6 @@ body, html {
 }
 
 .sidebar {
-  width: 220px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -31,35 +30,95 @@ body, html {
 }
 
 .sidebarClosed {
-  transform: translateX(-100%);
+ transform: translateX(-53%);
 }
 
 .sidebarOpen {
   transform: translateX(0);
 }
 
+.navTextClosed {
+  display: none;
+}
+
+.navTextOpen {
+  display: block;
+}
+
+.FaOpen {
+  font-size: 1.2rem;
+}
+
+.FaClosed {
+  font-size: 1.5rem;
+}
+
+.navAreaClosed {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.navContentClosed {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logoutClosed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  
+}
+
+
+.logout {
+  background-color: #0787f6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 60px;
+  min-width: 85px;
+}
+
+.logout:hover {
+  background-color: #12395b;
+}
+
+.navArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
 .mainContent {
-  margin-left: 220px;
+  width: 100%;
+  margin-left: 20%;
   padding: 24px;
-  width: calc(100% - 220px);
   min-height: 100vh;
   box-sizing: border-box;
   overflow-y: auto;
 }
 
 .hamburger {
-  display: none;
+  display: block;
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   cursor: pointer;
   color: #374151;
 }
 
 .logo {
   font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  color: #374151;
 }
 
 .logoArea {
@@ -72,16 +131,9 @@ body, html {
 .topBar {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
   padding-bottom: 1rem;
-}
-
-.navArea {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
 }
 
 .nav ul {
@@ -98,9 +150,9 @@ body, html {
   padding: 12px;
   cursor: pointer;
   border-radius: 8px;
+  margin-bottom: 2px;
   transition: background-color 0.2s;
-  font-size: 1rem;
-
+  min-width: 60px;
 }
 
 .nav {
@@ -118,16 +170,6 @@ body, html {
   border-radius: 8px;
 }
 
-.logout {
-  background-color: #0787f6;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
 .header {
   background: white;
   padding: 16px 24px;
@@ -138,6 +180,7 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #374151;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
@@ -210,6 +253,30 @@ body, html {
   border-color: #cbd5e1;
 }
 
+
+.authBtn {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.authBtn:hover {
+  background-color: #f3f4f6;
+  border-color: #cbd5e1;
+}
+
+
 .actionIcon {
   font-size: 1.2rem;
   color: #0787f6;
@@ -221,17 +288,6 @@ body, html {
   align-items: center;
 }
 
-.actionBtn {
-  background-color: #f9fafb;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.actionBtn:hover {
-  background-color: #e0f2fe;
-}
 
 .actionAuthIcon {
   font-size: 0.8rem;
@@ -341,33 +397,118 @@ body, html {
 
 /* Mobil */
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .sidebar {
+    width: 100px;
+    padding-top: 60px;
+    transform: translateX(-53%);
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .hamburger {
+    font-size: 1.2rem;
+  }
+
+  .navText {
+    display: none;
+  }
+
+  .FaClosed {
+    font-size: 1.2rem;
+  }
+
+  .nav li {
+    min-width: 20px;
+  }
+
+  .logout {
+    min-width: 65px;
+  }
+  
+  .sidebarClosed {
     transform: translateX(-100%);
-    width: 220px;
-    padding-top: 1rem;
   }
 
   .sidebarOpen {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
 
   .mainContent {
-    margin-left: 0;
-    width: 100%;
-    padding: 16px;
+    margin-left: 100px;
+    width: 85%;
   }
+
+  .statGrid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .actionsWrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .table th, .table td {
+    max-width: 90px;
+    padding: 16px 12px;
+    font-size: 0.8rem;
+  }
+
+  .actionGroup {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .actionAuthIcon {
+    font-size: 0.9rem;
+  }
+
+  .authBtn {
+    width: 90px;
+    padding: 8px;
+    flex: 0 0 40%; /* Cada elemento ocupa el 50% del contenedor */
+  }
+
+
 }
+
 /* Tablet y Laptop */
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .sidebar {
-    width: 220px;
+    width: 180px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    font-size: 1.2rem;
+  }
+
+  .navText {
+    font-size: 0.8rem;
+  }
+
+  .FaClosed {
+    font-size: 1.2rem;
+  }
+
+  .nav li {
+    min-width: 20px;
+  }
+
+  .logout {
+    min-width: 65px;
   }
 
   .mainContent {
     padding: 24px;
-    width: calc(200% - 220px);
     min-height: 100vh;
     box-sizing: border-box;
     overflow-y: auto;
@@ -382,12 +523,11 @@ body, html {
 @media (min-width: 1025px) {
 
   .sidebar {
-    width: 240px;
+    width: 250px;
   }
 
   .mainContent {
     margin-left: 240px;
-    width: calc(100% - 240px);
     padding: 32px;
   }
 

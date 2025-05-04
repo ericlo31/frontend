@@ -22,22 +22,38 @@ const Sidebar = () => {
       }`}
     >
       <div className={styles.topBar}>
+      
         <div className={styles.logo}>SecurePass</div>
+        
         <button className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
           ☰
         </button>
-      </div>
 
-      <div className={styles.navArea}>
+      </div>
+      
+      <div className={`${styles.navArea} ${
+                  isOpen ? styles.navAreaOpen : styles.navAreaClosed
+                }`}>
         <nav className={styles.nav}>
           <ul>
+          <div className={`${styles.navContent} ${
+                  isOpen ? styles.navContentOpen : styles.navContentClosed
+                }`}>
             <li
               className={location.pathname === "/" ? styles.activeNavItem : ""}
             >
+              
               <Link to="/" className={styles.navLink}>
-                <FaHome /> Dashboard
+                <FaHome className={`${styles.Fa} ${
+                  isOpen ? styles.FaOpen : styles.FaClosed
+                }`} /> <span className={`${styles.navText} ${
+                  isOpen ? styles.navTextOpen : styles.navTextClosed
+                }`}>Dashboard</span>
               </Link>
-            </li>
+            </li></div>
+            <div className={`${styles.navContent} ${
+                  isOpen ? styles.navContentOpen : styles.navContentClosed
+                }`}>
             <li
               className={
                 location.pathname === "/authorizations"
@@ -46,9 +62,16 @@ const Sidebar = () => {
               }
             >
               <Link to="/authorizations" className={styles.navLink}>
-                <FaUserShield /> Autorizaciones
+                <FaUserShield className={`${styles.Fa} ${
+                  isOpen ? styles.FaOpen : styles.FaClosed
+                }`}/> <span className={`${styles.navText} ${
+                  isOpen ? styles.navTextOpen : styles.navTextClosed
+                }`}>Autorizaciones</span>
               </Link>
-            </li>
+            </li></div>
+            <div className={`${styles.navContent} ${
+                  isOpen ? styles.navContentOpen : styles.navContentClosed
+                }`}>
             <li
               className={
                 location.pathname === "/visit-history"
@@ -57,24 +80,40 @@ const Sidebar = () => {
               }
             >
               <Link to="/visit-history" className={styles.navLink}>
-                <FaHistory /> Historial
+                <FaHistory className={`${styles.Fa} ${
+                  isOpen ? styles.FaOpen : styles.FaClosed
+                }`}/> <span className={`${styles.navText} ${
+                  isOpen ? styles.navTextOpen : styles.navTextClosed
+                }`}>Historial</span>
               </Link>
-            </li>
-
+            </li></div>
+            <div className={`${styles.navContent} ${
+                  isOpen ? styles.navContentOpen : styles.navContentClosed
+                }`}>     
             <li
               className={
                 location.pathname === "/settings" ? styles.activeNavItem : ""
               }
             >
               <Link to="/settings" className={styles.navLink}>
-                <FaCog /> Ajustes
+                <FaCog className={`${styles.Fa} ${
+                  isOpen ? styles.FaOpen : styles.FaClosed
+                }`}/> <span className={`${styles.navText} ${
+                  isOpen ? styles.navTextOpen : styles.navTextClosed
+                }`}>Ajustes</span>
               </Link>
-            </li>
+            </li></div>
           </ul>
         </nav>
 
-        <button className={styles.logout}>
-          <FaSignOutAlt style={{ marginRight: "8px" }} /> Logout
+        <button className={`${styles.logout} ${
+                  isOpen ? styles.logoutOpen : styles.logoutClosed
+                }`}>
+          <FaSignOutAlt className={`${styles.Fa} ${
+                  isOpen ? styles.FaOpen : styles.FaClosed
+                }`} style={{ marginRight: "8px" }} /> <span className={`${styles.navText} ${
+                  isOpen ? styles.navTextOpen : styles.navTextClosed
+                }`}>Logout</span>
         </button>
       </div>
     </aside>

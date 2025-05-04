@@ -42,7 +42,7 @@ const ActiveAuthorizations = () => {
         </thead>
         <tbody>
           {auths.map((a, i) => (
-            <tr key={i}>
+            <tr key={i} className={styles.authRow}>
               <td>{a.name}</td>
               <td>{a.type}</td>
               <td>
@@ -57,16 +57,16 @@ const ActiveAuthorizations = () => {
               <td>{a.expires}</td>
               <td>
                 <div className={styles.actionGroup}>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaQrcode className={styles.actionAuthIcon} />
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaShare className={styles.actionAuthIcon} />
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaEdit className={styles.actionAuthIcon} />
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaTrash className={styles.actionAuthIcon} />
                   </button>
                 </div>
