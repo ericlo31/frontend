@@ -4,7 +4,7 @@ import StatCards from "./StatCards";
 import QuickActions from "./QuickAction";
 import Authorizations from "./ActiveAuthorizations";
 import History from "./VisitHistory";
-import styles from "./residente.module.css";
+import styles from "../styles/residente.module.css";
 
 const Dashboard = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../components/residente/residente.module.css";
+import styles from "../components/styles/residente.module.css";
 
 const Settings = () => {
   return (
