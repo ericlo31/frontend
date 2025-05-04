@@ -397,11 +397,33 @@ body, html {
 
 /* Mobil */
 
-@media (max-width: 768px) {
+@media (max-width: 624px) {
+
+  .mainContent {
+    margin-left: 0;
+    width: 50%;
+  }
+
+  .hideableRow {
+    display: none;
+  }
+}
+
+.table td {
+  font-size: 1rem;
+}
+
+
+
+@media (max-width: 824px) {
   .sidebar {
     width: 100px;
     padding-top: 60px;
     transform: translateX(-53%);
+  }
+
+  .header {
+    font-size: 0.9rem;
   }
 
   .logo {
@@ -446,6 +468,14 @@ body, html {
     gap: 16px;
   }
 
+  .statValue {
+    font-size: 1.2rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+  }
+
   .actionsWrapper {
     flex-direction: column;
     gap: 12px;
@@ -470,9 +500,8 @@ body, html {
   .authBtn {
     width: 90px;
     padding: 8px;
-    flex: 0 0 40%; /* Cada elemento ocupa el 50% del contenedor */
+    flex: 0 0 40%;
   }
-
 
 }
 
@@ -508,10 +537,12 @@ body, html {
   }
 
   .mainContent {
+    margin-left: 180px;
     padding: 24px;
     min-height: 100vh;
     box-sizing: border-box;
     overflow-y: auto;
+    width: 80%;
   }
 
   .table th, .table td {
@@ -527,8 +558,12 @@ body, html {
   }
 
   .mainContent {
-    margin-left: 240px;
+    margin-left: 250px;
     padding: 32px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    width: 85%;
   }
 
   .table th, .table td {
