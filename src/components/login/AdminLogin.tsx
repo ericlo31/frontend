@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/adminLogin.module.css';
-import '../styles/animations.module.css';
+import adminlogin from '../styles/adminLogin.module.css';
+import animations from '../styles/animations.module.css';
 
 const AdminLogin: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -15,8 +15,8 @@ const AdminLogin: React.FC = () => {
   };
 
   return (
-    <div className="login-admin-container fade-in">
-      <div className="login-card">
+    <div className={`${adminlogin.container} ${animations.fadeIn}`}>
+      <div className={`${adminlogin['loginCard']}`}>
         <h2>AdminPanel</h2>
         <h3>Welcome Back</h3>
         <form onSubmit={handleSubmit}>
@@ -25,8 +25,8 @@ const AdminLogin: React.FC = () => {
           <input type="text" placeholder="Security PIN" value={pin} onChange={(e: ChangeEvent<HTMLInputElement>) => setPin(e.target.value)} required />
           <button type="submit">Sign in</button>
         </form>
-        <p className="register-link">¿No tienes cuenta? <a href="/register-admin">Regístrate</a></p>
-        <button className="back-button" onClick={() => navigate('/')}>Volver al inicio</button>
+        <p className={adminlogin.registerLink}>¿No tienes cuenta? <a href="/register-admin">Regístrate</a></p>
+        <button className={adminlogin.backButton} onClick={() => navigate('/')}>Volver al inicio</button>
       </div>
     </div>
   );
