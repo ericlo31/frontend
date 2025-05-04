@@ -1,11 +1,20 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* para prevenir el scroll horizontal */
+}
+
 .dashboardContainer {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
   background-color: #f9fafb;
+  position: relative;
+  overflow: hidden;
 }
 
 .sidebar {
-  width: 220px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -17,36 +26,99 @@
   padding: 24px 16px;
   transition: transform 0.3s ease;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .sidebarClosed {
-  transform: translateX(-100%);
+ transform: translateX(-53%);
 }
 
 .sidebarOpen {
   transform: translateX(0);
 }
 
+.navTextClosed {
+  display: none;
+}
+
+.navTextOpen {
+  display: block;
+}
+
+.FaOpen {
+  font-size: 1.2rem;
+}
+
+.FaClosed {
+  font-size: 1.5rem;
+}
+
+.navAreaClosed {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.navContentClosed {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logoutClosed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  
+}
+
+
+.logout {
+  background-color: #0787f6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 60px;
+  min-width: 85px;
+}
+
+.logout:hover {
+  background-color: #12395b;
+}
+
+.navArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
 .mainContent {
-  margin-left: 15rem;
+  width: 100%;
+  margin-left: 20%;
   padding: 24px;
+  min-height: 100vh;
+  box-sizing: border-box;
   overflow-y: auto;
-  flex: 1;
 }
 
 .hamburger {
-  display: none;
+  display: block;
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   cursor: pointer;
   color: #374151;
 }
 
 .logo {
   font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  color: #374151;
 }
 
 .logoArea {
@@ -59,16 +131,9 @@
 .topBar {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
   padding-bottom: 1rem;
-}
-
-.navArea {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
 }
 
 .nav ul {
@@ -85,8 +150,13 @@
   padding: 12px;
   cursor: pointer;
   border-radius: 8px;
+  margin-bottom: 2px;
   transition: background-color 0.2s;
-  font-size: 1rem;
+  min-width: 60px;
+}
+
+.nav {
+  color: #65c9fb;
 }
 
 .nav li:hover {
@@ -100,16 +170,6 @@
   border-radius: 8px;
 }
 
-.logout {
-  background-color: #0787f6;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
 .header {
   background: white;
   padding: 16px 24px;
@@ -120,6 +180,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #374151;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .userProfile {
@@ -191,6 +253,30 @@
   border-color: #cbd5e1;
 }
 
+
+.authBtn {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 16px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.authBtn:hover {
+  background-color: #f3f4f6;
+  border-color: #cbd5e1;
+}
+
+
 .actionIcon {
   font-size: 1.2rem;
   color: #0787f6;
@@ -202,17 +288,6 @@
   align-items: center;
 }
 
-.actionBtn {
-  background-color: #f9fafb;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.actionBtn:hover {
-  background-color: #e0f2fe;
-}
 
 .actionAuthIcon {
   font-size: 0.8rem;
@@ -247,6 +322,7 @@
   padding: 16px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
+  color: #111827;
 }
 
 .table th {
@@ -260,6 +336,10 @@
 .table tr:hover td {
   background-color: #f1f5f9;
   transition: background-color 0.2s;
+}
+
+.table, .section, .statGrid {
+  max-width: 100%;
 }
 
 .badge {
@@ -313,23 +393,74 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .dashboardContainer {
-    flex-direction: column;
-  }
 
-  .sidebar {
-    width: 180px;
-    padding-top: 60px;
-  }
+
+/* Mobil */
+
+@media (max-width: 624px) {
 
   .mainContent {
     margin-left: 0;
-    padding: 16px;
+    width: 50%;
+  }
+
+  .hideableRow {
+    display: none;
+  }
+}
+
+.table td {
+  font-size: 1rem;
+}
+
+
+
+@media (max-width: 824px) {
+  .sidebar {
+    width: 100px;
+    padding-top: 60px;
+    transform: translateX(-53%);
+  }
+
+  .header {
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    display: none;
   }
 
   .hamburger {
-    display: block;
+    font-size: 1.2rem;
+  }
+
+  .navText {
+    display: none;
+  }
+
+  .FaClosed {
+    font-size: 1.2rem;
+  }
+
+  .nav li {
+    min-width: 20px;
+  }
+
+  .logout {
+    min-width: 65px;
+  }
+  
+  .sidebarClosed {
+    transform: translateX(-100%);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0%);
+  }
+
+  .mainContent {
+    margin-left: 100px;
+    width: 85%;
   }
 
   .statGrid {
@@ -337,12 +468,110 @@
     gap: 16px;
   }
 
+  .statValue {
+    font-size: 1.2rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+  }
+
   .actionsWrapper {
     flex-direction: column;
     gap: 12px;
   }
 
-  .actionBtn {
+  .table th, .table td {
+    max-width: 90px;
+    padding: 16px 12px;
+    font-size: 0.8rem;
+  }
+
+  .actionGroup {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .actionAuthIcon {
+    font-size: 0.9rem;
+  }
+
+  .authBtn {
+    width: 90px;
+    padding: 8px;
+    flex: 0 0 40%;
+  }
+
+}
+
+/* Tablet y Laptop */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 180px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    font-size: 1.2rem;
+  }
+
+  .navText {
+    font-size: 0.8rem;
+  }
+
+  .FaClosed {
+    font-size: 1.2rem;
+  }
+
+  .nav li {
+    min-width: 20px;
+  }
+
+  .logout {
+    min-width: 65px;
+  }
+
+  .mainContent {
+    margin-left: 180px;
+    padding: 24px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    width: 80%;
+  }
+
+  .table th, .table td {
+    padding: 14px 10px;
+  }
+}
+
+/* Desktop 1025px+ */
+@media (min-width: 1025px) {
+
+  .sidebar {
+    width: 250px;
+  }
+
+  .mainContent {
+    margin-left: 250px;
+    padding: 32px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    width: 85%;
+  }
+
+  .table th, .table td {
+    padding: 16px 12px;
+    font-size: 0.9rem;
+  }
+
+  .section h3 {
+    font-size: 1.25rem;
   }
 }

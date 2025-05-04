@@ -34,17 +34,17 @@ const ActiveAuthorizations = () => {
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Tipo</th>
+            <th className={styles.hideableRow}>Tipo</th>
             <th>Status</th>
-            <th>Expira</th>
+            <th className={styles.hideableRow}>Expira</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {auths.map((a, i) => (
-            <tr key={i}>
+            <tr key={i} className={styles.authRow}>
               <td>{a.name}</td>
-              <td>{a.type}</td>
+              <td className={styles.hideableRow}>{a.type}</td>
               <td>
                 <span
                   className={`${styles.badge} ${
@@ -54,19 +54,19 @@ const ActiveAuthorizations = () => {
                   {a.status}
                 </span>
               </td>
-              <td>{a.expires}</td>
+              <td className={styles.hideableRow}>{a.expires}</td>
               <td>
                 <div className={styles.actionGroup}>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaQrcode className={styles.actionAuthIcon} />
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaShare className={styles.actionAuthIcon} />
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaEdit className={styles.actionAuthIcon} />
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button className={styles.authBtn}>
                     <FaTrash className={styles.actionAuthIcon} />
                   </button>
                 </div>

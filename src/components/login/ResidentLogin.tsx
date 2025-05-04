@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/ResidentLogin.css';
-import '../styles/animations.css';
+import '../styles/residentLogin.module.css';
+import '../styles/animations.module.css';
 
 const ResidentLogin: React.FC = () => {
   const [email, setEmail] = useState<string>('');
