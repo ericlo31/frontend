@@ -1,6 +1,5 @@
-import React from "react";
-import ActiveAuthorizations from "../components/residente/ActiveAuthorizations";
-import styles from "../components/styles/residente.module.css";
+import ActiveAuthorizations from "../components/visits/ActiveAuthorizations";
+import styles from "../styles/visits.module.css";
 
 const Authorizations = () => {
   return (
