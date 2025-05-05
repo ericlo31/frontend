@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import residentlogin from '../styles/residentLogin.module.css';
-import animations from '../styles/animations.module.css';
+import residentlogin from '../../styles/residentLogin.module.css';
+import animations from '../../styles/animations.module.css';
 
 
 const ResidentLogin: React.FC = () => {
