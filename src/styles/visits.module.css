@@ -5,7 +5,7 @@ body, html {
   overflow-x: hidden; /* para prevenir el scroll horizontal */
 }
 
-.dashboardContainer {
+.dashboardContainer { 
   display: flex;
   min-height: 100vh;
   width: 100vw;
@@ -131,9 +131,10 @@ body, html {
 .topBar {
   width: 100%;
   display: flex;
-  align-items: left;
+  flex-direction: row-reverse;
+  align-items: right;
   justify-content: space-between;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
 }
 
 .nav ul {
@@ -148,11 +149,11 @@ body, html {
   align-items: center;
   gap: 10px;
   padding: 12px;
+  padding-left: 22px;
   cursor: pointer;
   border-radius: 8px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   transition: background-color 0.2s;
-  min-width: 60px;
 }
 
 .nav {
@@ -168,6 +169,14 @@ body, html {
   color: #0284c7;
   font-weight: 600;
   border-radius: 8px;
+}
+
+.activeNavItemClosed{
+  min-width: 55px;
+}
+
+.navItemClosed{
+  min-width: 55px;
 }
 
 .header {
@@ -395,55 +404,73 @@ body, html {
 /* Responsive */
 
 
-/* Mobil */
+/* Movil */
 
 @media (max-width: 624px) {
 
   .mainContent {
     margin-left: 0;
-    width: 50%;
+    width: 100%;
   }
 
   .hideableRow {
     display: none;
   }
-}
 
-.table td {
-  font-size: 1rem;
-}
-
-
-
-@media (max-width: 824px) {
-  .sidebar {
-    width: 100px;
-    padding-top: 60px;
-    transform: translateX(-53%);
+  .table td {
+    font-size: 1rem;
   }
+  
+}
 
-  .header {
-    font-size: 0.9rem;
+@media (max-width: 770px) {
+
+  .mainContent {
+    width: 80%;
   }
 
   .logo {
     display: none;
   }
 
-  .hamburger {
-    font-size: 1.2rem;
-  }
-
   .navText {
     display: none;
   }
 
-  .FaClosed {
+  .nav li {
+    padding: 12px;
+    padding-right: 20px;
+  }
+
+  .actionAuthIcon {
+    font-size: 0.8rem;
+  }
+
+  .authBtn {
+    width: 100%;
+    max-width: 38px;
+    padding: 6px;
+    flex: 0 0 40%;
+  }
+  
+}
+
+@media (max-width: 824px) {
+  .sidebar {
+    width: 100px;
+    transform: translateX(-53%);
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .hamburger {
     font-size: 1.2rem;
   }
 
-  .nav li {
-    min-width: 20px;
+  .FaClosed {
+    font-size: 1.2rem;
   }
 
   .logout {
@@ -458,9 +485,14 @@ body, html {
     transform: translateX(0%);
   }
 
+  .mainContentFull {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
   .mainContent {
     margin-left: 100px;
-    width: 85%;
+    width: 82%;
   }
 
   .statGrid {
@@ -498,9 +530,13 @@ body, html {
   }
 
   .authBtn {
-    width: 90px;
+    width: 100%;
     padding: 8px;
     flex: 0 0 40%;
+  }
+
+  .logoClosed {
+    display: none;
   }
 
 }
@@ -512,28 +548,51 @@ body, html {
     width: 180px;
   }
 
+  .sidebarClosed {
+    transform: translateX(-49%);
+  }
+
   .logo {
     font-size: 1rem;
   }
 
+  .logoClosed {
+    display: none;
+  }
+  
   .hamburger {
     font-size: 1.2rem;
   }
 
   .navText {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .activeNavItemClosed {
+    width: 40%;
+    min-width: 30px;
+  }
+
+  .navItemClosed {
+    width: 40%;
+    min-width: 30px;
+  }
+
+  .navLinkClosed {
+    padding-left: 2px;
   }
 
   .FaClosed {
     font-size: 1.2rem;
   }
 
-  .nav li {
-    min-width: 20px;
-  }
-
   .logout {
     min-width: 65px;
+  }
+
+  .mainContentFull {
+    margin-left: 84px !important;
+    width: 90.1% !important;
   }
 
   .mainContent {
@@ -557,13 +616,18 @@ body, html {
     width: 250px;
   }
 
+  .mainContentFull {
+    margin-left: 117px !important;
+    width: 89.75% !important;
+  }
+
   .mainContent {
     margin-left: 250px;
     padding: 32px;
     min-height: 100vh;
     box-sizing: border-box;
     overflow-y: auto;
-    width: 85%;
+    width: 81%;
   }
 
   .table th, .table td {
@@ -573,5 +637,9 @@ body, html {
 
   .section h3 {
     font-size: 1.25rem;
+  }
+
+  .logoClosed {
+    display: none;
   }
 }
