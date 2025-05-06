@@ -109,13 +109,15 @@ body, html {
   display: block;
   background: none;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   cursor: pointer;
   color: #374151;
+  margin-top: 12px;
+  margin-right: 20px;
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 500;
   margin-top: 1rem;
   color: #374151;
@@ -467,6 +469,7 @@ body, html {
 
   .hamburger {
     font-size: 1.2rem;
+    margin-right: 16px;
   }
 
   .FaClosed {
@@ -562,6 +565,7 @@ body, html {
   
   .hamburger {
     font-size: 1.2rem;
+    margin-right: 16px;
   }
 
   .navText {
