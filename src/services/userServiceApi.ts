@@ -66,7 +66,7 @@ export const fetchUsersByRole = async (role: string) => {
     console.log(`Se obtuvieron los datos`);
     return response.data;
   } catch (error) {
-    console.error(`Error fetching ${role} users:`, error);
+    console.error(`Error fetching ${role}s`, error);
     throw error;
   }
 };
