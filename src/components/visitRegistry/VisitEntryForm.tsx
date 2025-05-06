@@ -31,11 +31,10 @@ const VisitEntryForm: React.FC = () => {
           fetchUsersByRole(UserRole.GUARDIA),
         ]);
 
-        setResidents(residentsData.map(transformUserToOption) || []);
-        setGuards(guardsData.map(transformUserToOption) || []);
+        setResidents(residentsData.map(transformUserToOption));
+        setGuards(guardsData.map(transformUserToOption));
         setOptionsLoading(false);
       } catch (err: any) {
-        console.log(err);
         setError("Error cargando las opciones: ");
         setOptionsLoading(false);
       }
