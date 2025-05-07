@@ -8,7 +8,7 @@ import Home from "./components/login/Home";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<VisitEntryForm />} />
       <Route path="/authorizations" element={<Authorizations />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>

@@ -1,6 +1,6 @@
 import axios from "axios";
-// URL de la API en el Backend (Se inicializa en 5000 para no interferir con el frontend)
-const API_BASE_URL = "http://localhost:5000/api";
+// URL de la API en el Backend (Se inicializa en 8000 para no interferir con el frontend)
+const API_BASE_URL = "http://localhost:8000/api";
 
 interface UserData {
   nombre: string;
