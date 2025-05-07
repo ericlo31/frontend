@@ -236,6 +236,8 @@ body, html {
   color: #6b7280;
 }
 
+/* Quick Actions*/
+
 .actionsWrapper {
   display: flex;
   gap: 16px;
@@ -248,11 +250,13 @@ body, html {
   border: 1px solid #d1d5db;
   border-radius: 8px;
   padding: 16px;
-  font-weight: 600;
   color: #111827;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,6 +295,7 @@ body, html {
 .actionIcon {
   font-size: 1.2rem;
   color: #0787f6;
+  text-decoration: none;
 }
 
 .actionGroup {

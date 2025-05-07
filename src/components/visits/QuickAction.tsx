@@ -7,18 +7,16 @@ const QuickActions = () => {
     <div className={styles.section}>
       <h3>Acciones Rápidas</h3>
       <div className={styles.actionsWrapper}>
-        <Link to="/entry-form">
-          <button className={styles.actionBtn}>
-            <FaEdit className={styles.actionIcon} /> Crear Autorización
-          </button>
+        <Link to="/entry-form" className={styles.actionBtn}>
+          <FaEdit className={styles.actionIcon} /> Crear Autorización
         </Link>
-        <button className={styles.actionBtn}>
+        <Link to="" className={styles.actionBtn}>
           <FaClipboardList className={styles.actionIcon} /> Ver el Historial de
           Visitas
-        </button>
-        <button className={styles.actionBtn}>
+        </Link>
+        <Link to="" className={styles.actionBtn}>
           <FaFileExport className={styles.actionIcon} /> Exportar Reportes
-        </button>
+        </Link>
       </div>
     </div>
   );
