@@ -1,13 +1,69 @@
+import React, { useState } from "react";
+import Sidebar from "../components/visits/Sidebar";
 import styles from "../styles/visits.module.css";
 
 const Settings = () => {
+  const [form, setForm] = useState({
+    name: "Eric Lorenzo",
+    email: "eric@example.com",
+    password: "",
+    notifications: true,
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    setForm({
+      ...form,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Saving settings...", form);
+  };
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   return (
-    <div className={styles.section}>
-      <h2>Ajustes</h2>
-      <p>
-        Esta pagina será para que el usuario actualice el email, la contraseña y
-        otras cosas.
-      </p>
+    <div className={styles.dashboardContainer}>
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+      <div
+        className={`${styles.mainContent} ${
+          !isSidebarOpen ? styles.mainContentFull : ""
+        }`}
+      >
+        <form onSubmit={handleSubmit} className={styles.settingsForm}>
+          <div className={styles.formGroup}>
+            <label htmlFor="name">Nombre Completo</label>
+            <input name="name" value={form.name} onChange={handleChange} />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="email">Correo Electrónico</label>
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="password">Nueva Contraseña</label>
+            <input
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <button type="submit" className={styles.saveBtn}>
+            Guardar
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

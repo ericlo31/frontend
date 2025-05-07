@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ActiveAuthorizations from "../components/visits/ActiveAuthorizations";
+import VisitHistory from "../components/visits/VisitHistory";
 import Sidebar from "../components/visits/Sidebar";
 import styles from "../styles/visits.module.css";
 
-const Authorizations = () => {
+const History = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
@@ -14,10 +14,10 @@ const Authorizations = () => {
           !isSidebarOpen ? styles.mainContentFull : ""
         }`}
       >
-        <ActiveAuthorizations />
+        <VisitHistory />
       </div>
     </div>
   );
 };
 
-export default Authorizations;
+export default History;

@@ -403,6 +403,58 @@ body, html {
   background-color: #f3f4f6;
 }
 
+/* Ajustes */
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin-top: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.formGroup input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.formGroupRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.saveBtn {
+  background-color: #0787f6;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: medium;
+  transition: background 0.2s ease;
+  margin-top: 1rem;
+}
+
+.saveBtn:hover {
+  background-color: #2563eb;
+}
+
+
 /* Responsive */
 
 
