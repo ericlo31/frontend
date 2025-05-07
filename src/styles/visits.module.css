@@ -1,32 +1,32 @@
 body, html {
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
   overflow-x: hidden; /* para prevenir el scroll horizontal */
 }
 
-.dashboardContainer { 
+.dashboardContainer {
+  position: relative; 
   display: flex;
-  min-height: 100vh;
   width: 100vw;
   background-color: #f9fafb;
-  position: relative;
+  min-height: 100vh;
   overflow: hidden;
 }
 
 .sidebar {
-  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #ffffff;
-  border-right: 1px solid #e5e7eb;
-  display: flex;
-  flex-direction: column;
-  padding: 24px 16px;
-  transition: transform 0.3s ease;
   z-index: 1000;
+  display: flex;
+  height: 100vh;
+  padding: 24px 16px;
+  background-color: #fff;
+  border-right: 1px solid #e5e7eb;
   box-sizing: border-box;
+  flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
 .sidebarClosed {
@@ -55,8 +55,8 @@ body, html {
 
 .navAreaClosed {
   display: flex;
-  justify-content: flex-end;
   align-items: end;
+  justify-content: flex-end;
 }
 
 .navContentClosed {
@@ -66,21 +66,21 @@ body, html {
 
 .logoutClosed {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 25%;
   
 }
 
 
 .logout {
-  background-color: #0787f6;
-  color: white;
   padding: 10px;
   border: none;
+  font-weight: 600;
+  color: white;
+  background-color: #0787f6;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
   min-height: 60px;
   min-width: 85px;
 }
@@ -91,70 +91,70 @@ body, html {
 
 .navArea {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
 }
 
 .mainContent {
   width: 100%;
-  margin-left: 20%;
   padding: 24px;
-  min-height: 100vh;
   box-sizing: border-box;
+  margin-left: 20%;
+  min-height: 100vh;
   overflow-y: auto;
 }
 
 .hamburger {
   display: block;
-  background: none;
   border: none;
   font-size: 1.8rem;
-  cursor: pointer;
   color: #374151;
-  margin-top: 12px;
+  background: none;
+  cursor: pointer;
   margin-right: 20px;
+  margin-top: 12px;
 }
 
 .logo {
   font-size: 1.6rem;
   font-weight: 500;
-  margin-top: 1rem;
   color: #374151;
+  margin-top: 1rem;
 }
 
 .logoArea {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .topBar {
-  width: 100%;
   display: flex;
-  flex-direction: row-reverse;
   align-items: right;
   justify-content: space-between;
+  width: 100%;
+  flex-direction: row-reverse;
   padding-bottom: 3rem;
 }
 
 .nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .nav li {
   display: flex;
   align-items: center;
-  gap: 10px;
   padding: 12px;
-  padding-left: 22px;
-  cursor: pointer;
   border-radius: 8px;
+  cursor: pointer;
+  gap: 10px;
   margin-bottom: 10px;
+  padding-left: 22px;
   transition: background-color 0.2s;
 }
 
@@ -167,9 +167,9 @@ body, html {
 }
 
 .activeNavItem {
-  background-color: #e0f2fe;
-  color: #0284c7;
   font-weight: 600;
+  color: #0284c7;
+  background-color: #e0f2fe;
   border-radius: 8px;
 }
 
@@ -182,23 +182,23 @@ body, html {
 }
 
 .header {
-  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px 24px;
-  border-radius: 12px;
-  margin-bottom: 1rem;
   font-size: 20px;
   font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   color: #374151;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
+  margin-bottom: 1rem;
 }
 
 .userProfile {
-  font-weight: 400;
   display: flex;
   align-items: center;
+  font-weight: 400;
   gap: 10px;
 }
 
@@ -216,12 +216,12 @@ body, html {
 
 .statCard {
   flex: 1;
-  background-color: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
   text-align: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
 }
 
 .statValue {
@@ -231,36 +231,36 @@ body, html {
 }
 
 .statLabel {
-  margin-top: 0.5rem;
   font-size: 0.9rem;
   color: #6b7280;
+  margin-top: 0.5rem;
 }
 
-/* Quick Actions*/
+/* Quick Actions */
 
 .actionsWrapper {
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: 16px;
 }
 
 .actionBtn {
-  flex: 1;
-  background-color: #ffffff;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 16px;
-  color: #111827;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #111827;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
   gap: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .actionBtn:hover {
@@ -270,20 +270,20 @@ body, html {
 
 
 .authBtn {
-  flex: 1;
-  background-color: #ffffff;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 16px;
-  font-weight: 600;
-  color: #111827;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+  text-align: center;
+  color: #111827;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
   gap: 10px;
+  transition: all 0.2s ease;
 }
 
 .authBtn:hover {
@@ -300,8 +300,8 @@ body, html {
 
 .actionGroup {
   display: inline-flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
 }
 
 
@@ -310,42 +310,42 @@ body, html {
 }
 
 .section {
+  padding: 1px 20px 20px;
+  border: 1px solid #e5e7eb;
   background: white;
-  padding: 1px 20px 20px 20px;
   border-radius: 12px;
   margin-bottom: 1rem;
-  border: 1px solid #e5e7eb;
 }
 
 .section h3 {
-  margin-top: 1.2rem;
-  margin-bottom: 1.5rem;
   font-size: 1.1rem;
   font-weight: 600;
   color: #111827;
+  margin-bottom: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
   border: 1px solid #e5e7eb;
+  border-collapse: separate;
   border-radius: 12px;
+  border-spacing: 0;
   overflow: hidden;
 }
 
 .table th, .table td {
   padding: 16px;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
   color: #111827;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .table th {
-  background-color: #f9fafb;
-  font-weight: 700;
   font-size: 0.9rem;
+  font-weight: 700;
   color: #6b7280;
+  background-color: #f9fafb;
   text-transform: uppercase;
 }
 
@@ -359,49 +359,49 @@ body, html {
 }
 
 .badge {
+  display: inline-block;
   padding: 4px 10px;
-  border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 600;
   text-align: center;
-  display: inline-block;
+  border-radius: 12px;
 }
 
 /* Colores Status */
 .activo {
-  background-color: #d1fae5;
   color: #065f46;
+  background-color: #d1fae5;
 }
 
 .expirado {
-  background-color: #fee2e2;
   color: #991b1b;
+  background-color: #fee2e2;
 }
 
 .pendiente {
-  background-color: #fef9c3;
   color: #92400e;
+  background-color: #fef9c3;
 }
 
 .revocado {
-  background-color: #e5e7eb;
   color: #374151;
+  background-color: #e5e7eb;
 }
 
 .completado {
-  background-color: #f3f4f6;
   color: #0284c7;
+  background-color: #f3f4f6;
 }
 
 .navLink {
   display: flex;
   align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: inherit;
   width: 100%;
   padding: 12px;
+  color: inherit;
   border-radius: 8px;
+  gap: 10px;
+  text-decoration: none;
 }
 
 .navLink:hover {
@@ -413,8 +413,8 @@ body, html {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 500px;
   margin-top: 1rem;
+  max-width: 500px;
 }
 
 .formGroup {
@@ -423,16 +423,16 @@ body, html {
 }
 
 .formGroup label {
-  margin-bottom: 6px;
   font-weight: 500;
   color: #374151;
+  margin-bottom: 6px;
 }
 
 .formGroup input {
   padding: 10px 12px;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
   font-size: 1rem;
+  border-radius: 8px;
 }
 
 .formGroupRow {
@@ -443,16 +443,16 @@ body, html {
 }
 
 .saveBtn {
-  background-color: #0787f6;
-  color: white;
   padding: 12px 16px;
   border: none;
+  font-size: medium;
+  font-weight: 500;
+  color: white;
+  background-color: #0787f6;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
-  font-size: medium;
-  transition: background 0.2s ease;
   margin-top: 1rem;
+  transition: background 0.2s ease;
 }
 
 .saveBtn:hover {
@@ -465,11 +465,10 @@ body, html {
 
 /* Movil */
 
-@media (max-width: 624px) {
-
+@media (width <= 624px) {
   .mainContent {
-    margin-left: 0;
     width: 100%;
+    margin-left: 0;
   }
 
   .hideableRow {
@@ -482,8 +481,7 @@ body, html {
   
 }
 
-@media (max-width: 770px) {
-
+@media (width <= 770px) {
   .mainContent {
     width: 80%;
   }
@@ -506,15 +504,15 @@ body, html {
   }
 
   .authBtn {
-    width: 100%;
-    max-width: 38px;
-    padding: 6px;
     flex: 0 0 40%;
+    width: 100%;
+    padding: 6px;
+    max-width: 38px;
   }
   
 }
 
-@media (max-width: 824px) {
+@media (width <= 824px) {
   .sidebar {
     width: 100px;
     transform: translateX(-53%);
@@ -546,13 +544,13 @@ body, html {
   }
 
   .mainContentFull {
-    margin-left: 0 !important;
     width: 100% !important;
+    margin-left: 0 !important;
   }
 
   .mainContent {
-    margin-left: 100px;
     width: 82%;
+    margin-left: 100px;
   }
 
   .statGrid {
@@ -574,14 +572,14 @@ body, html {
   }
 
   .table th, .table td {
-    max-width: 90px;
     padding: 16px 12px;
     font-size: 0.8rem;
+    max-width: 90px;
   }
 
   .actionGroup {
-    width: 100%;
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
   }
 
@@ -590,9 +588,9 @@ body, html {
   }
 
   .authBtn {
+    flex: 0 0 40%;
     width: 100%;
     padding: 8px;
-    flex: 0 0 40%;
   }
 
   .logoClosed {
@@ -603,7 +601,7 @@ body, html {
 
 /* Tablet y Laptop */
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (width >= 769px) and (width <= 1024px) {
   .sidebar {
     width: 180px;
   }
@@ -652,17 +650,17 @@ body, html {
   }
 
   .mainContentFull {
-    margin-left: 84px !important;
     width: 90.1% !important;
+    margin-left: 84px !important;
   }
 
   .mainContent {
-    margin-left: 180px;
-    padding: 24px;
-    min-height: 100vh;
-    box-sizing: border-box;
-    overflow-y: auto;
     width: 80%;
+    padding: 24px;
+    box-sizing: border-box;
+    margin-left: 180px;
+    min-height: 100vh;
+    overflow-y: auto;
   }
 
   .table th, .table td {
@@ -671,24 +669,23 @@ body, html {
 }
 
 /* Desktop 1025px+ */
-@media (min-width: 1025px) {
-
+@media (width >= 1025px) {
   .sidebar {
     width: 250px;
   }
 
   .mainContentFull {
-    margin-left: 117px !important;
     width: 89.75% !important;
+    margin-left: 117px !important;
   }
 
   .mainContent {
-    margin-left: 250px;
-    padding: 32px;
-    min-height: 100vh;
-    box-sizing: border-box;
-    overflow-y: auto;
     width: 81%;
+    padding: 32px;
+    box-sizing: border-box;
+    margin-left: 250px;
+    min-height: 100vh;
+    overflow-y: auto;
   }
 
   .table th, .table td {

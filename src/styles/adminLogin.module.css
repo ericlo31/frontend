@@ -1,19 +1,19 @@
 .loginAdminContainer  {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #dff1ff, #ffffff);
+  background: linear-gradient(135deg, #dff1ff, #fff);
   font-family: 'Segoe UI', sans-serif;
 }
 
 .loginCard {
-  background-color: white;
-  padding: 2.5rem;
   width: 350px;
-  border-radius: 10px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  background-color: white;
   animation: slide-up 0.6s ease;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
 }
 
 .loginCard h2 {
@@ -31,9 +31,9 @@
 .loginCard input {
   width: 100%;
   padding: 12px;
-  margin-bottom: 1rem;
-  border-radius: 6px;
   border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
   transition: border-color 0.3s;
 }
 
@@ -45,11 +45,11 @@
 .loginCard button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background-color: #1d3557;
-  color: white;
   border: none;
-  border-radius: 6px;
   font-weight: bold;
+  color: white;
+  background-color: #1d3557;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -59,41 +59,42 @@
 }
 
 .registerLink {
-  text-align: center;
-  margin-top: 1rem;
   font-size: 0.9rem;
+  text-align: center;
   color: #333;
+  margin-top: 1rem;
 }
 
 .registerLink a {
+  font-weight: bold;
   color: #1d3557;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .backButton {
-  margin-top: 1.5rem;
   width: 100%;
   padding: 10px;
-  background-color: #e0e0e0;
   border: none;
+  font-weight: bold;
+  background-color: #e0e0e0;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  margin-top: 1.5rem;
   transition: background-color 0.3s;
 }
 
 .backButton:hover {
   background-color: #c2c2c2;
 }
+
 /* Estilos responsive */
-@media screen and (max-width: 1024px) {
+@media screen and (width <= 1024px) {
   .loginCard {
     width: 80%;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   .loginCard {
     width: 90%;
     padding: 2rem 1.5rem;
@@ -108,8 +109,8 @@
   }
 
   .loginCard input {
-    font-size: 1rem;
     padding: 10px;
+    font-size: 1rem;
   }
 
   .loginCard button {

@@ -1,17 +1,17 @@
 .homeContainer {
-    height: 100vh;
-    background: linear-gradient(120deg, #caf0f8, #ffffff);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
     text-align: center;
+    background: linear-gradient(120deg, #caf0f8, #fff);
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
   }
   
   .homeContainer h1 {
-    margin-bottom: 2rem;
     color: #023e8a;
+    margin-bottom: 2rem;
   }
   
   .buttonGroup {
@@ -22,17 +22,18 @@
   .homeBtn {
     padding: 15px 30px;
     font-size: 1rem;
-    background-color: #0077b6;
     color: white;
-    text-decoration: none;
+    background-color: #0077b6;
     border-radius: 8px;
+    text-decoration: none;
     transition: background-color 0.3s ease;
   }
   
   .homeBtn:hover {
     background-color: #005f87;
   }
-  @media screen and (max-width: 768px) {
+
+  @media screen and (width <= 768px) {
     .buttonGroup {
       flex-direction: column;
       gap: 15px;
@@ -44,7 +45,7 @@
     }
   
     .homeContainer h1 {
-      font-size: 1.5rem;
       padding: 0 1rem;
+      font-size: 1.5rem;
     }
   }
