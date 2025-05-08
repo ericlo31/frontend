@@ -1,0 +1,50 @@
+{
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-css-modules"
+    ],
+    "plugins": ["stylelint-order"],
+    "rules": {
+      "selector-class-pattern": null,
+      "selector-id-pattern": null,
+      "order/properties-order": [
+        [
+          "position",
+          "top",
+          "right",
+          "bottom",
+          "left",
+          "z-index",
+  
+          "display",
+          "flex",
+          "align-items",
+          "justify-content",
+          "width",
+          "height",
+          "margin",
+          "padding",
+          "border",
+  
+          "font",
+          "font-size",
+          "font-weight",
+          "line-height",
+          "text-align",
+          "color",
+  
+          "background",
+          "background-color",
+          "background-image"
+        ],
+        {
+          "unspecified": "bottomAlphabetical"
+        }
+      ]
+    },
+    "ignoreFiles": [
+      "**/*.ts",
+      "**/*.tsx"
+    ]
+  }
+  
