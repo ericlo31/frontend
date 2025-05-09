@@ -3,7 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Authorizations from "./pages/Authorizations";
 import Settings from "./pages/Settings";
 import History from "./pages/History";
-import VisitEntryForm from "./components/visitRegistry/VisitEntryForm";
+import VisitEntryForm from "./pages/Form";
 import Home from "./components/login/Home";
 
 const App = () => {

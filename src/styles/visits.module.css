@@ -14,6 +14,17 @@ body, html {
   overflow: hidden;
 }
 
+.mainContent {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  margin-left: 20%;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Sidebar */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -72,7 +83,6 @@ body, html {
   
 }
 
-
 .logout {
   padding: 10px;
   border: none;
@@ -94,15 +104,6 @@ body, html {
   width: 100%;
   flex-direction: column;
   gap: 20px;
-}
-
-.mainContent {
-  width: 100%;
-  padding: 24px;
-  box-sizing: border-box;
-  margin-left: 20%;
-  min-height: 100vh;
-  overflow-y: auto;
 }
 
 .hamburger {
@@ -181,6 +182,7 @@ body, html {
   min-width: 55px;
 }
 
+/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -208,6 +210,7 @@ body, html {
   border-radius: 50%;
 }
 
+/* Stat Cards */
 .statGrid {
   display: flex;
   gap: 16px;
@@ -237,7 +240,6 @@ body, html {
 }
 
 /* Quick Actions */
-
 .actionsWrapper {
   display: flex;
   flex-wrap: wrap;
@@ -268,7 +270,7 @@ body, html {
   border-color: #cbd5e1;
 }
 
-
+/* Active Authorizations */
 .authBtn {
   display: flex;
   flex: 1;
@@ -304,7 +306,6 @@ body, html {
   gap: 8px;
 }
 
-
 .actionAuthIcon {
   font-size: 0.8rem;
 }
@@ -325,6 +326,7 @@ body, html {
   margin-top: 1.2rem;
 }
 
+/* Visit History */
 .table {
   width: 100%;
   border: 1px solid #e5e7eb;
@@ -458,7 +460,6 @@ body, html {
 .saveBtn:hover {
   background-color: #2563eb;
 }
-
 
 /* Responsive */
 
