@@ -1,25 +1,33 @@
-import { IUser, UserRole } from './interfaces/IUser';
-
-// Declaración de types para los tipos de respuesta y parámetros
+// Interface con tipo de response de usuario /api
+export interface User {
+    _id: string;
+    name: string;
+    email: string;
+    role: string;
+    apartment?: string;
+    tel?: string;
+    shift?: string;
+    registerDate: string;
+}
 
 // Tipo para opciones de select en formularios
 export interface UserSelectOption {
   _id: string;       // _id del usuario
   label: string;       // Nombre para mostrar
-  role?: UserRole;     // Rol opcional
+  role?: string;     // Rol opcional
   extraInfo?: string;  // Info adicional (ej: "Torre 1 - Apt 101")
 }
 
 // Tipo para respuesta API de usuarios
 export interface ApiUserResponse {
   success: boolean;
-  data?: IUser[];
+  data?: User[];
   error?: string;
 }
 
 // Tipo para parámetros de búsqueda
 export interface UserQueryParams {
-  role?: UserRole;
+  role?: string;
   search?: string;
   includeInactive?: boolean;
 }
@@ -29,12 +37,3 @@ export interface UserSelectionForm {
   userId: string;
   comment?: string;
 }
-
-export const transformUserToOption = (user: IUser): UserSelectOption => ({
-    _id: user._id.toString(),
-    label: user.nombre,
-    role: user.role,
-    extraInfo: user.role === UserRole.RESIDENTE 
-      ? `Torre ${user.torre} - Apt ${user.apartamento}`
-      : undefined
-});

@@ -3,7 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Authorizations from "./pages/Authorizations";
 import Settings from "./pages/Settings";
 import History from "./pages/History";
-import VisitEntryForm from "./components/visitRegistry/VisitEntryForm";
+import VisitForm from "./components/authorization/VisitForm";
 import Home from "./components/login/Home";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
       <Route path="/authorizations" element={<Authorizations />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/visit-history" element={<History />} />
-      <Route path="/entry-form" element={<VisitEntryForm />} />
+      <Route path="/entry-form" element={<VisitForm />} />
     </Routes>
   );
 };
