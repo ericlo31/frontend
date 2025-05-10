@@ -5,15 +5,19 @@ import QuickActions from "../components/visits/QuickAction";
 import Authorizations from "../components/visits/ActiveAuthorizations";
 import History from "../components/visits/VisitHistory";
 import styles from "../styles/visits.module.css";
-import { useState } from "react";
+import { useSidebar } from "../contexts/SidebarContext";
 
 const Dashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { isOpen } = useSidebar();
 
   return (
     <div className={styles.dashboardContainer}>
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-      <div className={`${styles.mainContent} ${!isSidebarOpen ? styles.mainContentFull : ''}`}>
+      <Sidebar />
+      <div
+        className={`${styles.mainContent} ${
+          !isOpen ? styles.mainContentFull : ""
+        }`}
+      >
         <Header />
         <StatCards />
         <QuickActions />

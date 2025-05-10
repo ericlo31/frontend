@@ -1,17 +1,17 @@
-import React, { useState } from "react";
 import VisitHistory from "../components/visits/VisitHistory";
 import Sidebar from "../components/visits/Sidebar";
 import styles from "../styles/visits.module.css";
+import { useSidebar } from "../contexts/SidebarContext";
 
 const History = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { isOpen } = useSidebar();
 
   return (
     <div className={styles.dashboardContainer}>
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+      <Sidebar />
       <div
         className={`${styles.mainContent} ${
-          !isSidebarOpen ? styles.mainContentFull : ""
+          !isOpen ? styles.mainContentFull : ""
         }`}
       >
         <VisitHistory />

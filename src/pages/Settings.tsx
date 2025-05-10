@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../components/visits/Sidebar";
 import styles from "../styles/visits.module.css";
+import { useSidebar } from "../contexts/SidebarContext";
 
 const Settings = () => {
   const [form, setForm] = useState({
@@ -23,14 +24,14 @@ const Settings = () => {
     console.log("Saving settings...", form);
   };
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { isOpen } = useSidebar();
 
   return (
     <div className={styles.dashboardContainer}>
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+      <Sidebar />
       <div
         className={`${styles.mainContent} ${
-          !isSidebarOpen ? styles.mainContentFull : ""
+          !isOpen ? styles.mainContentFull : ""
         }`}
       >
         <form onSubmit={handleSubmit} className={styles.settingsForm}>
