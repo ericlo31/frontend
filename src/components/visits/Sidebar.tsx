@@ -42,11 +42,12 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
       >
         <nav className={styles.nav}>
           <ul>
-            <div
-              className={`${styles.navContent} ${
-                isOpen ? styles.navContentOpen : styles.navContentClosed
-              }`}
-            >
+            <Link
+                  to="/"
+                  className={`${styles.navLink} ${
+                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
+                  }`}
+                >
               <li
                 className={
                   location.pathname === "/"
@@ -60,12 +61,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                       }`
                 }
               >
-                <Link
-                  to="/"
-                  className={`${styles.navLink} ${
-                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
-                  }`}
-                >
+                
                   <FaHome
                     className={`${styles.Fa} ${
                       isOpen ? styles.FaOpen : styles.FaClosed
@@ -78,14 +74,15 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                   >
                     Dashboard
                   </span>
-                </Link>
+                
               </li>
-            </div>
-            <div
-              className={`${styles.navContent} ${
-                isOpen ? styles.navContentOpen : styles.navContentClosed
-              }`}
-            >
+            </Link>
+                    <Link
+                  to="/authorizations"
+                  className={`${styles.navLink} ${
+                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
+                  }`}
+                >
               <li
                 className={
                   location.pathname === "/authorizations"
@@ -99,12 +96,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                       }`
                 }
               >
-                <Link
-                  to="/authorizations"
-                  className={`${styles.navLink} ${
-                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
-                  }`}
-                >
+                
                   <FaUserShield
                     className={`${styles.Fa} ${
                       isOpen ? styles.FaOpen : styles.FaClosed
@@ -117,14 +109,15 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                   >
                     Autorización
                   </span>
-                </Link>
+                
               </li>
-            </div>
-            <div
-              className={`${styles.navContent} ${
-                isOpen ? styles.navContentOpen : styles.navContentClosed
-              }`}
-            >
+              </Link>
+              <Link
+                  to="/visit-history"
+                  className={`${styles.navLink} ${
+                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
+                  }`}
+                >
               <li
                 className={
                   location.pathname === "/visit-history"
@@ -138,12 +131,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                       }`
                 }
               >
-                <Link
-                  to="/visit-history"
-                  className={`${styles.navLink} ${
-                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
-                  }`}
-                >
+                
                   <FaHistory
                     className={`${styles.Fa} ${
                       isOpen ? styles.FaOpen : styles.FaClosed
@@ -156,14 +144,16 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                   >
                     Historial
                   </span>
-                </Link>
+                
               </li>
-            </div>
-            <div
-              className={`${styles.navContent} ${
-                isOpen ? styles.navContentOpen : styles.navContentClosed
-              }`}
-            >
+
+              </Link>
+              <Link
+                  to="/settings"
+                  className={`${styles.navLink} ${
+                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
+                  }`}
+                >
               <li
                 className={
                   location.pathname === "/settings"
@@ -177,12 +167,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                       }`
                 }
               >
-                <Link
-                  to="/settings"
-                  className={`${styles.navLink} ${
-                    isOpen ? styles.navLinkOpen : styles.navLinkClosed
-                  }`}
-                >
+                
                   <FaCog
                     className={`${styles.Fa} ${
                       isOpen ? styles.FaOpen : styles.FaClosed
@@ -195,9 +180,9 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                   >
                     Ajustes
                   </span>
-                </Link>
+                
               </li>
-            </div>
+            </Link>
           </ul>
         </nav>
 
