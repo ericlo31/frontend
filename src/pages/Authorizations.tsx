@@ -1,17 +1,17 @@
-import React, { useState } from "react";
 import ActiveAuthorizations from "../components/visits/ActiveAuthorizations";
 import Sidebar from "../components/visits/Sidebar";
+import { useSidebar } from "../contexts/SidebarContext";
 import styles from "../styles/visits.module.css";
 
 const Authorizations = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { isOpen } = useSidebar();
 
   return (
     <div className={styles.dashboardContainer}>
-      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+      <Sidebar />
       <div
         className={`${styles.mainContent} ${
-          !isSidebarOpen ? styles.mainContentFull : ""
+          !isOpen ? styles.mainContentFull : ""
         }`}
       >
         <ActiveAuthorizations />

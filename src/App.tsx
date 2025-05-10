@@ -5,9 +5,11 @@ import Settings from "./pages/Settings";
 import History from "./pages/History";
 import VisitForm from "./components/authorization/VisitForm";
 import Home from "./components/login/Home";
+import { SidebarProvider } from "./contexts/SidebarContext";
 
 const App = () => {
   return (
+    <SidebarProvider>
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="/authorizations" element={<Authorizations />} />
@@ -15,6 +17,7 @@ const App = () => {
       <Route path="/visit-history" element={<History />} />
       <Route path="/entry-form" element={<VisitForm />} />
     </Routes>
+    </SidebarProvider>
   );
 };
 
