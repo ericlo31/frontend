@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { authorizeVisit } from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
 import { VisitData } from "../../types/visit.types";
+import styles from '../../styles/visitForm.module.css';
 
-const VisitEntryForm: React.FC = () => {
+const VisitForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     document: "",
@@ -18,24 +19,23 @@ const VisitEntryForm: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     if (value === "" || /^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value))
-    setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-    const handleDocumentChange = (
+  const handleDocumentChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     if (value === "" || /^[0-9]+$/.test(value))
-    setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-    const handleChange = (
+  const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,11 +63,11 @@ const VisitEntryForm: React.FC = () => {
   };
 
   return (
-    <div className="visit-form">
-      <h2>Registrar Entrada de Visitante</h2>
+    <div className={styles.visitForm}>
+      <h2 className={styles.title}>Autorizar Visitante</h2>
       {error && (
-        <div className="alert alert-error">
-          <span className="close-btn" onClick={() => setError(null)}>
+        <div className={`${styles.alert} ${styles.alertError}`}>
+          <span className={styles.closeBtn} onClick={() => setError(null)}>
             &times;
           </span>
           {error}
@@ -75,18 +75,17 @@ const VisitEntryForm: React.FC = () => {
       )}
 
       {success && (
-        <div className="alert alert-success">
-          <span className="close-btn" onClick={() => setSuccess(false)}>
+        <div className={`${styles.alert} ${styles.alertSuccess}`}>
+          <span className={styles.closeBtn} onClick={() => setSuccess(false)}>
             &times;
           </span>
           ¡Entrada registrada exitosamente! QR generado.
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-
-        <div className="form-group">
-          <label htmlFor="name">Nombre Visitante*:</label>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
+          <label htmlFor="name" className={styles.label}>Nombre Visitante*:</label>
           <input
             type="text"
             id="name"
@@ -95,11 +94,12 @@ const VisitEntryForm: React.FC = () => {
             onChange={handleNameChange}
             required
             placeholder="Nombre completo"
+            className={styles.input}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="document">Documento de Identidad*:</label>
+        <div className={styles.formGroup}>
+          <label htmlFor="document" className={styles.label}>Documento de Identidad*:</label>
           <input
             type="text"
             id="document"
@@ -108,17 +108,19 @@ const VisitEntryForm: React.FC = () => {
             onChange={handleDocumentChange}
             required
             placeholder="Número de documento"
+            className={styles.input}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="reason">Motivo de Visita*:</label>
+        <div className={styles.formGroup}>
+          <label htmlFor="reason" className={styles.label}>Motivo de Visita*:</label>
           <select
             id="reason"
             name="reason"
             value={formData.reason}
             onChange={handleChange}
             required
+            className={styles.select}
           >
             <option value="">Seleccione un motivo</option>
             <option value="Entrega">Entrega de paquete</option>
@@ -129,11 +131,15 @@ const VisitEntryForm: React.FC = () => {
           </select>
         </div>
 
-        <div className="form-actions">
-          <button type="submit" className="submit-btn" disabled={loading}>
+        <div className={styles.formActions}>
+          <button 
+            type="submit" 
+            className={styles.submitBtn} 
+            disabled={loading}
+          >
             {loading ? (
               <>
-                <span className="spinner"></span>
+                <span className={styles.spinner}></span>
                 Procesando...
               </>
             ) : (
@@ -146,4 +152,4 @@ const VisitEntryForm: React.FC = () => {
   );
 };
 
-export default VisitEntryForm;
+export default VisitForm;

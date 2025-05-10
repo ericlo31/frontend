@@ -1,4 +1,5 @@
-import ActiveAuthorizations from "../components/visits/ActiveAuthorizations";
+import VisitForm from "../components/authorization/VisitForm";
+import ActiveAuthorizations from "../components/authorization/ActiveAuthorizations";
 import Sidebar from "../components/visits/Sidebar";
 import { useSidebar } from "../contexts/SidebarContext";
 import styles from "../styles/visits.module.css";
@@ -14,6 +15,7 @@ const Authorizations = () => {
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
+        <VisitForm />
         <ActiveAuthorizations />
       </div>
     </div>

@@ -2,12 +2,19 @@ import { FaEdit, FaFileExport, FaClipboardList } from "react-icons/fa";
 import styles from "../../styles/visits.module.css";
 import { Link } from "react-router-dom";
 
-const QuickActions = () => {
+interface QuickActionsProps {
+  openModal: () => void;
+}
+
+const QuickActions = ({ openModal }: QuickActionsProps) => {
   return (
     <div className={styles.section}>
       <h3>Acciones Rápidas</h3>
       <div className={styles.actionsWrapper}>
-        <Link to="/entry-form" className={styles.actionBtn}>
+        <Link to=""
+          onClick={openModal} 
+          className={styles.actionBtn}
+        >
           <FaEdit className={styles.actionIcon} /> Crear Autorización
         </Link>
         <Link to="" className={styles.actionBtn}>
