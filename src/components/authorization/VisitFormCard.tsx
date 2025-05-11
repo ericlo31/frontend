@@ -3,10 +3,9 @@ import VisitFormContent from "./VisitFormContent";
 import { authorizeVisit } from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
 import { VisitData } from "../../types/visit.types";
-import { VisitFormProps } from "../../types/types";
 import styles from "../../styles/visitForm.module.css";
 
-const VisitFormModal: React.FC<VisitFormProps> = ({ isOpen, onClose }) => {
+const VisitFormCard: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -88,31 +87,22 @@ const VisitFormModal: React.FC<VisitFormProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContainer}>
-        <button className={styles.modalCloseBtn} onClick={onClose} aria-label="Cerrar modal">
-          &times;
-        </button>
-        <div className={styles.visitFormModal}>
-          <VisitFormContent
-            formData={formData}
-            onChange={handleChange}
-            onNameChange={handleNameChange}
-            onDocumentChange={handleDocumentChange}
-            onSubmit={handleSubmit}
-            error={error}
-            success={success}
-            loading={loading}
-            resetError={() => setError(null)}
-            resetSuccess={() => setSuccess(false)}
-          />
-        </div>
-      </div>
+    <div className={styles.visitForm}>
+      <VisitFormContent
+        formData={formData}
+        onChange={handleChange}
+        onNameChange={handleNameChange}
+        onDocumentChange={handleDocumentChange}
+        onSubmit={handleSubmit}
+        error={error}
+        success={success}
+        loading={loading}
+        resetError={() => setError(null)}
+        resetSuccess={() => setSuccess(false)}
+      />
     </div>
   );
 };
 
-export default VisitFormModal;
+export default VisitFormCard;

@@ -1,6 +1,7 @@
 export interface Visit {
     _id: string;
     name: string;
+    email: string;
     document: string;
     visitImage?: string;
     vehicleImage?: string;
@@ -39,6 +40,7 @@ interface visitResident {
 
 export interface VisitData {
   name: string;
+  email: string;
   document: string;
   resident: string;
   visitImage?: string;

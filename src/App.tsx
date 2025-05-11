@@ -3,8 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Authorizations from "./pages/Authorizations";
 import Settings from "./pages/Settings";
 import History from "./pages/History";
-import VisitForm from "./components/authorization/VisitForm";
-import Home from "./components/login/Home";
+import VisitForm from "./components/authorization/VisitFormCard";
 import { SidebarProvider } from "./contexts/SidebarContext";
 
 const App = () => {
