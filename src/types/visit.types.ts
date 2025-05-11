@@ -1,30 +1,44 @@
-export interface Visit {
+export interface VisitData {
+  name: string;
+  email: string;
+  document: string;
+  resident: string;
+  visitImage?: string;
+  vehicleImage?: string;
+  reason?: string;
+}
+
+export interface VisitResponse {
     _id: string;
+    visit: Visit;
+    authorization: Authorization;
+    registry?: Registry;
+    qrId: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+interface Visit {
     name: string;
     email: string;
     document: string;
     visitImage?: string;
     vehicleImage?: string;
-    qrId: string;
-    createdAt: string;
-    updatedAt: string;
-    authorization: Authorization;
-    registry: Registry;
 }
 
 interface Authorization {
     resident: visitResident;
     state: string;
     reason: string;
-    date: string;
-    exp: string;
+    date: Date;
+    exp: Date;
 }
 
 interface Registry {
-    entryGuard: visitGuard;
-    entryDate: string;
-    exitGuard: visitGuard;
-    exitDate: string;
+    entryGuard?: visitGuard;
+    entryDate?: Date;
+    exitGuard?: visitGuard;
+    exitDate?: Date;
 }
 
 interface visitGuard {
@@ -36,14 +50,4 @@ interface visitResident {
     _id: string;
     name: string;
     apartment: string;
-}
-
-export interface VisitData {
-  name: string;
-  email: string;
-  document: string;
-  resident: string;
-  visitImage?: string;
-  vehicleImage?: string;
-  reason?: string;
 }

@@ -333,6 +333,10 @@ html {
   margin-bottom: 1rem;
 }
 
+.qrModalTitle {
+  text-align: center;
+}
+
 .section h3 {
   font-size: 1.1rem;
   font-weight: 600;
@@ -377,6 +381,68 @@ html {
   max-width: 100%;
 }
 
+/* Authorization Modals */
+
+.modalOverlay {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 50%);
+  inset: 0;
+}
+
+.qrModal {
+  position: relative;
+  width: 90%;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+  max-width: 400px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.5rem;
+  border: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #777;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: #333;
+}
+
+.qrContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.qrContainer img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  max-width: 300px;
+}
+
+.qrId {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #666;
+  word-break: break-all;
+}
+
 .badge {
   display: inline-block;
   padding: 4px 10px;
@@ -387,12 +453,12 @@ html {
 }
 
 /* Colores Status */
-.activo {
+.aprobada {
   color: #065f46;
   background-color: #d1fae5;
 }
 
-.expirado {
+.rechazada {
   color: #991b1b;
   background-color: #fee2e2;
 }
@@ -402,12 +468,12 @@ html {
   background-color: #fef9c3;
 }
 
-.revocado {
+.expirada {
   color: #374151;
   background-color: #e5e7eb;
 }
 
-.completado {
+.finalizada {
   color: #0284c7;
   background-color: #f3f4f6;
 }
@@ -461,6 +527,30 @@ html {
 
 .saveBtn:hover {
   background-color: #2563eb;
+}
+
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  flex-direction: column;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgb(0 0 0 / 10%);
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  border-top: 4px solid #000;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive */
