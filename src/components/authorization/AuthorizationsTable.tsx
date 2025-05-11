@@ -6,7 +6,7 @@ import { VisitResponse } from "../../types/visit.types";
 import { useEffect, useState } from "react";
 import QRModal from "./QRModal";
 
-const ActiveAuthorizations = () => {
+const AuthorizationsTable = () => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedQR, setSelectedQR] = useState<string | null>(null);
@@ -63,9 +63,7 @@ const ActiveAuthorizations = () => {
                     className={`${styles.badge} ${
                       styles[a.authorization.state.toLowerCase()]
                     }`}
-                  >
-                    {a.authorization.state.toUpperCase()}
-                  </span>
+                  >{a.authorization.state.toUpperCase()}</span>
                 </td>
                 <td className={styles.hideableRow}>
                   {a.authorization.exp.toLocaleDateString("en-US", {
@@ -108,4 +106,4 @@ const ActiveAuthorizations = () => {
   );
 };
 
-export default ActiveAuthorizations;
+export default AuthorizationsTable;

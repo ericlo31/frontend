@@ -2,8 +2,8 @@ import Sidebar from "../components/visits/Sidebar";
 import Header from "../components/visits/Header";
 import StatCards from "../components/visits/StatCards";
 import QuickActions from "../components/visits/QuickActions";
-import Authorizations from "../components/authorization/ActiveAuthorizations";
-import History from "../components/visits/VisitHistory";
+import AuthorizationsTable from "../components/authorization/AuthorizationsTable";
+import VisitHistory from "../components/visits/VisitHistory";
 import styles from "../styles/visits.module.css";
 import { useSidebar } from "../contexts/SidebarContext";
 import { useState } from "react";
@@ -31,8 +31,8 @@ const Dashboard = () => {
           isOpen={isModalOpen} 
           onClose={() => setIsModalOpen(false)} 
         />
-        <Authorizations />
-        <History />
+        <AuthorizationsTable />
+        <VisitHistory />
       </div>
     </div>
     

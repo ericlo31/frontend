@@ -448,7 +448,7 @@ html {
   padding: 4px 10px;
   font-size: 0.75rem;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   border-radius: 12px;
 }
 
@@ -567,7 +567,7 @@ html {
   }
 }
 
-@media (width <= 824px) {
+@media (width <= 874px) {
   .sidebar {
     width: 200px;
     transform: translateX(-50%);
@@ -591,10 +591,6 @@ html {
 
   .navText {
     display: none;
-  }
-
-  .actionAuthIcon {
-    font-size: 0.8rem;
   }
 
   .statGrid {
@@ -621,21 +617,28 @@ html {
     font-size: 0.8rem;
   }
 
-  .actionGroup {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
+  .badge {
+    font-size: 0.55rem;
   }
 
-  .badge {
-    font-size: 0.7rem;
-  }
+  .actionGroup {
+  display: flex;
+  width: 30px;
+  height: 60px;
+  align-content: flex-start;
+  flex-flow: column wrap;
+  gap: 5px;
+  margin-right: 10px;
+}
 
   .authBtn {
-    flex: 0 0 40%;
-    padding: 12px;
-    max-width: 40px;
-  }
+  display: flex;
+  flex: 0 0 calc(50% - 2.5px);
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  padding: 9px;
+}
 
   .topBar {
     margin-bottom: 30px;
@@ -677,7 +680,7 @@ html {
 
 /* Tablet y Laptop */
 
-@media (width >= 824px) and (width <= 1024px) {
+@media (width >= 874px) and (width <= 1024px) {
   .sidebar {
     width: 250px;
   }
@@ -698,6 +701,10 @@ html {
     font-size: 0.9rem;
   }
 
+  .badge {
+    font-size: 0.6rem;
+  }
+
   .table th,
   .table td {
     padding: 14px 10px;
@@ -705,7 +712,7 @@ html {
   }
 
   .authBtn {
-    padding: 10px;
+    padding: 9px;
   }
 
   .hamburger {

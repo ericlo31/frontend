@@ -1,8 +1,8 @@
-import ActiveAuthorizations from "../components/authorization/ActiveAuthorizations";
 import Sidebar from "../components/visits/Sidebar";
 import { useSidebar } from "../contexts/SidebarContext";
 import styles from "../styles/visits.module.css";
 import VisitFormCard from "../components/authorization/VisitFormCard";
+import AuthorizationsTable from "../components/authorization/AuthorizationsTable";
 
 const Authorizations = () => {
   const { isOpen } = useSidebar();
@@ -16,7 +16,7 @@ const Authorizations = () => {
         }`}
       >
         <VisitFormCard />
-        <ActiveAuthorizations />
+        <AuthorizationsTable />
       </div>
     </div>
   );
