@@ -4,8 +4,12 @@ import { VisitData } from "../types/visit.types";
 export const transformFormtoVisitData = async (name: string, document: string, reason: string): Promise<VisitData> => {
 
     try{
-        const logedUser = await getAuthenticatedUser();
-
+        /*
+        Verifico al usuario autenticado para colocarlo como el residente
+        que autoriza la visita.
+        */
+        const logedUser = await getAuthenticatedUser(); // Es necesario implementar Login para que funcione correctamente
+        
         const data: VisitData = {
             name: name,
             document: document,
