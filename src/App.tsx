@@ -3,19 +3,19 @@ import Dashboard from "./pages/Dashboard";
 import Authorizations from "./pages/Authorizations";
 import Settings from "./pages/Settings";
 import History from "./pages/History";
-import VisitForm from "./components/authorization/VisitFormCard";
 import { SidebarProvider } from "./contexts/SidebarContext";
+import Home from "./components/login/ResidentLogin";
 
 const App = () => {
   return (
     <SidebarProvider>
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/authorizations" element={<Authorizations />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/visit-history" element={<History />} />
-      <Route path="/entry-form" element={<VisitForm />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Dashboard />} />
+        <Route path="/authorizations" element={<Authorizations />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/visit-history" element={<History />} />
+      </Routes>
     </SidebarProvider>
   );
 };
