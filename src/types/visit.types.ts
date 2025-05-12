@@ -35,15 +35,18 @@ interface Authorization {
 }
 
 interface Registry {
-    entryGuard?: visitGuard;
-    entryDate?: Date;
-    exitGuard?: visitGuard;
-    exitDate?: Date;
+    entry?: Entry;
+    exit?: Exit;
 }
 
-interface visitGuard {
-    _id: string;
-    name: string;
+interface Entry {
+    guard?: string;
+    date? : Date;
+}
+
+interface Exit {
+    guard?: string;
+    date?: Date;
 }
 
 interface visitResident {

@@ -1,4 +1,3 @@
-import { getAuthenticatedUser } from "../../api/auth.api";
 import { getVisitsByResidentId } from "../../api/visit.api";
 import styles from "../../styles/visits.module.css";
 import { FaEdit, FaQrcode, FaShare, FaTrash } from "react-icons/fa";
@@ -19,7 +18,7 @@ const AuthorizationsTable = () => {
         setVisits(await getVisitsByResidentId("6820d5950387b07e020b4af5"));
         setIsLoading(false);
       } catch (error) {
-          console.error(`Ocurrio un error al obtener visitas`, error);
+        console.error(`Ocurrio un error al obtener visitas`, error);
       }
     };
     getVisits();
@@ -35,7 +34,7 @@ const AuthorizationsTable = () => {
 
   return (
     <div className={styles.section}>
-      <h3>Autorizaciones Activas</h3>
+      <h3>Mis Autorizaciones</h3>
 
       {isLoading ? (
         <div className={styles.spinnerContainer}>
@@ -63,19 +62,23 @@ const AuthorizationsTable = () => {
                     className={`${styles.badge} ${
                       styles[a.authorization.state.toLowerCase()]
                     }`}
-                  >{a.authorization.state.toUpperCase()}</span>
+                  >
+                    {a.authorization.state.toUpperCase()}
+                  </span>
                 </td>
                 <td className={styles.hideableRow}>
-                  {a.authorization.exp.toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {a.authorization.exp instanceof Date
+                    ? a.authorization.exp.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    : " "}
                 </td>
                 <td>
                   <div className={styles.actionGroup}>
-                    <button 
-                      className={styles.authBtn} 
+                    <button
+                      className={styles.authBtn}
                       onClick={() => handleShowQR(a.qrId)}
                     >
                       <FaQrcode className={styles.actionAuthIcon} />
@@ -96,11 +99,11 @@ const AuthorizationsTable = () => {
           </tbody>
         </table>
       )}
-      
-      <QRModal 
-        isOpen={!!selectedQR} 
-        qrId={selectedQR || ""} 
-        onClose={handleCloseQR} 
+
+      <QRModal
+        isOpen={!!selectedQR}
+        qrId={selectedQR || ""}
+        onClose={handleCloseQR}
       />
     </div>
   );
