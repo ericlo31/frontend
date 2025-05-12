@@ -459,6 +459,128 @@ body, html {
   background-color: #2563eb;
 }
 
+/* Login */
+.loginResidentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #e0f7fa, #fff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.loginCard {
+  width: 350px;
+  padding: 2.5rem;
+  background-color: white;
+  animation: slide-up 0.6s ease;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
+}
+
+.loginCard h2 {
+  text-align: center;
+  color: #0077b6;
+  margin-bottom: 0.5rem;
+}
+
+.loginCard h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.loginCard input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s;
+}
+
+.loginCard input:focus {
+  border-color: #0077b6;
+  outline: none;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.options .forgot {
+  color: #0077b6;
+  cursor: pointer;
+}
+
+.loginCard button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  background-color: #0077b6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginCard button[type="submit"]:hover {
+  background-color: #005f87;
+}
+
+.registerLink {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.registerLink a {
+  font-weight: bold;
+  color: #0077b6;
+  text-decoration: none;
+}
+
+.backButton {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-weight: bold;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.backButton:hover {
+  background-color: #c2c2c2;
+}
+
+/* Animations Login */
+.fadeIn {
+  animation: fadeIn 0.7s ease-in-out;
+}
+  
+input, button {
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  box-shadow: 0 0 5px #07f;
+  outline: none;
+  transform: scale(1.02);
+}
+
+button:hover {
+  box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
+  transform: scale(1.05);
+}
 
 /* Responsive */
 
@@ -701,3 +823,47 @@ body, html {
     display: none;
   }
 }
+
+/* Login */
+@media screen and (width <= 1024px) {
+ .loginCard {
+   width: 80%;
+    }
+  }
+  
+  @media screen and (width <= 768px) {
+    .loginCard {
+      width: 90%;
+      padding: 2rem 1.5rem;
+    }
+  
+    .loginCard h2 {
+      font-size: 1.5rem;
+    }
+  
+    .loginCard h3 {
+      font-size: 1.2rem;
+    }
+  
+    .loginCard input {
+      padding: 10px;
+      font-size: 1rem;
+    }
+  
+    .loginCard button {
+      font-size: 1rem;
+    }
+  }
+
+/* Animations Login */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}  
