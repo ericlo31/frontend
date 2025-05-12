@@ -72,7 +72,6 @@ body, html {
   
 }
 
-
 .logout {
   padding: 10px;
   border: none;
@@ -465,8 +464,10 @@ body, html {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #e0f7fa, #fff);
-  font-family: 'Segoe UI', sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;  font-family: 'Segoe UI', sans-serif;
 }
 
 .loginCard {
@@ -480,7 +481,7 @@ body, html {
 
 .loginCard h2 {
   text-align: center;
-  color: #0077b6;
+  color: #0787f6;
   margin-bottom: 0.5rem;
 }
 
@@ -523,7 +524,7 @@ body, html {
   border: none;
   font-weight: bold;
   color: white;
-  background-color: #0077b6;
+  background-color: #0787f6;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;

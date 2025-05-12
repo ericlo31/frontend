@@ -13,14 +13,14 @@ const ResidentLogin: React.FC = () => {
   };
 
   return (
-    <div className={`${style.container} ${style.fadeIn}`}>
+    <div className={`${style.loginResidentContainer} ${style.fadeIn}`}>
       <div className={`${style["loginCard"]}`}>
         <h2>SecurePass</h2>
         <h3>Bienvenido</h3>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="Email Address"
+            placeholder="Correo Electrónico"
             value={email}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setEmail(e.target.value)
@@ -29,7 +29,7 @@ const ResidentLogin: React.FC = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Contraseña"
             value={password}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setPassword(e.target.value)
@@ -38,15 +38,12 @@ const ResidentLogin: React.FC = () => {
           />
           <div className={style.options}>
             <label>
-              <input type="checkbox" /> Remember me
+              <input type="checkbox" /> Recuérdame
             </label>
-            <span className={style.forgot}>Forgot password?</span>
+            <span className={style.forgot}>¿Olvidaste la constraseña?</span>
           </div>
-          <button type="submit">Sign in</button>
+          <button type="submit">Iniciar Sesión</button>
         </form>
-        <p className={style.registerLink}>
-          ¿No tienes cuenta? <a href="/register-residente">Regístrate</a>
-        </p>
         <button className={style.backButton} onClick={() => navigate("/home")}>
           Volver al inicio
         </button>
