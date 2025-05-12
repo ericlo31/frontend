@@ -1,35 +1,52 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import residentlogin from '../../styles/residentLogin.module.css';
-import animations from '../../styles/animations.module.css';
-
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import style from "../../styles/visits.module.css";
 
 const ResidentLogin: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log('Login residente:', { email, password });
+    console.log("Login residente:", { email, password });
   };
 
   return (
-    <div className={`${residentlogin.container} ${animations.fadeIn}`}>
-      <div className={`${residentlogin['loginCard']}`}>
-        <h2>ResidentPortal</h2>
-        <h3>Welcome Back</h3>
+    <div className={`${style.loginResidentContainer} ${style.fadeIn}`}>
+      <div className={`${style["loginCard"]}`}>
+        <h2>SecurePass</h2>
+        <h3>Bienvenido</h3>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email Address" value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} required />
-          <div className={residentlogin.options}>
-            <label><input type="checkbox" /> Remember me</label>
-            <span className={residentlogin.forgot}>Forgot password?</span>
+          <input
+            type="email"
+            placeholder="Correo Electrónico"
+            value={email}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
+            required
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
+            required
+          />
+          <div className={style.options}>
+            <label>
+              <input type="checkbox" /> Recuérdame
+            </label>
+            <span className={style.forgot}>¿Olvidaste la constraseña?</span>
           </div>
-          <button type="submit">Sign in</button>
+          <button type="submit">Iniciar Sesión</button>
         </form>
-        <p className={residentlogin.registerLink}>¿No tienes cuenta? <a href="/register-residente">Regístrate</a></p>
-        <button className={residentlogin.backButton} onClick={() => navigate('/')}>Volver al inicio</button>
+        <button className={style.backButton} onClick={() => navigate("/home")}>
+          Volver al inicio
+        </button>
       </div>
     </div>
   );
