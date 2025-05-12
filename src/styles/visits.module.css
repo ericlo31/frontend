@@ -544,7 +544,7 @@ html {
   animation: spin 1s linear infinite;
   border-radius: 50%;
   border-top: 4px solid #000;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 
 @keyframes spin {
