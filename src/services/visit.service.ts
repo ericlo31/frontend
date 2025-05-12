@@ -1,7 +1,7 @@
 import { getAuthenticatedUser } from "../api/auth.api";
 import { VisitData } from "../types/visit.types";
 
-export const transformFormtoVisitData = async (name: string, document: string, reason: string): Promise<VisitData> => {
+export const transformFormtoVisitData = async (name: string, email: string, document: string, reason: string): Promise<VisitData> => {
 
     try{
         /*
@@ -12,6 +12,7 @@ export const transformFormtoVisitData = async (name: string, document: string, r
         
         const data: VisitData = {
             name: name,
+            email: email,
             document: document,
             resident: logedUser._id,
             visitImage: 'https://ejemplo.com/foto.jpg', // De momento se guardaran las imagenes con este placeholder

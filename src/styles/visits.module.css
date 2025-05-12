@@ -333,6 +333,10 @@ html {
   margin-bottom: 1rem;
 }
 
+.qrModalTitle {
+  text-align: center;
+}
+
 .section h3 {
   font-size: 1.1rem;
   font-weight: 600;
@@ -377,22 +381,84 @@ html {
   max-width: 100%;
 }
 
+/* Authorization Modals */
+
+.modalOverlay {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 50%);
+  inset: 0;
+}
+
+.qrModal {
+  position: relative;
+  width: 90%;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+  max-width: 400px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.5rem;
+  border: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #777;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: #333;
+}
+
+.qrContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.qrContainer img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  max-width: 300px;
+}
+
+.qrId {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #666;
+  word-break: break-all;
+}
+
 .badge {
   display: inline-block;
   padding: 4px 10px;
   font-size: 0.75rem;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   border-radius: 12px;
 }
 
 /* Colores Status */
-.activo {
+.aprobada {
   color: #065f46;
   background-color: #d1fae5;
 }
 
-.expirado {
+.rechazada {
   color: #991b1b;
   background-color: #fee2e2;
 }
@@ -402,14 +468,14 @@ html {
   background-color: #fef9c3;
 }
 
-.revocado {
+.expirada {
   color: #374151;
   background-color: #e5e7eb;
 }
 
-.completado {
+.finalizada {
   color: #0284c7;
-  background-color: #f3f4f6;
+  background-color: #cddff9;
 }
 
 /* Ajustes */
@@ -463,6 +529,30 @@ html {
   background-color: #2563eb;
 }
 
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  flex-direction: column;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgb(0 0 0 / 10%);
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  border-top: 4px solid #000;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Responsive */
 
 /* Movil */
@@ -477,7 +567,7 @@ html {
   }
 }
 
-@media (width <= 824px) {
+@media (width <= 874px) {
   .sidebar {
     width: 200px;
     transform: translateX(-50%);
@@ -501,10 +591,6 @@ html {
 
   .navText {
     display: none;
-  }
-
-  .actionAuthIcon {
-    font-size: 0.8rem;
   }
 
   .statGrid {
@@ -531,21 +617,28 @@ html {
     font-size: 0.8rem;
   }
 
-  .actionGroup {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
+  .badge {
+    font-size: 0.55rem;
   }
 
-  .badge {
-    font-size: 0.7rem;
-  }
+  .actionGroup {
+  display: flex;
+  width: 30px;
+  height: 60px;
+  align-content: flex-start;
+  flex-flow: column wrap;
+  gap: 5px;
+  margin-right: 10px;
+}
 
   .authBtn {
-    flex: 0 0 40%;
-    padding: 12px;
-    max-width: 40px;
-  }
+  display: flex;
+  flex: 0 0 calc(50% - 2.5px);
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  padding: 9px;
+}
 
   .topBar {
     margin-bottom: 30px;
@@ -587,7 +680,7 @@ html {
 
 /* Tablet y Laptop */
 
-@media (width >= 824px) and (width <= 1024px) {
+@media (width >= 874px) and (width <= 1024px) {
   .sidebar {
     width: 250px;
   }
@@ -608,6 +701,10 @@ html {
     font-size: 0.9rem;
   }
 
+  .badge {
+    font-size: 0.6rem;
+  }
+
   .table th,
   .table td {
     padding: 14px 10px;
@@ -615,7 +712,7 @@ html {
   }
 
   .authBtn {
-    padding: 10px;
+    padding: 9px;
   }
 
   .hamburger {
