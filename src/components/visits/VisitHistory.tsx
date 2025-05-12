@@ -21,6 +21,7 @@ const VisitHistory = () => {
         //const logedUser = await getAuthenticatedUser();
         //setVisits(await getVisitsByResidentId(logedUser._id));
         setVisits(await getVisitsByResidentId("6820d5950387b07e020b4af5"));
+        setIsLoading(false);
       } catch (error) {
         console.error(`Ocurrio un error al obtener visitas`, error);
       }
@@ -36,7 +37,6 @@ const VisitHistory = () => {
 
     getVisits();
     validateVisits();
-    setIsLoading(false);
   }, [visits]);
 
   return (
