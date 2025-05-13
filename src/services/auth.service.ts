@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const TOKEN_KEY = 'auth_token';
+const REMEMBER_KEY = 'auth_remember';
 
 // Method para incluir el token en la request
 export const setAuthToken = (token: string | null) => {
@@ -26,23 +27,35 @@ export const getAuthToken = () : string => {
     return token[1];
 }
 
-export const saveToken = async (token: string): Promise<void> => {
+export const saveRememberMe = (remember: string) => {
+    localStorage.setItem(REMEMBER_KEY, remember);
+}
+
+export const loadRememberMe = () => {
+    return localStorage.getItem(REMEMBER_KEY) as string;
+}
+
+export const delRememberMe = () => {
+    localStorage.removeItem(REMEMBER_KEY);
+}
+
+export const saveToken = (token: string) => {
     try {
-        await localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(TOKEN_KEY, token);
     }catch(error){
         console.error('Error guardando el token', error);
     }
 }
 
-export const loadToken = async (): Promise<string | null> => {
+export const loadToken = (): string | null => {
     try {
-        return await localStorage.getItem(TOKEN_KEY) as string;
+        return localStorage.getItem(TOKEN_KEY) as string;
     }catch(error){
         console.error('Error cargando el token', error);
         return null;
     }
 }
 
-export const delToken = async (): Promise<void> => {
-        await localStorage.clear();
+export const delToken = () => {
+        localStorage.removeItem(TOKEN_KEY);
 }

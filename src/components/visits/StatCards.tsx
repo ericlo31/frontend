@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/visits.module.css";
 import { VisitResponse } from "../../types/visit.types";
 import { getVisitsByResidentId } from "../../api/visit.api";
+import { StatCardsProps } from "../../types/types";
+import { getAuthenticatedUser } from "../../api/auth.api";
+import { setAuthToken } from "../../services/auth.service";
 
-const StatCards = () => {
+const StatCards :React.FC<StatCardsProps> = ( {token} ) => {
   
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [pastVisits, setPastVisits] = useState<VisitResponse[] | null>(null);
@@ -12,11 +15,12 @@ const StatCards = () => {
   const [isLoading, setIsLoading] = useState(true);
   
     useEffect(() => {
+
       const getVisits = async () => {
         try {
-          //const logedUser = await getAuthenticatedUser();
-          //setVisits(await getVisitsByResidentId(logedUser._id));
-          setVisits(await getVisitsByResidentId("6820d5950387b07e020b4af5"));
+          setAuthToken(token);
+          const user = await getAuthenticatedUser();
+          setVisits(await getVisitsByResidentId(user._id));
           setIsLoading(false);
         } catch (error) {
           console.error(`Ocurrio un error al obtener visitas`, error);
@@ -51,7 +55,7 @@ const StatCards = () => {
       getActives();
       getAuthorizations();
       getPastVisits();
-    }, [visits]);
+    }, [token, visits]);
 
   const stats = [
     { label: "Autorizaciones", value: authorizations?.length },

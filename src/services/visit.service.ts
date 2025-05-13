@@ -1,21 +1,15 @@
-import { getAuthenticatedUser } from "../api/auth.api";
 import { VisitData } from "../types/visit.types";
 
-export const transformFormtoVisitData = async (name: string, email: string, document: string, reason: string): Promise<VisitData> => {
+export const transformFormtoVisitData = async (name: string, email: string, document: string, resident: string, reason: string): Promise<VisitData> => {
 
     try{
-        /*
-        Verifico al usuario autenticado para colocarlo como el residente
-        que autoriza la visita.
-        */
-        const logedUser = await getAuthenticatedUser(); // Es necesario implementar Login para que funcione correctamente
         
         const data: VisitData = {
             name: name,
             email: email,
             document: document,
-            resident: logedUser._id,
-            visitImage: 'https://ejemplo.com/foto.jpg', // De momento se guardaran las imagenes con este placeholder
+            resident: resident,
+            visitImage: 'https://ejemplo.com/foto.jpg',
             vehicleImage: 'https://ejemplo.com/foto.jpg',
             reason: reason? reason : undefined,
         };

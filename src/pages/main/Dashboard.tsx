@@ -8,62 +8,71 @@ import styles from "../../styles/visits.module.css";
 import { useSidebar } from "../../contexts/SidebarContext";
 import { useEffect, useState } from "react";
 import VisitFormModal from "../../components/authorization/VisitFormModal";
-import { setAuthToken } from "../../services/auth.service";
-import { getAuthenticatedUser } from "../../api/auth.api";
-import { useLocation, Navigate } from "react-router-dom";
-import { User } from "../../types/user.types";
+import {
+  delRememberMe,
+  delToken,
+  getAuthToken,
+  loadToken,
+  setAuthToken,
+} from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
+import { LogoutModal } from "../../components/login/LogoutModal";
 
 const Dashboard = () => {
-  const location = useLocation();
-  const { token, user: initialUser } = location.state || {};
-  const [user, setUser] = useState<User | null>(initialUser || null);
+  const navigate = useNavigate();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const { isOpen } = useSidebar();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (!token) return;
-
     const validateUser = async () => {
-      try {
-        setAuthToken(token);
-        if (!initialUser) {
-          const authenticatedUser = await getAuthenticatedUser();
-          setUser(authenticatedUser);
-        }
-      } catch (error) {
-        console.error("Error al validar el usuario autenticado", error);
+      const token = loadToken();
+      setAuthToken(token);
+
+      if (!token) {
+        navigate("/");
       }
     };
-    
-    validateUser();
-  }, [token, initialUser]);
 
-  if (!token) {
-    return <Navigate to="/" replace />;
-  }
+    validateUser();
+  }, [navigate]);
+
+  const handleLogout = () => {
+    navigate("/");
+    delToken();
+    delRememberMe();
+    setShowLogoutModal(false);
+  };
 
   return (
     <div className={styles.dashboardContainer}>
-      <Sidebar />
+      <Sidebar setShowLogoutModal={setShowLogoutModal}/>
 
       <div
         className={`${styles.mainContent} ${
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
-        <Header 
-        user={user as User} />
-        <StatCards />
-        <QuickActions 
-        user={user as User}
-        openModal={() => setIsModalOpen(true)} />
+        <Header token={getAuthToken()} />
+        <StatCards token={getAuthToken()} />
+        <QuickActions
+          token={getAuthToken()}
+          openModal={() => setIsModalOpen(true)}
+        />
         <VisitFormModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          token={getAuthToken()}
         />
-        <AuthorizationsTable />
-        <VisitHistory />
+        <AuthorizationsTable token={getAuthToken()} />
+        <VisitHistory token={getAuthToken()} />
       </div>
+
+      <LogoutModal
+        visible={showLogoutModal}
+        onCancel={() => setShowLogoutModal(false)}
+        onConfirm={handleLogout}
+      />
     </div>
   );
 };

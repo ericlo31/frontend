@@ -2,10 +2,13 @@ import { getVisitsByResidentId } from "../../api/visit.api";
 import styles from "../../styles/visits.module.css";
 import { FaEdit, FaQrcode, FaShare, FaTrash } from "react-icons/fa";
 import { VisitResponse } from "../../types/visit.types";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import QRModal from "./QRModal";
+import { AuthorizationsTableProps } from "../../types/types";
+import { setAuthToken } from "../../services/auth.service";
+import { getAuthenticatedUser } from "../../api/auth.api";
 
-const AuthorizationsTable = () => {
+const AuthorizationsTable: React.FC<AuthorizationsTableProps> = ( {token} ) => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [authorizations, setAuthorizations] = useState<VisitResponse[] |null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,15 +16,15 @@ const AuthorizationsTable = () => {
 
   useEffect(() => {
     const getVisits = async () => {
-      try {
-        //const logedUser = await getAuthenticatedUser();
-        //setVisits(await getVisitsByResidentId(logedUser._id));
-        setVisits(await getVisitsByResidentId("6820d5950387b07e020b4af5"));
-        setIsLoading(false);
-      } catch (error) {
-        console.error(`Ocurrio un error al obtener visitas`, error);
-      }
-    };
+            try {
+              setAuthToken(token);
+              const user = await getAuthenticatedUser();
+              setVisits(await getVisitsByResidentId(user._id));
+              setIsLoading(false);
+            } catch (error) {
+              console.error(`Ocurrio un error al obtener visitas`, error);
+            }
+          };
 
     const getAuthorizations = async () => {
         setAuthorizations(visits?.filter(
@@ -33,7 +36,7 @@ const AuthorizationsTable = () => {
 
     getVisits();
     getAuthorizations();
-  }, [visits]);
+  },[token, visits]);
 
   const handleShowQR = (qrId: string) => {
     setSelectedQR(qrId);
