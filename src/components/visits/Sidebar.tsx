@@ -6,12 +6,26 @@ import {
   FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSidebar } from "../../contexts/SidebarContext";
+import { SidebarProps } from "../../types/types";
+import { useState } from "react";
+import { LogoutModal } from "../login/LogoutModal";
+import { delToken } from "../../services/auth.service";
 
-const Sidebar = () => {
+const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
   const { isOpen, toggleSidebar } = useSidebar();
+  const navigate = useNavigate();
   const location = useLocation();
+
+  const [localShowLogout, setLocalShowLogout] = useState(false);
+  const actualSetShowLogout = setShowLogoutModal || setLocalShowLogout;
+
+  const handleLogout = () => {
+      navigate("/");
+      delToken();
+      actualSetShowLogout(false);
+    };
 
   return (
     <aside
@@ -176,25 +190,33 @@ const Sidebar = () => {
         </nav>
 
         <button
-          className={`${styles.logout} ${
-            isOpen ? styles.logoutOpen : styles.logoutClosed
+        className={`${styles.logout} ${isOpen ? styles.logoutOpen : styles.logoutClosed}`}
+        onClick={() => actualSetShowLogout(true)}
+      >
+        <FaSignOutAlt
+          className={`${styles.Fa} ${
+            isOpen ? styles.FaOpen : styles.FaClosed
+          }`}
+          style={{ marginRight: "8px" }}
+        />{" "}
+        <span
+          className={`${styles.navText} ${
+            isOpen ? styles.navTextOpen : styles.navTextClosed
           }`}
         >
-          <FaSignOutAlt
-            className={`${styles.Fa} ${
-              isOpen ? styles.FaOpen : styles.FaClosed
-            }`}
-            style={{ marginRight: "8px" }}
-          />{" "}
-          <span
-            className={`${styles.navText} ${
-              isOpen ? styles.navTextOpen : styles.navTextClosed
-            }`}
-          >
-            Logout
-          </span>
-        </button>
+          Logout
+        </span>
+      </button>
       </div>
+      {!setShowLogoutModal && (
+        <LogoutModal
+          visible={localShowLogout}
+          onCancel={() => setLocalShowLogout(false)}
+          onConfirm={() => {
+            handleLogout();
+          }}
+        />
+      )}
     </aside>
   );
 };

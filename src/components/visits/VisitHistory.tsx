@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/visits.module.css";
 import { VisitResponse } from "../../types/visit.types";
 import { getVisitsByResidentId } from "../../api/visit.api";
+import { VisitHistoryProps } from "../../types/types";
+import { setAuthToken } from "../../services/auth.service";
+import { getAuthenticatedUser } from "../../api/auth.api";
 
-const VisitHistory = () => {
-
+const VisitHistory: React.FC<VisitHistoryProps> = ({ token }) => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [pastVisits, setPastVisits] = useState<VisitResponse[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,9 +14,9 @@ const VisitHistory = () => {
   useEffect(() => {
     const getVisits = async () => {
       try {
-        //const logedUser = await getAuthenticatedUser();
-        //setVisits(await getVisitsByResidentId(logedUser._id));
-        setVisits(await getVisitsByResidentId("6820d5950387b07e020b4af5"));
+        setAuthToken(token);
+        const user = await getAuthenticatedUser();
+        setVisits(await getVisitsByResidentId(user._id));
         setIsLoading(false);
       } catch (error) {
         console.error(`Ocurrio un error al obtener visitas`, error);
@@ -22,16 +24,18 @@ const VisitHistory = () => {
     };
 
     const validateVisits = async () => {
-      setPastVisits(visits?.filter(
+      setPastVisits(
+        visits?.filter(
           (visit) =>
             visit.authorization.state === "finalizada" ||
             visit.authorization.state === "rechazada"
-        ) as VisitResponse[]);
+        ) as VisitResponse[]
+      );
     };
 
     getVisits();
     validateVisits();
-  }, [visits]);
+  }, [token, visits]);
 
   return (
     <div className={styles.section}>

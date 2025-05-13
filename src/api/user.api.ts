@@ -1,4 +1,5 @@
 import axios from "axios";
+import { User } from "../types/user.types";
 // URL de la API en el Backend (Se inicializa en 8000 para no interferir con el frontend)
 const API_URL = "http://localhost:8000/api";
 
@@ -25,3 +26,13 @@ export const getResidents = async () => {
     throw error;
   }
 };
+
+export const updateUser = async (id: string, data: Partial<User> ): Promise<User> => {
+  try {
+    const response = await axios.put(`${API_URL}/users/${id}`, data);
+    return response.data;
+  }catch(error){
+    console.error(`Error al actualizar el usiario`, error);
+    throw error;
+  }
+}
