@@ -5,11 +5,12 @@ import Settings from "./pages/Settings";
 import History from "./pages/History";
 import VisitEntryForm from "./components/visitRegistry/VisitEntryForm";
 import Home from "./components/login/Home";
+import QRgenerator from "./components/qr-generator";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<QRgenerator />} />
       <Route path="/authorizations" element={<Authorizations />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/visit-history" element={<History />} />
