@@ -41,14 +41,14 @@ const Sidebar = () => {
         <nav className={styles.nav}>
           <ul>
             <Link
-              to="/"
+              to="/home"
               className={`${styles.navLink} ${
                 isOpen ? styles.navLinkOpen : styles.navLinkClosed
               }`}
             >
               <li
                 className={
-                  location.pathname === "/"
+                  location.pathname === "/home"
                     ? `${styles.activeNavItem} ${
                         isOpen
                           ? styles.activeNavItemOpen

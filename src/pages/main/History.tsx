@@ -1,7 +1,7 @@
-import VisitHistory from "../components/visits/VisitHistory";
-import Sidebar from "../components/visits/Sidebar";
-import styles from "../styles/visits.module.css";
-import { useSidebar } from "../contexts/SidebarContext";
+import VisitHistory from "../../components/visits/VisitHistory";
+import Sidebar from "../../components/visits/Sidebar";
+import styles from "../../styles/visits.module.css";
+import { useSidebar } from "../../contexts/SidebarContext";
 
 const History = () => {
   const { isOpen } = useSidebar();

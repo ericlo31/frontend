@@ -1,15 +1,34 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "../../styles/visits.module.css";
+import { loginUser } from "../../api/auth.api";
+import { saveToken, setAuthToken } from "../../services/auth.service";
 
-const ResidentLogin: React.FC = () => {
+const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Login residente:", { email, password });
+    setError("");
+    try {
+      const { token, user } = await loginUser({ email, password });
+
+      setAuthToken(token);
+      saveToken(token);
+      navigate('/home', { 
+        state: { 
+          token: token,
+          user: user
+        } 
+      });
+
+    } catch (error) {
+      console.error("Ocurrió un error al autenticar el usuario", error);
+      setError("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
+    }
   };
 
   return (
@@ -17,6 +36,7 @@ const ResidentLogin: React.FC = () => {
       <div className={`${style["loginCard"]}`}>
         <h2>SecurePass</h2>
         <h3>Bienvenido</h3>
+        {error && <div className={style.errorMessage}>{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -44,12 +64,9 @@ const ResidentLogin: React.FC = () => {
           </div>
           <button type="submit">Iniciar Sesión</button>
         </form>
-        <button className={style.backButton} onClick={() => navigate("/home")}>
-          Volver al inicio
-        </button>
       </div>
     </div>
   );
 };
 
-export default ResidentLogin;
+export default Login;

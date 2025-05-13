@@ -4,12 +4,6 @@ import { VisitResponse } from "../../types/visit.types";
 import { getVisitsByResidentId } from "../../api/visit.api";
 
 const VisitHistory = () => {
-  /*
-  const visits = [
-    { name: "Darwin Castillo", time: "Apr 21, 10:15 AM", status: "Completado" },
-    { name: "Alexander Medina", time: "Apr 20, 3:35 PM", status: "Completado" },
-  ];
-  */
 
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [pastVisits, setPastVisits] = useState<VisitResponse[] | null>(null);

@@ -2,14 +2,15 @@ import { FaEdit, FaFileExport, FaClipboardList, FaCog } from "react-icons/fa";
 import styles from "../../styles/visits.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { QuickActionsProps } from "../../types/types";
 
-interface QuickActionsProps {
-  openModal: () => void;
-}
-
-  const QuickActions = ({ openModal }: QuickActionsProps) => {
+  const QuickActions = ({ user, openModal }: QuickActionsProps) => {
     
   const [isAdmin, setIsAdmin] = useState(false);
+
+    useState( () => {
+      if(user.role === 'admin') setIsAdmin(true);
+    });
 
   return (
     <div className={styles.section}>

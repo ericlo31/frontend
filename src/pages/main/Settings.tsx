@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Sidebar from "../components/visits/Sidebar";
-import styles from "../styles/visits.module.css";
-import { useSidebar } from "../contexts/SidebarContext";
+import Sidebar from "../../components/visits/Sidebar";
+import styles from "../../styles/visits.module.css";
+import { useSidebar } from "../../contexts/SidebarContext";
 
 const Settings = () => {
   const [form, setForm] = useState({

@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Authorizations from "./pages/Authorizations";
-import Settings from "./pages/Settings";
-import History from "./pages/History";
+import Dashboard from "./pages/main/Dashboard";
+import Authorizations from "./pages/main/Authorizations";
+import Settings from "./pages/main/Settings";
+import History from "./pages/main/History";
 import { SidebarProvider } from "./contexts/SidebarContext";
-import Home from "./components/login/ResidentLogin";
+import Home from "./pages/login/Home";
 
 const App = () => {
   return (
