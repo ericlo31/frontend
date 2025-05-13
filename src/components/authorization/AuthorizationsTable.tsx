@@ -7,6 +7,7 @@ import QRModal from "./QRModal";
 
 const AuthorizationsTable = () => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
+  const [authorizations, setAuthorizations] = useState<VisitResponse[] |null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedQR, setSelectedQR] = useState<string | null>(null);
 
@@ -21,8 +22,18 @@ const AuthorizationsTable = () => {
         console.error(`Ocurrio un error al obtener visitas`, error);
       }
     };
+
+    const getAuthorizations = async () => {
+        setAuthorizations(visits?.filter(
+          (visit) =>
+            visit.authorization.state === "pendiente" ||
+            visit.authorization.state === "aprobada"
+        ) as VisitResponse[]);
+      };
+
     getVisits();
-  }, []);
+    getAuthorizations();
+  }, [visits]);
 
   const handleShowQR = (qrId: string) => {
     setSelectedQR(qrId);
@@ -53,7 +64,7 @@ const AuthorizationsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {visits?.map((a, i) => (
+            {authorizations?.map((a, i) => (
               <tr key={i} className={styles.authRow}>
                 <td>{a.visit.name}</td>
                 <td className={styles.hideableRow}>{a.visit.document}</td>
