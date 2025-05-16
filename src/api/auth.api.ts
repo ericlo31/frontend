@@ -2,7 +2,7 @@ import axios from "axios";
 import { LoginData, LoginResponse, RegisterData } from "../types/auth.types";
 import { User } from "../types/user.types";
 
-const API_URL = "http://localhost:8000/api";
+const API_URL = process.env.REACT_APP_API;
 
 // Registrar (SignUp) usuario en la api
 export const registerUser = async (data: RegisterData) => {
@@ -18,6 +18,7 @@ export const registerUser = async (data: RegisterData) => {
 // Método puedes autenticarte en el backend y recibir un token + información del usuario
 export const loginUser = async (data: LoginData): Promise<LoginResponse> => {
   try {
+    console.log(process.env);
     const response = await axios.post<LoginResponse>(`${API_URL}/auth/login`, data);
     return response.data;
   } catch (error: any) {

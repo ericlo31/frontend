@@ -10,10 +10,10 @@ export interface RegisterData {
     email: string;
     password: string;
     name: string;
-    role: string;
+    role: 'residente' | 'guardia' | 'admin';
     apartment?: string;
     tel?: string;
-    shift?: string;
+    shift?: 'matutina' | 'vespertina' | 'nocturna';
 }
 
 // Interface con tipo responde de /api/auth/login

@@ -44,6 +44,7 @@
 .modalCloseBtn:hover,
 .modalCloseBtn:focus {
   color: #333;
+  transform: scale(1.1);
 }
 
 /* Form styles */
@@ -171,6 +172,10 @@
   font-weight: bold;
   cursor: pointer;
   
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
 }
 
 /* Spinner styles */

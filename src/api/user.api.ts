@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "../types/user.types";
-// URL de la API en el Backend (Se inicializa en 8000 para no interferir con el frontend)
-const API_URL = "http://localhost:8000/api";
+
+const API_URL = process.env.REACT_APP_API;
 
 // Consultar de los usuarios con rol de 'guardia'
 export const getGuards = async () => {

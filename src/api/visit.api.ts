@@ -1,7 +1,7 @@
 import axios from "axios";
 import { VisitData, VisitResponse } from "../types/visit.types";
 
-const API_URL = "http://localhost:8000/api";
+const API_URL = process.env.REACT_APP_API;
 
 export const authorizeVisit = async (data: VisitData) => {
   try{
