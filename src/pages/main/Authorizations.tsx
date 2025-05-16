@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import {
   delRememberMe,
   delToken,
-  getAuthToken,
   loadToken,
   setAuthToken,
 } from "../../services/auth.service";
@@ -47,8 +46,8 @@ const Authorizations: React.FC = () => {
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
-        <VisitFormCard token={getAuthToken()} />
-        <AuthorizationsTable token={getAuthToken()} />
+        <VisitFormCard />
+        <AuthorizationsTable />
       </div>
       <LogoutModal
         visible={showLogoutModal}

@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/visits.module.css";
 import { VisitResponse } from "../../types/visit.types";
 import { getVisitsByResidentId } from "../../api/visit.api";
-import { VisitHistoryProps } from "../../types/types";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
 
-const VisitHistory: React.FC<VisitHistoryProps> = ({ token }) => {
+const VisitHistory: React.FC = () => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [pastVisits, setPastVisits] = useState<VisitResponse[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,6 +13,7 @@ const VisitHistory: React.FC<VisitHistoryProps> = ({ token }) => {
   useEffect(() => {
     const getVisits = async () => {
       try {
+        const token = loadToken();
         setAuthToken(token);
         const user = await getAuthenticatedUser();
         setVisits(await getVisitsByResidentId(user._id));
@@ -35,7 +35,7 @@ const VisitHistory: React.FC<VisitHistoryProps> = ({ token }) => {
 
     getVisits();
     validateVisits();
-  }, [token, visits]);
+  }, [visits]);
 
   return (
     <div className={styles.section}>

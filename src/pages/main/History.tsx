@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import {
   delRememberMe,
   delToken,
-  getAuthToken,
   loadToken,
   setAuthToken,
 } from "../../services/auth.service";
@@ -46,7 +45,7 @@ const History: React.FC = () => {
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
-        <VisitHistory token={getAuthToken()} />
+        <VisitHistory />
       </div>
       <LogoutModal
         visible={showLogoutModal}

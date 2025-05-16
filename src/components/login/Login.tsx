@@ -26,16 +26,19 @@ const Login: React.FC = () => {
   // Use Effect para verificar si hay un usuario autenticado antes de realizar Login
   useEffect(() => {
     const validateLogedOnUser = async () => {
+
       const checkRemember = loadRememberMe();
-      try {
-        if (checkRemember.includes("true")) {
+      if (checkRemember && checkRemember === "true") {
+        try {
           setAuthToken(loadToken());
           const userLogedOn = await getAuthenticatedUser();
           if (userLogedOn) navigate("/home");
+        } catch (error) {
+          console.error("Sesión anterior no encontrada o expirada", error);
+        } finally {
+          setPageLoading(false);
         }
-      } catch (error) {
-        console.log("Sesión anterior no encontrada o expirada");
-      } finally {
+      } else {
         setPageLoading(false);
       }
     };
@@ -165,7 +168,8 @@ const Login: React.FC = () => {
                   type="checkbox"
                   onClick={handleRememberMe}
                 />
-                Mantener Sesión Iniciada</label>
+                Mantener Sesión Iniciada
+              </label>
             </div>
             <button type="submit">
               {isLoading ? "CARGANDO..." : "Iniciar Sesión"}

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/visits.module.css";
-import { HeaderProps } from "../../types/types";
 import { User } from "../../types/user.types";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
 
-const Header: React.FC<HeaderProps> = ({ token }) => {
+const Header: React.FC = () => {
 const [user, setUser] = useState<User | null>(null);
 const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect( () => {
     const getUser = async () => {
+      const token = loadToken();
       setAuthToken(token);
       setUser(await getAuthenticatedUser());
        const user = await getAuthenticatedUser();
@@ -18,7 +18,7 @@ const [isAdmin, setIsAdmin] = useState(false);
     }
 
     getUser();
-  },[token]);
+  },[]);
 
   return (
     <header className={styles.header}>

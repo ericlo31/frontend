@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/visits.module.css";
 import { VisitResponse } from "../../types/visit.types";
 import { getVisitsByResidentId } from "../../api/visit.api";
-import { StatCardsProps } from "../../types/types";
 import { getAuthenticatedUser } from "../../api/auth.api";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 
-const StatCards :React.FC<StatCardsProps> = ( {token} ) => {
+const StatCards = () => {
   
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [pastVisits, setPastVisits] = useState<VisitResponse[] | null>(null);
@@ -18,6 +17,7 @@ const StatCards :React.FC<StatCardsProps> = ( {token} ) => {
 
       const getVisits = async () => {
         try {
+          const token = loadToken();
           setAuthToken(token);
           const user = await getAuthenticatedUser();
           setVisits(await getVisitsByResidentId(user._id));
@@ -55,7 +55,7 @@ const StatCards :React.FC<StatCardsProps> = ( {token} ) => {
       getActives();
       getAuthorizations();
       getPastVisits();
-    }, [token, visits]);
+    }, [visits]);
 
   const stats = [
     { label: "Autorizaciones", value: authorizations?.length },

@@ -3,20 +3,21 @@ import styles from "../../styles/visits.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { QuickActionsProps } from "../../types/types";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
 
-const QuickActions = ({ token, openModal }: QuickActionsProps) => {
+const QuickActions = ({ openModal }: QuickActionsProps) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const checkAdmin = async () => {
+      const token = loadToken();
       setAuthToken(token);
       const user = await getAuthenticatedUser();
       if (user.role === "admin") setIsAdmin(true);
     };
     checkAdmin();
-  }, [token]);
+  }, []);
 
   return (
     <div className={styles.section}>

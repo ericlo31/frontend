@@ -47,7 +47,7 @@ export const getVisitsByResidentId = async (id: string): Promise<VisitResponse[]
 
 export const getAllVisits = async (): Promise<VisitResponse[]> => {
   try {
-    const response = await axios.get<VisitResponse[]>("http://localhost:8000/api/visits");
+    const response = await axios.get<VisitResponse[]>(`${API_URL}/visits`);
 
     // Optional: normalize the date formats
     return response.data.map((visit: any) => ({
