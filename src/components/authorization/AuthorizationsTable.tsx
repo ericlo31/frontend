@@ -4,11 +4,10 @@ import { FaEdit, FaQrcode, FaShare, FaTrash } from "react-icons/fa";
 import { VisitResponse } from "../../types/visit.types";
 import React, { useEffect, useState } from "react";
 import QRModal from "./QRModal";
-import { AuthorizationsTableProps } from "../../types/types";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
 
-const AuthorizationsTable: React.FC<AuthorizationsTableProps> = ( {token} ) => {
+const AuthorizationsTable: React.FC = () => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
   const [authorizations, setAuthorizations] = useState<VisitResponse[] |null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +16,7 @@ const AuthorizationsTable: React.FC<AuthorizationsTableProps> = ( {token} ) => {
   useEffect(() => {
     const getVisits = async () => {
             try {
+              const token = loadToken();
               setAuthToken(token);
               const user = await getAuthenticatedUser();
               setVisits(await getVisitsByResidentId(user._id));
@@ -36,7 +36,7 @@ const AuthorizationsTable: React.FC<AuthorizationsTableProps> = ( {token} ) => {
 
     getVisits();
     getAuthorizations();
-  },[token, visits]);
+  },[visits]);
 
   const handleShowQR = (qrId: string) => {
     setSelectedQR(qrId);

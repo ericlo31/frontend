@@ -9,8 +9,8 @@ export const transformFormtoVisitData = async (name: string, email: string, docu
             email: email,
             document: document,
             resident: resident,
-            visitImage: 'https://ejemplo.com/foto.jpg',
-            vehicleImage: 'https://ejemplo.com/foto.jpg',
+            visitImage: '',
+            vehicleImage: '',
             reason: reason? reason : undefined,
         };
 

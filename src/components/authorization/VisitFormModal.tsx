@@ -5,10 +5,10 @@ import { transformFormtoVisitData } from "../../services/visit.service";
 import { VisitData } from "../../types/visit.types";
 import { VisitFormModalProps } from "../../types/types";
 import styles from "../../styles/visitForm.module.css";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
 
-const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose, token }) => {
+const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -72,6 +72,7 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose, token 
     setLoading(true);
     setError(null);
 
+    const token = loadToken();
     setAuthToken(token);
     const user = await getAuthenticatedUser();
 

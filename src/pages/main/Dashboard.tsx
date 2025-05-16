@@ -8,11 +8,10 @@ import styles from "../../styles/visits.module.css";
 import { useSidebar } from "../../contexts/SidebarContext";
 import { useEffect, useState } from "react";
 import VisitFormModal from "../../components/authorization/VisitFormModal";
-import AllAuthorizations from "../../components/visits/AllAuthorizations";
+import AllAuthorizations from "../../components/visits/VisitTable";
 import {
   delRememberMe,
   delToken,
-  getAuthToken,
   loadToken,
   setAuthToken,
 } from "../../services/auth.service";
@@ -58,10 +57,9 @@ const Dashboard = () => {
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
-        <Header token={getAuthToken()} />
-        <StatCards token={getAuthToken()} />
+        <Header />
+        <StatCards />
         <QuickActions
-          token={getAuthToken()}
           openModal={() => setIsModalOpen(true)}
         />
 
@@ -70,10 +68,9 @@ const Dashboard = () => {
         <VisitFormModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          token={getAuthToken()}
         />
-        <AuthorizationsTable token={getAuthToken()} />
-        <VisitHistory token={getAuthToken()} />
+        <AuthorizationsTable />
+        <VisitHistory />
       </div>
 
       <LogoutModal

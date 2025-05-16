@@ -4,11 +4,10 @@ import { authorizeVisit } from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
 import { VisitData } from "../../types/visit.types";
 import styles from "../../styles/visitForm.module.css";
-import { VisitFormCardProps } from "../../types/types";
 import { getAuthenticatedUser } from "../../api/auth.api";
-import { setAuthToken } from "../../services/auth.service";
+import { loadToken, setAuthToken } from "../../services/auth.service";
 
-const VisitFormCard: React.FC<VisitFormCardProps> = ( { token } ) => {
+const VisitFormCard: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -72,6 +71,7 @@ const VisitFormCard: React.FC<VisitFormCardProps> = ( { token } ) => {
     setLoading(true);
     setError(null);
 
+    const token = loadToken();
     setAuthToken(token);
     const user = await getAuthenticatedUser();
 

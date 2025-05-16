@@ -18,7 +18,6 @@ export const registerUser = async (data: RegisterData) => {
 // Método puedes autenticarte en el backend y recibir un token + información del usuario
 export const loginUser = async (data: LoginData): Promise<LoginResponse> => {
   try {
-    console.log(process.env);
     const response = await axios.post<LoginResponse>(`${API_URL}/auth/login`, data);
     return response.data;
   } catch (error: any) {
