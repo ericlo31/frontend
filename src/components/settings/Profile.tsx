@@ -152,25 +152,27 @@ const Profile: React.FC<ProfileProps> = ({ token }) => {
         )}
       </div>
 
-      <div className={styles.profileSection}>
-        <h3>Información de Residencia</h3>
-        {user.apartment && (
-          <div className={styles.profileField}>
-            <label>Apartamento:</label>
-            {editMode ? (
-              <input
-                type="text"
-                name="apartment"
-                value={editedUser.apartment || ""}
-                onChange={handleChange}
-                className={styles.profileInput}
-              />
-            ) : (
-              <span>{user.apartment}</span>
-            )}
-          </div>
-        )}
-      </div>
+      {user.role === "residente" && (
+        <div className={styles.profileSection}>
+          <h3>Información de Residencia</h3>
+          {user.apartment && (
+            <div className={styles.profileField}>
+              <label>Apartamento:</label>
+              {editMode ? (
+                <input
+                  type="text"
+                  name="apartment"
+                  value={editedUser.apartment || ""}
+                  onChange={handleChange}
+                  className={styles.profileInput}
+                />
+              ) : (
+                <span>{user.apartment}</span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       <div className={styles.profileSection}>
         <h3>Información de Cuenta</h3>
