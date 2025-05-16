@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/visits.module.css";
-import AllAuthorizations from "../../components/admin/AllAuthorizations";
+import AllAuthorizations from "../../components/visits/AllAuthorizations";
 
 const AuthorizationRecords = () => {
   return (

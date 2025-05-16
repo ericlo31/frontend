@@ -5,7 +5,7 @@ import Settings from "./pages/main/Settings";
 import History from "./pages/main/History";
 import { SidebarProvider } from "./contexts/SidebarContext";
 import Home from "./pages/login/Home";
-import AdminAuthorizations from "./pages/admin/AuthorizationRecords";
+import AdminAuthorizations from "./pages/main/AuthorizationRecords";
 
 const App = () => {
   return (
