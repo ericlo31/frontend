@@ -8,6 +8,7 @@ import styles from "../../styles/visits.module.css";
 import { useSidebar } from "../../contexts/SidebarContext";
 import { useEffect, useState } from "react";
 import VisitFormModal from "../../components/authorization/VisitFormModal";
+import AllAuthorizations from "../../components/visits/AllAuthorizations";
 import {
   delRememberMe,
   delToken,
@@ -17,17 +18,21 @@ import {
 } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { LogoutModal } from "../../components/login/LogoutModal";
+import { getAuthenticatedUser } from "../../api/auth.api";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const { isOpen } = useSidebar();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const validateUser = async () => {
       const token = loadToken();
       setAuthToken(token);
+      const user = await getAuthenticatedUser();
+      if (user?.role === "admin") setIsAdmin(true);
 
       if (!token) {
         navigate("/");
@@ -46,7 +51,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboardContainer}>
-      <Sidebar setShowLogoutModal={setShowLogoutModal}/>
+      <Sidebar setShowLogoutModal={setShowLogoutModal} />
 
       <div
         className={`${styles.mainContent} ${
@@ -59,6 +64,9 @@ const Dashboard = () => {
           token={getAuthToken()}
           openModal={() => setIsModalOpen(true)}
         />
+
+        {isAdmin && <AllAuthorizations />}
+
         <VisitFormModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}

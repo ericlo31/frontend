@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const TOKEN_KEY = 'auth_token';
 const REMEMBER_KEY = 'auth_remember';
@@ -12,6 +13,24 @@ export const setAuthToken = (token: string | null) => {
   }
 };
 
+interface DecodedToken {
+    role: string;
+    [key: string]: any;
+ }
+
+// Función que obtiene el rol de usuario desde un token
+export const getUserRole = (): string | null => {
+    try {
+     const token = loadToken();
+     if (!token) return null;
+ 
+     const decoded = jwtDecode<DecodedToken>(token);
+     return decoded.role ?? null;
+   } catch (err) {
+     console.error("Error decodificando el token:", err);
+     return null;
+   }
+ };
 
 export const getAuthToken = () : string => {
     const header: string = axios.defaults.headers.common['Authorization'] as string;

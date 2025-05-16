@@ -8,6 +8,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.9.0",
+    "jwt-decode": "^4.0.0",
     "qrcode": "^1.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/jwt-decode": "^2.2.1",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^22.15.18",
     "@types/qrcode": "^1.5.5",
