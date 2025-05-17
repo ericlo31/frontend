@@ -18,6 +18,20 @@ export interface VisitResponse {
     updatedAt: Date;
 }
 
+export interface VisitAuthorizedResponse {
+    id: string;
+    visit: Visit;
+    authorization: Authorization;
+    registry?: Registry;
+    qrId: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export interface AuthorizedResponse {
+    message: string;
+    data: VisitAuthorizedResponse;
+}
 interface Visit {
     name: string;
     email: string;
