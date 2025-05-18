@@ -1,3 +1,5 @@
+import { VisitResponse } from "./visit.types";
+
 export interface SidebarProps {
   setShowLogoutModal?: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -7,7 +9,7 @@ export interface VisitFormModalProps {
 }
 export interface QRModalProps {
   isOpen: boolean;
-  qrId: string;
+  visit: VisitResponse;
   onClose: () => void;
 }
 export interface LogoutModalProps {

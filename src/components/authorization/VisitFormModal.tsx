@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VisitFormContent from "./VisitFormContent";
-import { authorizeVisit } from "../../api/visit.api";
+import {
+  authorizeVisit,
+  getVisitsByResidentId,
+  sendVisitNotificationEmail,
+} from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
-import { VisitData } from "../../types/visit.types";
+import { VisitData, VisitResponse } from "../../types/visit.types";
 import { VisitFormModalProps } from "../../types/types";
 import styles from "../../styles/visitForm.module.css";
 import { loadToken, setAuthToken } from "../../services/auth.service";
@@ -15,9 +19,21 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
     document: "",
     reason: "",
   });
+  const [lastVisits, setLastVisits] = useState<VisitResponse[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    const getLastVisits = async () => {
+      setAuthToken(loadToken());
+      try {
+        const user = await getAuthenticatedUser();
+        setLastVisits(await getVisitsByResidentId(user._id));
+      } catch (error) {}
+    };
+    getLastVisits();
+  }, []);
 
   const validateFields = () => {
     let valid = true;
@@ -47,21 +63,49 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
     return valid;
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleNameChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     if (value === "" || /^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleDocumentChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleDocumentChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     if (value === "" || /^[0-9]+$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleLastVisitChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const selectedIndex = Number(e.target.value);
+    if (lastVisits && !isNaN(selectedIndex) && selectedIndex >= 0) {
+      const selectedVisit = lastVisits[selectedIndex];
+      setFormData({
+        name: selectedVisit.visit.name,
+        email: selectedVisit.visit.email,
+        document: selectedVisit.visit.document,
+        reason: selectedVisit.authorization.reason,
+      });
+    }else{
+      setFormData({
+        name: "",
+        email: "",
+        document: "",
+        reason: "",
+      });
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -76,7 +120,6 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
     setAuthToken(token);
     const user = await getAuthenticatedUser();
 
-
     try {
       const visitData = await transformFormtoVisitData(
         formData.name,
@@ -86,11 +129,14 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
         formData.reason
       );
 
-      await authorizeVisit(visitData as VisitData);
+      const visit = await authorizeVisit(visitData as VisitData);
+      await sendVisitNotificationEmail(visit.data.id);
       setSuccess(true);
       setFormData({ name: "", email: "", document: "", reason: "" });
     } catch (err: any) {
-      setError(err.message ? err.message : "Ocurrió un error al autorizar el visitante");
+      setError(
+        err.message ? err.message : "Ocurrió un error al autorizar el visitante"
+      );
     } finally {
       setLoading(false);
     }
@@ -101,7 +147,11 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContainer}>
-        <button className={styles.modalCloseBtn} onClick={onClose} aria-label="Cerrar modal">
+        <button
+          className={styles.modalCloseBtn}
+          onClick={onClose}
+          aria-label="Cerrar modal"
+        >
           &times;
         </button>
         <div className={styles.visitFormModal}>
@@ -110,10 +160,12 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
             onChange={handleChange}
             onNameChange={handleNameChange}
             onDocumentChange={handleDocumentChange}
+            onLastVisitChange={handleLastVisitChange}
             onSubmit={handleSubmit}
             error={error}
             success={success}
             loading={loading}
+            lastVisits={lastVisits}
             resetError={() => setError(null)}
             resetSuccess={() => setSuccess(false)}
           />

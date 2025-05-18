@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/visitForm.module.css";
+import { VisitResponse } from "../../types/visit.types";
 
 type VisitFormContentProps = {
   formData: {
@@ -11,10 +12,12 @@ type VisitFormContentProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onNameChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onDocumentChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onLastVisitChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
   error: string | null;
   success: boolean;
   loading: boolean;
+  lastVisits: VisitResponse[] | null;
   resetError: () => void;
   resetSuccess: () => void;
 };
@@ -24,10 +27,12 @@ const VisitFormContent: React.FC<VisitFormContentProps> = ({
   onChange,
   onNameChange,
   onDocumentChange,
+  onLastVisitChange,
   onSubmit,
   error,
   success,
   loading,
+  lastVisits,
   resetError,
   resetSuccess,
 }) => {
@@ -58,6 +63,27 @@ const VisitFormContent: React.FC<VisitFormContentProps> = ({
             &times;
           </span>
           ¡Entrada registrada exitosamente! QR generado.
+        </div>
+      )}
+
+      {lastVisits && lastVisits.length > 0 && (
+        <div className={styles.formGroup}>
+          <label htmlFor="lastVisit" className={styles.label}>
+            Visitante Anterior:
+          </label>
+          <select
+            id="lastVisit"
+            name="lastVisit"
+            onChange={onLastVisitChange}
+            className={styles.select}
+          >
+            <option value="-1">Seleccione una visita anterior</option>
+            {lastVisits.map((v, i) => (
+              <option key={i} value={i}>
+                {`${v.visit.name} - ${v.visit.document}`}
+              </option>
+            ))}
+          </select>
         </div>
       )}
 
