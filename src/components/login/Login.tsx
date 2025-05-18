@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import style from "../../styles/visits.module.css";
 import { getAuthenticatedUser, loginUser } from "../../api/auth.api";
 import {
+  delToken,
   loadRememberMe,
   loadToken,
   saveRememberMe,
@@ -39,6 +40,7 @@ const Login: React.FC = () => {
           setPageLoading(false);
         }
       } else {
+        delToken();
         setPageLoading(false);
       }
     };

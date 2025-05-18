@@ -8,26 +8,29 @@ import { LogoutModal } from "../../components/login/LogoutModal";
 import Profile from "../../components/settings/Profile"
 import { getAuthenticatedUser } from "../../api/auth.api";
 import RegisterForm from "../../components/settings/RegisterForm";
+import { User } from "../../types/user.types";
 
 const Settings: React.FC = () => {
   const { isOpen } = useSidebar();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const validateUser = async () => {
-      const token = loadToken();
-      setAuthToken(token);
-      const LogedUser = await getAuthenticatedUser();
-      if(LogedUser && LogedUser.role === 'admin') setIsAdmin(true);
-      if (!token || !LogedUser) {
+      try {
+        const token = loadToken();
+        setAuthToken(token);
+        setUser(await getAuthenticatedUser());
+        if (user?.role === "admin") setIsAdmin(true);
+      } catch (error) {
         navigate("/");
       }
     };
 
     validateUser();
-  }, [navigate]);
+  }, [navigate, user?.role]);
 
   const handleLogout = () => {
     navigate("/");
@@ -36,7 +39,7 @@ const Settings: React.FC = () => {
     setShowLogoutModal(false);
   };
 
-  return (
+  return (user &&
     <div className={styles.dashboardContainer}>
       <Sidebar setShowLogoutModal={setShowLogoutModal}/>
       <div

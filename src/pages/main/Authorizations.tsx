@@ -13,26 +13,27 @@ import {
 import { useNavigate } from "react-router-dom";
 import { LogoutModal } from "../../components/login/LogoutModal";
 import { getAuthenticatedUser } from "../../api/auth.api";
+import { User } from "../../types/user.types";
 
 const Authorizations: React.FC = () => {
   const { isOpen } = useSidebar();
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const validateUser = async () => {
-      const token = loadToken();
-      setAuthToken(token);
-      const user = await getAuthenticatedUser();
-
-      if (!token || !user) {
+      try {
+        const token = loadToken();
+        setAuthToken(token);
+        setUser(await getAuthenticatedUser());
+      } catch (error) {
         navigate("/");
       }
     };
 
     validateUser();
   }, [navigate]);
-
   const handleLogout = () => {
     navigate("/");
     delToken();
@@ -40,7 +41,7 @@ const Authorizations: React.FC = () => {
     setShowLogoutModal(false);
   };
 
-  return (
+  return (user &&
     <div className={styles.dashboardContainer}>
       <Sidebar setShowLogoutModal={setShowLogoutModal}/>
       <div
