@@ -11,6 +11,7 @@ import {
   setAuthToken,
 } from "../../services/auth.service";
 import { LogoutModal } from "../../components/login/LogoutModal";
+import { getAuthenticatedUser } from "../../api/auth.api";
 
 const History: React.FC = () => {
   const { isOpen } = useSidebar();
@@ -21,8 +22,9 @@ const History: React.FC = () => {
     const validateUser = async () => {
       const token = loadToken();
       setAuthToken(token);
+      const user = await getAuthenticatedUser();
 
-      if (!token) {
+      if (!token || !user) {
         navigate("/");
       }
     };

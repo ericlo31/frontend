@@ -12,6 +12,7 @@ import {
 } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { LogoutModal } from "../../components/login/LogoutModal";
+import { getAuthenticatedUser } from "../../api/auth.api";
 
 const Authorizations: React.FC = () => {
   const { isOpen } = useSidebar();
@@ -22,8 +23,9 @@ const Authorizations: React.FC = () => {
     const validateUser = async () => {
       const token = loadToken();
       setAuthToken(token);
+      const user = await getAuthenticatedUser();
 
-      if (!token) {
+      if (!token || !user) {
         navigate("/");
       }
     };
