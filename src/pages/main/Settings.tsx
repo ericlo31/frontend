@@ -20,8 +20,8 @@ const Settings: React.FC = () => {
       const token = loadToken();
       setAuthToken(token);
       const LogedUser = await getAuthenticatedUser();
-      if(LogedUser.role === 'admin') setIsAdmin(true);
-      if (!token) {
+      if(LogedUser && LogedUser.role === 'admin') setIsAdmin(true);
+      if (!token || !LogedUser) {
         navigate("/");
       }
     };

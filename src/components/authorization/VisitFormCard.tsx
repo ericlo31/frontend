@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VisitFormContent from "./VisitFormContent";
-import { authorizeVisit } from "../../api/visit.api";
+import { authorizeVisit, getVisitsByResidentId, sendVisitNotificationEmail } from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
-import { VisitData } from "../../types/visit.types";
+import { VisitData, VisitResponse } from "../../types/visit.types";
 import styles from "../../styles/visitForm.module.css";
 import { getAuthenticatedUser } from "../../api/auth.api";
 import { loadToken, setAuthToken } from "../../services/auth.service";
@@ -14,9 +14,21 @@ const VisitFormCard: React.FC = () => {
     document: "",
     reason: "",
   });
+  const [lastVisits, setLastVisits] = useState<VisitResponse[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    const getLastVisits = async () => {
+      setAuthToken(loadToken());
+      try {
+        const user = await getAuthenticatedUser();
+        setLastVisits(await getVisitsByResidentId(user._id));
+      } catch (error) {}
+    };
+    getLastVisits();
+  }, []);
 
   const validateFields = () => {
     let valid = true;
@@ -60,6 +72,26 @@ const VisitFormCard: React.FC = () => {
     }
   };
 
+  const handleLastVisitChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const selectedIndex = Number(e.target.value);
+    if (lastVisits && !isNaN(selectedIndex) && selectedIndex >= 0) {
+      const selectedVisit = lastVisits[selectedIndex];
+      setFormData({
+        name: selectedVisit.visit.name,
+        email: selectedVisit.visit.email,
+        document: selectedVisit.visit.document,
+        reason: selectedVisit.authorization.reason,
+      });
+    }else{
+      setFormData({
+        name: "",
+        email: "",
+        document: "",
+        reason: "",
+      });
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -84,7 +116,8 @@ const VisitFormCard: React.FC = () => {
         formData.reason
       );
 
-      await authorizeVisit(visitData as VisitData);
+      const visit = await authorizeVisit(visitData as VisitData);
+      await sendVisitNotificationEmail(visit.data.id);
       setSuccess(true);
       setFormData({ name: "", email: "", document: "", reason: "" });
     } catch (err: any) {
@@ -101,10 +134,12 @@ const VisitFormCard: React.FC = () => {
         onChange={handleChange}
         onNameChange={handleNameChange}
         onDocumentChange={handleDocumentChange}
+        onLastVisitChange={handleLastVisitChange}
         onSubmit={handleSubmit}
         error={error}
         success={success}
         loading={loading}
+        lastVisits={lastVisits}
         resetError={() => setError(null)}
         resetSuccess={() => setSuccess(false)}
       />

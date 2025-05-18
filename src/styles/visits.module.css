@@ -347,7 +347,12 @@ html {
 }
 
 .qrModalTitle {
+  justify-content: center;
   text-align: center;
+}
+
+.qrModalHeader {
+  margin-top: 3rem;
 }
 
 .section h3 {
@@ -402,9 +407,31 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: left;
   background-color: rgb(0 0 0 / 50%);
   inset: 0;
 }
+
+.modal {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.modalCloseBtnContainer {
+  text-align: right;
+  margin-top: 12px;
+}
+
+.modalHeader{
+  display: inline-flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 140px;
+}
+
 
 .qrModal {
   position: relative;
@@ -435,6 +462,56 @@ html {
   color: #333;
 }
 
+.modalCloseBtn {
+  position: static;
+  padding: 0.5rem;
+  border: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #777;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.modalCloseBtn:hover,
+.modalCloseBtn:focus {
+  color: #333;
+}
+
+.shareButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 17.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  background-color: #25D366;
+  border-radius: 4px;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+
+.shareButton:hover {
+  background-color: #128C7E;
+}
+
+.sharingButton {
+  align-items: center;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  background-color: #25D366;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sharingButton:hover {
+  background-color: #128C7E;
+}
+
 .qrContainer {
   display: flex;
   align-items: center;
@@ -445,7 +522,7 @@ html {
 .qrContainer img {
   width: 100%;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
   max-width: 300px;
 }
 
@@ -462,6 +539,15 @@ html {
   font-size: 0.75rem;
   font-weight: 600;
   text-align: left;
+  border-radius: 12px;
+}
+
+.badgeLarge {
+  display: inline-block ;
+  padding: 6px 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
   border-radius: 12px;
 }
 
@@ -710,7 +796,7 @@ html {
   transform: scale(1.02);
 }
 
-.hamburger:hover, .closeButton:hover {
+.hamburger:hover, .closeButton:hover, .modalCloseBtn:hover {
   transform: scale(1.1);
 }
 

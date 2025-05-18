@@ -33,7 +33,7 @@ const Dashboard = () => {
       const user = await getAuthenticatedUser();
       if (user?.role === "admin") setIsAdmin(true);
 
-      if (!token) {
+      if (!token || !user) {
         navigate("/");
       }
     };
