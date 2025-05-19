@@ -18,6 +18,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { LogoutModal } from "../../components/login/LogoutModal";
 import { getAuthenticatedUser } from "../../api/auth.api";
+import { User } from "../../types/user.types";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -25,21 +26,22 @@ const Dashboard = () => {
   const { isOpen } = useSidebar();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const validateUser = async () => {
-      const token = loadToken();
-      setAuthToken(token);
-      const user = await getAuthenticatedUser();
-      if (user?.role === "admin") setIsAdmin(true);
-
-      if (!token || !user) {
+      try {
+        const token = loadToken();
+        setAuthToken(token);
+        setUser(await getAuthenticatedUser());
+        if (user?.role === "admin") setIsAdmin(true);
+      } catch (error) {
         navigate("/");
       }
     };
 
     validateUser();
-  }, [navigate]);
+  }, [navigate, user?.role]);
 
   const handleLogout = () => {
     navigate("/");
@@ -48,7 +50,7 @@ const Dashboard = () => {
     setShowLogoutModal(false);
   };
 
-  return (
+  return (user &&
     <div className={styles.dashboardContainer}>
       <Sidebar setShowLogoutModal={setShowLogoutModal} />
 
@@ -59,9 +61,7 @@ const Dashboard = () => {
       >
         <Header />
         <StatCards />
-        <QuickActions
-          openModal={() => setIsModalOpen(true)}
-        />
+        <QuickActions openModal={() => setIsModalOpen(true)} />
 
         {isAdmin && <AllAuthorizations />}
 

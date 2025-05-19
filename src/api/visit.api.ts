@@ -1,11 +1,21 @@
 import axios from "axios";
-import { AuthorizedResponse, VisitData, VisitResponse } from "../types/visit.types";
+import {
+  AuthorizedResponse,
+  VisitData,
+  VisitResponse,
+} from "../types/visit.types";
+import { ReportData, ReportResponse } from "../types/report.types";
 
 const API_URL = process.env.REACT_APP_API;
 
-export const authorizeVisit = async (data: VisitData): Promise<AuthorizedResponse> => {
+export const authorizeVisit = async (
+  data: VisitData
+): Promise<AuthorizedResponse> => {
   try {
-    const response = await axios.post<AuthorizedResponse>(`${API_URL}/visits/authorize`, data);
+    const response = await axios.post<AuthorizedResponse>(
+      `${API_URL}/visits/authorize`,
+      data
+    );
     console.log(`Se autorizó la visita correctamente`, response.data);
     return response.data;
   } catch (error: any) {
@@ -108,10 +118,26 @@ export const getAllVisits = async (): Promise<VisitResponse[]> => {
 export const sendVisitNotificationEmail = async (id: string): Promise<void> => {
   try {
     const response = await axios.post(`${API_URL}/visits/notify/${id}`);
-    console.log(`Se enviaron los correos de notificación exitosamente: `, response.data);
+    console.log(
+      `Se enviaron los correos de notificación exitosamente: `,
+      response.data
+    );
     return response.data;
   } catch (error) {
     console.error(`Ocurrió un error al enviar la notificación: `, error);
+    throw error;
+  }
+};
+
+export const getReport = async (data: ReportData): Promise<ReportResponse> => {
+  try {
+    const response = await axios.get<ReportResponse>(
+      `${API_URL}/visits/report?start=${data.start}&end=${data.end}&resident=${data.resident}&guard=${data.guard}`
+    );
+    console.log(`Se ha generado el reporte exitosamente`);
+    return response.data;
+  } catch (error) {
+    console.error(`Ocurrió un error al generar el reporte`, error);
     throw error;
   }
 };
