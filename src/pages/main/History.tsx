@@ -12,19 +12,21 @@ import {
 } from "../../services/auth.service";
 import { LogoutModal } from "../../components/login/LogoutModal";
 import { getAuthenticatedUser } from "../../api/auth.api";
+import { User } from "../../types/user.types";
 
 const History: React.FC = () => {
   const { isOpen } = useSidebar();
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const validateUser = async () => {
-      const token = loadToken();
-      setAuthToken(token);
-      const user = await getAuthenticatedUser();
-
-      if (!token || !user) {
+      try {
+        const token = loadToken();
+        setAuthToken(token);
+        setUser(await getAuthenticatedUser());
+      } catch (error) {
         navigate("/");
       }
     };
@@ -39,7 +41,7 @@ const History: React.FC = () => {
     setShowLogoutModal(false);
   };
 
-  return (
+  return (user &&
     <div className={styles.dashboardContainer}>
       <Sidebar setShowLogoutModal={setShowLogoutModal}/>
       <div
