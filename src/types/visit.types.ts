@@ -18,6 +18,16 @@ export interface VisitResponse {
     updatedAt: Date;
 }
 
+export interface UpdateVisitData {
+    visit: {
+        name: string;
+        email: string;
+    }
+    authorization: {
+        reason: string;
+    }
+}
+
 export interface VisitAuthorizedResponse {
     id: string;
     visit: Visit;

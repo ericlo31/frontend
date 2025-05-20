@@ -1,6 +1,8 @@
 import axios from "axios";
 import {
   AuthorizedResponse,
+  UpdateVisitData,
+  VisitAuthorizedResponse,
   VisitData,
   VisitResponse,
 } from "../types/visit.types";
@@ -34,10 +36,10 @@ export const deleteVisit = async (id: string): Promise<void> => {
   }
 }
 
-export const updateVisit = async (id: string, data: VisitData): Promise<AuthorizedResponse> => {
+export const updateVisit = async (document: string, data: UpdateVisitData): Promise<VisitAuthorizedResponse> => {
   try {
-    const response = await axios.put<AuthorizedResponse>(
-      `${API_URL}/visits/${id}`,
+    const response = await axios.put<VisitAuthorizedResponse>(
+      `${API_URL}/visits/${document}`,
       data
     );
     console.log(`Se actualizó la visita correctamente`, response.data);
