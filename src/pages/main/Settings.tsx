@@ -9,6 +9,7 @@ import Profile from "../../components/settings/Profile"
 import { getAuthenticatedUser } from "../../api/auth.api";
 import RegisterForm from "../../components/settings/RegisterForm";
 import { User } from "../../types/user.types";
+import Header from "../../components/visits/Header";
 
 const Settings: React.FC = () => {
   const { isOpen } = useSidebar();
@@ -47,6 +48,7 @@ const Settings: React.FC = () => {
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
+        <Header />
         <Profile token={getAuthToken()} />
         {isAdmin && (
           <RegisterForm />

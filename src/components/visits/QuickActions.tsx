@@ -26,7 +26,7 @@ const QuickActions = ({ openModal }: QuickActionsProps) => {
         <Link to="" onClick={openModal} className={styles.actionBtn}>
           <FaEdit className={styles.actionIcon} /> Crear Autorización
         </Link>
-        <Link to="" className={styles.actionBtn}>
+        <Link to="/visit-history" className={styles.actionBtn}>
           <FaClipboardList className={styles.actionIcon} /> Historial de Visitas
         </Link>
         {isAdmin ? (
@@ -34,7 +34,7 @@ const QuickActions = ({ openModal }: QuickActionsProps) => {
             <FaFileExport className={styles.actionIcon} /> Generar Reporte
           </Link>
         ) : (
-          <Link to="" className={styles.actionBtn}>
+          <Link to="/settings" className={styles.actionBtn}>
             <FaCog className={styles.actionIcon} /> Ajustes de Usuario
           </Link>
         )}
