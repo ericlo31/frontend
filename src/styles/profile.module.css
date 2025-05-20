@@ -31,6 +31,7 @@
 .profileField {
   display: flex;
   align-items: center;
+  flex-direction: row;
   margin-bottom: 12px;
 }
 
@@ -136,4 +137,57 @@
   to {
     transform: rotate(360deg);
   }
-}  
+}
+
+/* Responsive Styles */
+@media (width <= 768px) {
+  .profileContainer {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .profileField {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+
+  .profileField label {
+    width: 100%;
+    margin-bottom: 4px;
+    margin-right: 0;
+    min-width: auto;
+  }
+
+  .profileField span,
+  .profileField input,
+  .profileField select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .profileInput {
+    max-width: 100%;
+  }
+
+  .profileActions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .editButton,
+  .saveButton,
+  .cancelButton {
+    width: 100%;
+  }
+}
+
+@media (width <= 480px) {
+  .profileTitle {
+    font-size: 20px;
+  }
+
+  .profileSection h3 {
+    font-size: 16px;
+  }
+}

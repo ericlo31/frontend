@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { LogoutModal } from "../../components/login/LogoutModal";
 import { getAuthenticatedUser } from "../../api/auth.api";
 import { User } from "../../types/user.types";
+import Header from "../../components/visits/Header";
 
 const Authorizations: React.FC = () => {
   const { isOpen } = useSidebar();
@@ -49,6 +50,7 @@ const Authorizations: React.FC = () => {
           !isOpen ? styles.mainContentFull : ""
         }`}
       >
+        <Header />
         <VisitFormCard />
         <AuthorizationsTable />
       </div>

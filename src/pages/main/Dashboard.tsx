@@ -69,8 +69,8 @@ const Dashboard = () => {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
-        <AuthorizationsTable />
-        <VisitHistory />
+        {!isAdmin && <AuthorizationsTable />}
+        {!isAdmin && <VisitHistory />}
       </div>
 
       <LogoutModal

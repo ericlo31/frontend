@@ -360,3 +360,99 @@ select.formInput {
     width: 100%;
   }
 }
+
+@media (width <= 768px) {
+  .tableContainer {
+    border: 1px solid #e5e7eb;
+  }
+  
+  .table {
+    display: block;
+    width: 100%;
+  }
+  
+  .table thead {
+    display: none;
+  }
+  
+  .table tbody, .table tr, .table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .table tr {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .table td {
+    position: relative;
+    padding: 0.75rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-left: 50%;
+  }
+  
+  .table td::before {
+    position: absolute;
+    left: 1rem;
+    width: 45%;
+    font-weight: 600;
+    text-align: left;
+    color: #1d4ed8;
+    content: attr(data-label);
+    padding-right: 1rem;
+  }
+  
+  .table td:last-child {
+    border-bottom: none;
+  }
+  
+  /* Para tablas con encabezado especial */
+  .tableHeader {
+    display: none;
+  }
+  
+  .tableRow {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .tableCell {
+    position: relative;
+    display: block;
+    padding: 0.75rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-left: 50%;
+  }
+  
+  .tableCell::before {
+    position: absolute;
+    left: 1rem;
+    width: 45%;
+    font-weight: 600;
+    text-align: left;
+    color: #1d4ed8;
+    content: attr(data-label);
+    padding-right: 1rem;
+  }
+  
+  .tableCell:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (width <= 480px) {
+  .table td, .tableCell {
+    padding-left: 40%;
+  }
+  
+  .table td::before, .tableCell::before {
+    width: 35%;
+    font-size: 0.8rem;
+  }
+}
