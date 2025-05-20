@@ -855,7 +855,7 @@ html {
   animation: fadeIn 0.7s ease-in-out;
 }
   
-.loginInput, button {
+.loginInput {
   transition: all 0.3s ease;
 }
 
