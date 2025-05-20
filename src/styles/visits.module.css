@@ -646,6 +646,41 @@ html {
   margin-bottom: 7px;
 }
 
+/* Report */
+.filterBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.filterBar input,
+.filterBar select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+.filterBar button {
+  padding: 8px 16px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background-color: #0787f6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filterBar button:hover {
+  background-color: #005fa3;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -803,6 +838,17 @@ html {
 /* Responsive */
 
 /* Movil */
+
+@media (width <= 600px) {
+  .filterBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filterBar button {
+    width: 100%;
+  }
+}
 
 @media (width <= 624px) {
   .hideableRow {
