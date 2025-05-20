@@ -9,7 +9,7 @@ export interface VisitData {
 }
 
 export interface VisitResponse {
-    _id: string;
+    id: string;
     visit: Visit;
     authorization: Authorization;
     registry?: Registry;
