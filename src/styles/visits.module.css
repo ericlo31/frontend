@@ -645,6 +645,12 @@ html {
   margin-top: 10px;
 }
 
+.exportDropdown {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
 .saveBtn {
   padding: 12px 16px;
   border: none;
