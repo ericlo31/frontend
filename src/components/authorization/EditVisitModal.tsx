@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { updateVisit } from "../../api/visit.api";
-import { VisitData, VisitResponse } from "../../types/visit.types";
+import { UpdateVisitData, VisitResponse } from "../../types/visit.types";
 import styles from "../../styles/visitForm.module.css";
-import { loadToken, setAuthToken } from "../../services/auth.service";
-import { getAuthenticatedUser } from "../../api/auth.api";
+import { loadToken, setAuthToken } from "../../services/auth.service";;
 
 interface EditVisitModalProps {
   isOpen: boolean;
@@ -100,19 +99,19 @@ const EditVisitModal: React.FC<EditVisitModalProps> = ({
 
     try {
       const token = loadToken();
-      setAuthToken(token);
+      setAuthToken(token);;
 
-      const user = await getAuthenticatedUser();
-
-      const visitData: VisitData = {
-        name: formData.name,
-        email: formData.email,
-        document: formData.document,
-        resident: user._id,
-        reason: formData.reason,
+      const visitData: UpdateVisitData= {
+        visit: {
+          name: formData.name,
+          email: formData.email
+        },
+        authorization: {
+          reason: formData.reason
+        }
       };
 
-      await updateVisit(visit.id, visitData);
+      await updateVisit(visit.visit.document, visitData);
       setSuccess(true);
       onVisitUpdated();
     } catch (err: any) {
@@ -206,6 +205,7 @@ const EditVisitModal: React.FC<EditVisitModalProps> = ({
                 required
                 placeholder="Número de documento"
                 className={styles.input}
+                disabled={true}
               />
             </div>
 
