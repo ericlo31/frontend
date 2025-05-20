@@ -131,9 +131,27 @@ export const sendVisitNotificationEmail = async (id: string): Promise<void> => {
 
 export const getReport = async (data: ReportData): Promise<ReportResponse> => {
   try {
+    const params = new URLSearchParams();
+    
+    params.append('start', data.start.toISOString());
+    
+    if (data.end) {
+      params.append('end', data.end.toISOString());
+    }
+
+    if (data.resident) {
+      params.append('resident', data.resident);
+    }
+
+    if (data.guard) {
+      params.append('guard', data.guard);
+    }
+
     const response = await axios.get<ReportResponse>(
-      `${API_URL}/visits/report?start=${data.start}&end=${data.end}&resident=${data.resident}&guard=${data.guard}`
+      `${API_URL}/visits/report`,
+      { params }
     );
+    
     console.log(`Se ha generado el reporte exitosamente`);
     return response.data;
   } catch (error) {
