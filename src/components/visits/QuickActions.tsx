@@ -30,7 +30,7 @@ const QuickActions = ({ openModal }: QuickActionsProps) => {
           <FaClipboardList className={styles.actionIcon} /> Historial de Visitas
         </Link>
         {isAdmin ? (
-          <Link to="" className={styles.actionBtn}>
+          <Link to="/admin/report" className={styles.actionBtn}>
             <FaFileExport className={styles.actionIcon} /> Generar Reporte
           </Link>
         ) : (
