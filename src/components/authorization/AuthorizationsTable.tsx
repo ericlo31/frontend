@@ -6,7 +6,6 @@ import React, { useEffect, useRef, useState } from "react";
 import QRModal from "./QRModal";
 import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
-import { toPng } from "html-to-image";
 import EditVisitModal from "./EditVisitModal";
 
 const AuthorizationsTable: React.FC = () => {
@@ -109,58 +108,6 @@ const AuthorizationsTable: React.FC = () => {
     console.log(visit);
     await deleteVisit(visit.id);
     handleCloseDeleteModal();
-  };
-
-  const generateQRImage = async () => {
-    if (!qrModalRef.current) {
-      console.error("QRModal ref no está disponible");
-      return null;
-    }
-
-    try {
-      // Añadir pequeño delay para asegurar renderizado
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      const dataUrl = await toPng(qrModalRef.current);
-      return dataUrl;
-    } catch (error) {
-      console.error("Error al generar la imagen del QR:", error);
-      return null;
-    }
-  };
-
-  const shareOnWhatsApp = async () => {
-    if (!visitToShare) return;
-
-    setSelectedQR(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    const qrImage = await generateQRImage();
-    if (!qrImage) return;
-
-    const message =
-      `Te comparto mi autorización de visita:\n\n` +
-      `Nombre: ${visitToShare.visit.name}\n` +
-      `Documento: ${visitToShare.visit.document}\n` +
-      `Estado: ${visitToShare.authorization.state.toUpperCase()}\n` +
-      `Fecha: ${visitToShare.authorization.date.toLocaleDateString(
-        "es-ES"
-      )}\n` +
-      (visitToShare.authorization.exp
-        ? `Vence: ${visitToShare.authorization.exp.toLocaleDateString(
-            "es-ES"
-          )}\n`
-        : "");
-    const encodedMessage = encodeURIComponent(message);
-
-    const link = document.createElement("a");
-    link.download = `autorizacion-${visitToShare.visit.name}.png`;
-    link.href = qrImage;
-    link.click();
-    window.open(`https://wa.me/?text=${encodedMessage}`, "_blank");
-
-    setSelectedQR(false);
-    setShareModalOpen(false);
   };
 
   return (
@@ -279,22 +226,18 @@ const AuthorizationsTable: React.FC = () => {
               </div>
             </div>
             <p>
-              Selecciona la red social donde deseas compartir la autorización:
+              Para compartir esta autorización, abre el código QR y usa el botón
+              "Compartir" en la esquina superior izquierda.
             </p>
-            <div className={styles.shareOptions}>
+            <div className={styles.modalFooter}>
               <button
-                className={styles.sharingButton}
+                className={`${styles.modalBtn} ${styles.confirmBtn}`}
                 onClick={() => {
                   setSelectedQR(true);
-                  shareOnWhatsApp();
+                  setShareModalOpen(false);
                 }}
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                  alt="WhatsApp"
-                  className={styles.shareIcon}
-                />
-                WhatsApp
+                Abrir Código QR
               </button>
             </div>
           </div>
