@@ -62,7 +62,6 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
           };
 
           await navigator.share(shareData);
-
         } else {
           // Fallback para navegadores que no soportan compartir archivos
           const link = document.createElement("a");
@@ -78,8 +77,8 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
             `Fecha: ${visit.authorization.date.toLocaleDateString("es-ES")}\n` +
             (visit.authorization.exp
               ? `Vence: ${visit.authorization.exp.toLocaleDateString(
-                "es-ES"
-              )}\n`
+                  "es-ES"
+                )}\n`
               : "");
 
           // Abrir WhatsApp con el mensaje
@@ -96,18 +95,16 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
       }
     };
 
-
     const shareBtn = async () => {
       const modalElement = typeof ref === "function" ? null : ref?.current;
 
-        if (!modalElement) {
-          throw new Error("No se pudo acceder al elemento del modal");
-        }
+      if (!modalElement) {
+        throw new Error("No se pudo acceder al elemento del modal");
+      }
 
-        const imageUrl = await toPng(modalElement);
+      const imageUrl = await toPng(modalElement);
 
       try {
-
         const response = await fetch(imageUrl);
         const blob = await response.blob();
         const file = new File([blob], "imagen.jpg", { type: blob.type });
@@ -123,13 +120,10 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
         } else {
           alert("Tu navegador no soporta compartir archivos.");
         }
-
       } catch (error) {
-
         console.error("Error al compartir:", error);
-
       }
-    }
+    };
     if (!isOpen) return null;
 
     return (
@@ -158,8 +152,9 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
               <span>{visit.visit.document}</span>
               <img src={qr} alt="QR Code" />
               <span
-                className={`${styles.badgeLarge} ${styles[visit.authorization.state.toLowerCase()]
-                  }`}
+                className={`${styles.badgeLarge} ${
+                  styles[visit.authorization.state.toLowerCase()]
+                }`}
               >
                 {visit.authorization.state.toUpperCase()}
               </span>
