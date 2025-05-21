@@ -12,7 +12,7 @@ import { SidebarProps } from "../../types/types";
 import { useState } from "react";
 import { LogoutModal } from "../login/LogoutModal";
 import { delToken } from "../../services/auth.service";
-import ThemeToggle from "../../contexts/ThemeToggle";
+import ThemeToggle from "../settings/ThemeToggle";
 
 const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
   const { isOpen, toggleSidebar } = useSidebar();
@@ -46,20 +46,6 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
         >
           SecurePass
         </div>
-      </div>
-      <div
-        className={`${styles.themeBar} ${
-          isOpen ? styles.themeBarOpen : styles.themeBarClosed
-        }`}
-      >
-        <ThemeToggle />
-        <span
-          className={`${styles.themeText} ${
-            isOpen ? styles.themeTextOpen : styles.themeTextClosed
-          }`}
-        >
-          Light / Dark
-        </span>
       </div>
       <div
         className={`${styles.navArea} ${
@@ -202,6 +188,21 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
             </Link>
           </ul>
         </nav>
+
+        <div
+        className={`${styles.themeBar} ${
+          isOpen ? styles.themeBarOpen : styles.themeBarClosed
+        }`}
+      >
+        <ThemeToggle />
+        <span
+          className={`${styles.themeText} ${
+            isOpen ? styles.themeTextOpen : styles.themeTextClosed
+          }`}
+        >
+          Light / Dark
+        </span>
+      </div>
 
         <div
           style={{

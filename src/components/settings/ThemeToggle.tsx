@@ -1,25 +1,20 @@
-import React from 'react';
-import { useTheme } from '../../contexts/ThemeContext';
+// ThemeToggle.tsx
+import { useTheme } from "../../contexts/ThemeContext";
+import { FaSun, FaMoon } from "react-icons/fa";
+import styles from "../../styles/themeToggle.module.css";
 
-const ThemeToggle: React.FC = () => {
+const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <button 
+    <button
       onClick={toggleTheme}
-      aria-label={theme ? 'Switch to light mode' : 'Switch to dark mode'}
-      style={{
-        position: 'fixed',
-        zIndex: 1000,
-        background: 'var(--primary-color)',
-        color: 'white',
-        border: 'none',
-        borderRadius: '4px',
-        padding: '0.5rem 1rem',
-        cursor: 'pointer',
-      }}
+      className={`${styles.toggleButton} ${
+        theme === "dark" ? styles.dark : styles.light
+      }`}
+      aria-label="Cambiar tema"
     >
-      {theme ? '☀️ Light Mode' : '🌙 Dark Mode'}
+      {theme === "dark" ? <FaSun /> : <FaMoon />}
     </button>
   );
 };
