@@ -47,7 +47,20 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
           SecurePass
         </div>
       </div>
-
+      <div
+        className={`${styles.themeBar} ${
+          isOpen ? styles.themeBarOpen : styles.themeBarClosed
+        }`}
+      >
+        <ThemeToggle />
+        <span
+          className={`${styles.themeText} ${
+            isOpen ? styles.themeTextOpen : styles.themeTextClosed
+          }`}
+        >
+          Light / Dark
+        </span>
+      </div>
       <div
         className={`${styles.navArea} ${
           isOpen ? styles.navAreaOpen : styles.navAreaClosed
@@ -196,9 +209,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
             display: "flex",
             justifyContent: "center",
           }}
-        >
-          <ThemeToggle />
-        </div>
+        ></div>
 
         <button
           className={`${styles.logout} ${

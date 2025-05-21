@@ -16,7 +16,6 @@ import { getAuthenticatedUser } from "../../api/auth.api";
 import RegisterForm from "../../components/settings/RegisterForm";
 import { User } from "../../types/user.types";
 import Header from "../../components/visits/Header";
-import ThemeToggle from "../../contexts/ThemeToggle";
 
 const Settings: React.FC = () => {
   const { isOpen } = useSidebar();
@@ -57,7 +56,6 @@ const Settings: React.FC = () => {
           }`}
         >
           <Header />
-          <ThemeToggle />
           <Profile token={getAuthToken()} />
           {isAdmin && <RegisterForm />}
         </div>
