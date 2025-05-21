@@ -9,13 +9,23 @@ export interface VisitData {
 }
 
 export interface VisitResponse {
-    _id: string;
+    id: string;
     visit: Visit;
     authorization: Authorization;
     registry?: Registry;
     qrId: string;
     createdAt: Date;
     updatedAt: Date;
+}
+
+export interface UpdateVisitData {
+    visit: {
+        name: string;
+        email: string;
+    }
+    authorization: {
+        reason: string;
+    }
 }
 
 export interface VisitAuthorizedResponse {

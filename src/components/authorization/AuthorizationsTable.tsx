@@ -1,4 +1,4 @@
-import { getVisitsByResidentId } from "../../api/visit.api";
+import { deleteVisit, getVisitsByResidentId } from "../../api/visit.api";
 import styles from "../../styles/visits.module.css";
 import { FaEdit, FaQrcode, FaShare, FaTimes, FaTrash } from "react-icons/fa";
 import { VisitResponse } from "../../types/visit.types";
@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import QRModal from "./QRModal";
 import { loadToken, setAuthToken } from "../../services/auth.service";
 import { getAuthenticatedUser } from "../../api/auth.api";
-import { toPng } from "html-to-image";
+import EditVisitModal from "./EditVisitModal";
 
 const AuthorizationsTable: React.FC = () => {
   const [visits, setVisits] = useState<VisitResponse[] | null>(null);
@@ -16,7 +16,13 @@ const AuthorizationsTable: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedQR, setSelectedQR] = useState(false);
   const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [visitToEdit, setVisitToEdit] = useState<VisitResponse | null>(null);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [visitToShare, setVisitToShare] = useState<VisitResponse | null>(null);
+  const [visitToDelete, setVisitToDelete] = useState<VisitResponse | null>(
+    null
+  );
   const qrModalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -66,53 +72,42 @@ const AuthorizationsTable: React.FC = () => {
     setVisitToShare(null);
   };
 
-  const generateQRImage = async () => {
-    if (!qrModalRef.current) {
-      console.error("QRModal ref no está disponible");
-      return null;
-    }
-
-    try {
-      // Añadir pequeño delay para asegurar renderizado
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      const dataUrl = await toPng(qrModalRef.current);
-      return dataUrl;
-    } catch (error) {
-      console.error("Error al generar la imagen del QR:", error);
-      return null;
-    }
+  const handleEditClick = (visit: VisitResponse) => {
+    setVisitToEdit(visit);
+    setEditModalOpen(true);
   };
 
-  const shareOnWhatsApp = async () => {
-    if (!visitToShare) return;
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
+    setVisitToEdit(null);
+  };
 
-    setSelectedQR(true);
+  const handleVisitUpdated = () => {
+    const token = loadToken();
+    setAuthToken(token);
+    getAuthenticatedUser().then((user) => {
+      getVisitsByResidentId(user._id).then((visits) => {
+        setVisits(visits);
+      });
+    });
+    setEditModalOpen(false);
+  };
 
-    await new Promise((resolve) => setTimeout(resolve, 200));
+  const handleDeleteClick = (visit: VisitResponse) => {
+    setVisitToDelete(visit);
+    setDeleteModalOpen(true);
+  };
 
-    const qrImage = await generateQRImage();
-    if (!qrImage) return;
+  const handleCloseDeleteModal = () => {
+    setDeleteModalOpen(false);
+    setVisitToDelete(null);
+  };
 
-const message =
-          `Te comparto mi autorización de visita:\n\n` +
-          `Nombre: ${visitToShare.visit.name}\n` +
-          `Documento: ${visitToShare.visit.document}\n` +
-          `Estado: ${visitToShare.authorization.state.toUpperCase()}\n` +
-          `Fecha: ${visitToShare.authorization.date.toLocaleDateString("es-ES")}\n` +
-          (visitToShare.authorization.exp
-            ? `Vence: ${visitToShare.authorization.exp.toLocaleDateString(
-                "es-ES"
-              )}\n`
-            : "");    const encodedMessage = encodeURIComponent(message);
-
-    const link = document.createElement("a");
-    link.download = `autorizacion-${visitToShare.visit.name}.png`;
-    link.href = qrImage;
-    link.click();
-    window.open(`https://wa.me/?text=${encodedMessage}`, "_blank");
-
-    setSelectedQR(false);
-    setShareModalOpen(false);
+  const handleConfirmDelete = async () => {
+    const visit = visitToDelete as VisitResponse;
+    console.log(visit);
+    await deleteVisit(visit.id);
+    handleCloseDeleteModal();
   };
 
   return (
@@ -136,54 +131,74 @@ const message =
             </tr>
           </thead>
           <tbody>
-            {authorizations?.map((a, i) => (
-              <tr key={i} className={styles.authRow}>
-                <td>{a.visit.name}</td>
-                <td className={styles.hideableRow}>{a.visit.document}</td>
-                <td>
-                  <span
-                    className={`${styles.badge} ${
-                      styles[a.authorization.state.toLowerCase()]
-                    }`}
-                  >
-                    {a.authorization.state.toUpperCase()}
-                  </span>
-                </td>
-                <td className={styles.hideableRow}>
-                  {a.authorization.exp instanceof Date
-                    ? a.authorization.exp.toLocaleDateString("es-ES", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })
-                    : " "}
-                </td>
-                <td>
-                  <div className={styles.actionGroup}>
-                    <button
-                      className={styles.authBtn}
-                      onClick={() => {
-                        handleShowQR(a);
-                      }}
+            {authorizations?.map((a, i) => {
+              const isPending = a.authorization.state === "pendiente";
+              return (
+                <tr key={i} className={styles.authRow}>
+                  <td>{a.visit.name}</td>
+                  <td className={styles.hideableRow}>{a.visit.document}</td>
+                  <td>
+                    <span
+                      className={`${styles.badge} ${
+                        styles[a.authorization.state.toLowerCase()]
+                      }`}
                     >
-                      <FaQrcode className={styles.actionAuthIcon} />
-                    </button>
-                    <button
-                      className={styles.authBtn}
-                      onClick={() => handleShareClick(a)}
-                    >
-                      <FaShare className={styles.actionAuthIcon} />
-                    </button>
-                    <button className={styles.authBtn}>
-                      <FaEdit className={styles.actionAuthIcon} />
-                    </button>
-                    <button className={styles.authBtn}>
-                      <FaTrash className={styles.actionAuthIcon} />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                      {a.authorization.state.toUpperCase()}
+                    </span>
+                  </td>
+                  <td className={styles.hideableRow}>
+                    {a.authorization.exp instanceof Date
+                      ? a.authorization.exp.toLocaleDateString("es-ES", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      : " "}
+                  </td>
+                  <td>
+                    <div className={styles.actionGroup}>
+                      <button
+                        className={styles.authBtn}
+                        onClick={() => {
+                          handleShowQR(a);
+                        }}
+                      >
+                        <FaQrcode className={styles.actionAuthIcon} />
+                      </button>
+                      <button
+                        className={styles.authBtn}
+                        onClick={() => handleShareClick(a)}
+                      >
+                        <FaShare className={styles.actionAuthIcon} />
+                      </button>
+                      <button
+                        className={`${styles.authBtn} ${
+                          !isPending ? styles.disabledBtn : ""
+                        }`}
+                        disabled={!isPending}
+                        onClick={() => {
+                          if (isPending) handleEditClick(a);
+                        }}
+                      >
+                        <FaEdit className={styles.actionAuthIcon} />
+                      </button>
+
+                      <button
+                        className={`${styles.authBtn} ${
+                          !isPending ? styles.disabledBtn : ""
+                        }`}
+                        disabled={!isPending}
+                        onClick={() => {
+                          if (isPending) handleDeleteClick(a);
+                        }}
+                      >
+                        <FaTrash className={styles.actionAuthIcon} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       )}
@@ -210,26 +225,65 @@ const message =
                 </button>
               </div>
             </div>
-            <p>Selecciona la red social donde deseas compartir la autorización:</p>
-            <div className={styles.shareOptions}>
+            <p>
+              Para compartir esta autorización, abre el código QR y usa el botón
+              "Compartir" en la esquina superior izquierda.
+            </p>
+            <div className={styles.modalFooter}>
               <button
-                className={styles.sharingButton}
+                className={`${styles.modalBtn} ${styles.confirmBtn}`}
                 onClick={() => {
                   setSelectedQR(true);
-                  shareOnWhatsApp();
+                  setShareModalOpen(false);
                 }}
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                  alt="WhatsApp"
-                  className={styles.shareIcon}
-                />
-                WhatsApp
+                Abrir Código QR
               </button>
             </div>
           </div>
         </div>
       )}
+
+      {/* Modal para eliminar */}
+      {deleteModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            <div className={styles.modalHeader}>
+              <h3>Confirmar eliminación</h3>
+              <div className={styles.modalCloseBtnContainer}>
+                <button
+                  className={styles.modalCloseBtn}
+                  onClick={handleCloseDeleteModal}
+                >
+                  <FaTimes />
+                </button>
+              </div>
+            </div>
+            <p>¿Estás seguro que quieres eliminar esta visita?</p>
+            <div className={styles.modalFooter}>
+              <button
+                className={`${styles.modalBtn} ${styles.cancelBtn}`}
+                onClick={handleCloseDeleteModal}
+              >
+                Cancelar
+              </button>
+              <button
+                className={`${styles.modalBtn} ${styles.confirmBtn}`}
+                onClick={handleConfirmDelete}
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <EditVisitModal
+        isOpen={editModalOpen}
+        onClose={handleCloseEditModal}
+        visit={visitToEdit}
+        onVisitUpdated={handleVisitUpdated}
+      />
     </div>
   );
 };

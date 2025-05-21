@@ -5,6 +5,7 @@ import Settings from "./pages/main/Settings";
 import History from "./pages/main/History";
 import { SidebarProvider } from "./contexts/SidebarContext";
 import Home from "./pages/login/Home";
+import Report from "./pages/main/Report";
 import { ThemeProvider } from "./contexts/ThemeContext"; // Asegúrate de crear este archivo
 import ThemeToggle from './components/settings/ThemeToggle';
 import './App.css'
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/authorizations" element={<Authorizations />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/visit-history" element={<History />} />
+          <Route path="/admin/report" element={<Report />} />
         </Routes>
       </SidebarProvider>
     </ThemeProvider>
