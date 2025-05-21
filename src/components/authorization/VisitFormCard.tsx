@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import VisitFormContent from "./VisitFormContent";
-import { authorizeVisit, getVisitsByResidentId, sendVisitNotificationEmail } from "../../api/visit.api";
+import { authorizeVisit, getLastVisitsByResidentId, sendVisitNotificationEmail } from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
 import { VisitData, VisitResponse } from "../../types/visit.types";
 import styles from "../../styles/visitForm.module.css";
@@ -24,7 +24,7 @@ const VisitFormCard: React.FC = () => {
       setAuthToken(loadToken());
       try {
         const user = await getAuthenticatedUser();
-        setLastVisits(await getVisitsByResidentId(user._id));
+        setLastVisits(await getLastVisitsByResidentId(user._id));
       } catch (error) {}
     };
     getLastVisits();

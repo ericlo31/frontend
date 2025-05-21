@@ -200,7 +200,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
             isOpen ? styles.themeTextOpen : styles.themeTextClosed
           }`}
         >
-          Light / Dark
+          Light │ Dark
         </span>
       </div>
 
