@@ -479,6 +479,40 @@ html {
   color: #333;
 }
 
+.disabledBtn {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modalBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+.confirmBtn {
+  color: white;
+  background-color: #e74c3c;
+}
+
+.confirmBtn:hover {
+  background-color: #c0392b;
+}
+
 .shareButton {
   position: absolute;
   top: 1.5rem;
@@ -609,6 +643,12 @@ html {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+}
+
+.exportDropdown {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 .saveBtn {
@@ -821,7 +861,7 @@ html {
   animation: fadeIn 0.7s ease-in-out;
 }
   
-.loginInput, button {
+.loginInput {
   transition: all 0.3s ease;
 }
 
@@ -855,9 +895,20 @@ html {
     display: none;
   }
 
+  .table th,
   .table td {
-    font-size: 1rem;
+    padding: 0;
+    font-size: 8px;
   }
+
+  .title {
+    display: none;
+  }
+
+  .userProfile {
+    font-size: 0.9rem;
+  }
+
 }
 
 @media (width <= 874px) {
@@ -906,8 +957,8 @@ html {
 
   .table th,
   .table td {
-    padding: 16px 12px;
-    font-size: 0.8rem;
+    padding: 11px 7px;
+    font-size: 0.6rem;
   }
 
   .badge {
@@ -929,8 +980,9 @@ html {
   flex: 0 0 calc(50% - 2.5px);
   align-items: center;
   justify-content: center;
-  height: 25px;
-  padding: 9px;
+  width: 24px;
+  height: 18px;
+  padding: 6px;
 }
 
   .topBar {
@@ -1030,37 +1082,6 @@ html {
     margin-left: 0;
   }
 }
-
-/* Login */
-@media screen and (width <= 1024px) {
- .loginCard {
-   width: 80%;
-    }
-  }
-  
-  @media screen and (width <= 768px) {
-    .loginCard {
-      width: 90%;
-      padding: 2rem 1.5rem;
-    }
-  
-    .loginCard h2 {
-      font-size: 1.5rem;
-    }
-  
-    .loginCard h3 {
-      font-size: 1.2rem;
-    }
-  
-    .loginCard input {
-      padding: 10px;
-      font-size: 1rem;
-    }
-  
-    .loginCard button {
-      font-size: 1rem;
-    }
-  }
 
 /* Animations Login */
 @keyframes fadein {

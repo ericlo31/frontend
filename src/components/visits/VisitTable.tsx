@@ -114,7 +114,7 @@ const VisitTable = () => {
             <th>Documento</th>
             <th>Residente</th>
             <th>Estado</th>
-            <th>Expira</th>
+            <th className={styles.hideableRow}>Expira</th>
           </tr>
         </thead>
         <tbody>

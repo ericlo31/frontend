@@ -1,6 +1,8 @@
 import axios from "axios";
 import {
   AuthorizedResponse,
+  UpdateVisitData,
+  VisitAuthorizedResponse,
   VisitData,
   VisitResponse,
 } from "../types/visit.types";
@@ -23,6 +25,30 @@ export const authorizeVisit = async (
     throw error;
   }
 };
+
+export const deleteVisit = async (id: string): Promise<void> => {
+  try{
+    const response = await axios.delete(`${API_URL}/visits/${id}`);
+    console.log(`La visita se eliminó correctamente`);
+    return response.data;
+  }catch(error){
+    console.error(`Error al eliminar la visita`)
+  }
+}
+
+export const updateVisit = async (document: string, data: UpdateVisitData): Promise<VisitAuthorizedResponse> => {
+  try {
+    const response = await axios.put<VisitAuthorizedResponse>(
+      `${API_URL}/visits/${document}`,
+      data
+    );
+    console.log(`Se actualizó la visita correctamente`, response.data);
+    return response.data;
+  } catch (error: any) {
+    console.error(`Error actualizando la visita`, error);
+    throw error;
+  }
+}
 
 export const getVisitsByResidentId = async (
   id: string

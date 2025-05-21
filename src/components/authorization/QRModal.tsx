@@ -47,30 +47,47 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
         // Generar imagen del modal completo
         const dataUrl = await toPng(modalElement);
 
-        // Crear enlace temporal para descargar
-        const link = document.createElement("a");
-        link.download = `autorizacion-${visit.visit.name}.png`;
-        link.href = dataUrl;
-        link.click();
+        // Convertir data URL a Blob
+        const blob = await (await fetch(dataUrl)).blob();
+        const file = new File([blob], `Autorización-${visit.visit.name}.png`, {
+          type: "image/png",
+        });
 
-        // Preparar mensaje para WhatsApp
-        const message =
-          `Te comparto mi autorización de visita:\n\n` +
-          `Nombre: ${visit.visit.name}\n` +
-          `Documento: ${visit.visit.document}\n` +
-          `Estado: ${visit.authorization.state.toUpperCase()}\n` +
-          `Fecha: ${visit.authorization.date.toLocaleDateString("es-ES")}\n` +
-          (visit.authorization.exp
-            ? `Vence: ${visit.authorization.exp.toLocaleDateString(
-                "es-ES"
-              )}\n`
-            : "");
+        // Verificar si el navegador soporta compartir archivos
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          const shareData = {
+            title: `Autorización de visita - ${visit.visit.name}`,
+            text: `Te comparto mi autorización de visita para ${visit.visit.name}`,
+            files: [file],
+          };
 
-        // Abrir WhatsApp con el mensaje
-        window.open(
-          `https://wa.me/?text=${encodeURIComponent(message)}`,
-          "_blank"
-        );
+          await navigator.share(shareData);
+
+        } else {
+          // Fallback para navegadores que no soportan compartir archivos
+          const link = document.createElement("a");
+          link.download = `Autorización-${visit.visit.name}.png`;
+          link.href = dataUrl;
+          link.click();
+
+          const message =
+            `Te comparto mi autorización de visita:\n\n` +
+            `Nombre: ${visit.visit.name}\n` +
+            `Documento: ${visit.visit.document}\n` +
+            `Estado: ${visit.authorization.state.toUpperCase()}\n` +
+            `Fecha: ${visit.authorization.date.toLocaleDateString("es-ES")}\n` +
+            (visit.authorization.exp
+              ? `Vence: ${visit.authorization.exp.toLocaleDateString(
+                  "es-ES"
+                )}\n`
+              : "");
+
+          // Abrir WhatsApp con el mensaje
+          window.open(
+            `https://wa.me/?text=${encodeURIComponent(message)}`,
+            "_blank"
+          );
+        }
       } catch (error) {
         console.error("Error al compartir:", error);
         alert("Ocurrió un error al compartir. Por favor intenta nuevamente.");
@@ -125,7 +142,11 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
           <div className={styles.qrModalHeader}>
             <h3 className={styles.qrModalTitle}>Visita Autorizada</h3>
             <div>
-              <button className={styles.shareButton} onClick={handleShare}>
+              <button
+                className={styles.shareButton}
+                onClick={handleShare}
+                disabled={isSharing}
+              >
                 <FaShare />
                 {isSharing ? "Cargando..." : "Compartir"}
               </button>
