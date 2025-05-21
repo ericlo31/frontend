@@ -12,6 +12,7 @@ import { SidebarProps } from "../../types/types";
 import { useState } from "react";
 import { LogoutModal } from "../login/LogoutModal";
 import { delToken } from "../../services/auth.service";
+import ThemeToggle from "../settings/ThemeToggle";
 
 const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
   const { isOpen, toggleSidebar } = useSidebar();
@@ -22,10 +23,10 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
   const actualSetShowLogout = setShowLogoutModal || setLocalShowLogout;
 
   const handleLogout = () => {
-      navigate("/");
-      delToken();
-      actualSetShowLogout(false);
-    };
+    navigate("/");
+    delToken();
+    actualSetShowLogout(false);
+  };
 
   return (
     <aside
@@ -46,7 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
           SecurePass
         </div>
       </div>
-
       <div
         className={`${styles.navArea} ${
           isOpen ? styles.navAreaOpen : styles.navAreaClosed
@@ -189,24 +189,49 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
           </ul>
         </nav>
 
-        <button
-        className={`${styles.logout} ${isOpen ? styles.logoutOpen : styles.logoutClosed}`}
-        onClick={() => actualSetShowLogout(true)}
+        <div
+        className={`${styles.themeBar} ${
+          isOpen ? styles.themeBarOpen : styles.themeBarClosed
+        }`}
       >
-        <FaSignOutAlt
-          className={`${styles.Fa} ${
-            isOpen ? styles.FaOpen : styles.FaClosed
-          }`}
-          style={{ marginRight: "8px" }}
-        />{" "}
+        <ThemeToggle />
         <span
-          className={`${styles.navText} ${
-            isOpen ? styles.navTextOpen : styles.navTextClosed
+          className={`${styles.themeText} ${
+            isOpen ? styles.themeTextOpen : styles.themeTextClosed
           }`}
         >
-          Logout
+          Light │ Dark
         </span>
-      </button>
+      </div>
+
+        <div
+          style={{
+            marginTop: "auto",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        ></div>
+
+        <button
+          className={`${styles.logout} ${
+            isOpen ? styles.logoutOpen : styles.logoutClosed
+          }`}
+          onClick={() => actualSetShowLogout(true)}
+        >
+          <FaSignOutAlt
+            className={`${styles.Fa} ${
+              isOpen ? styles.FaOpen : styles.FaClosed
+            }`}
+            style={{ marginRight: "8px" }}
+          />{" "}
+          <span
+            className={`${styles.navText} ${
+              isOpen ? styles.navTextOpen : styles.navTextClosed
+            }`}
+          >
+            Logout
+          </span>
+        </button>
       </div>
       {!setShowLogoutModal && (
         <LogoutModal

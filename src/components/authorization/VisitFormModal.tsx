@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import VisitFormContent from "./VisitFormContent";
 import {
   authorizeVisit,
-  getVisitsByResidentId,
+  getLastVisitsByResidentId,
   sendVisitNotificationEmail,
 } from "../../api/visit.api";
 import { transformFormtoVisitData } from "../../services/visit.service";
@@ -29,7 +29,7 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
       setAuthToken(loadToken());
       try {
         const user = await getAuthenticatedUser();
-        setLastVisits(await getVisitsByResidentId(user._id));
+        setLastVisits(await getLastVisitsByResidentId(user._id));
       } catch (error) {}
     };
     getLastVisits();
@@ -93,7 +93,7 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
         document: selectedVisit.visit.document,
         reason: selectedVisit.authorization.reason,
       });
-    }else{
+    } else {
       setFormData({
         name: "",
         email: "",

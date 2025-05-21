@@ -62,7 +62,6 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
           };
 
           await navigator.share(shareData);
-
         } else {
           // Fallback para navegadores que no soportan compartir archivos
           const link = document.createElement("a");

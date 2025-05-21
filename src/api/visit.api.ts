@@ -97,6 +97,53 @@ export const getVisitsByResidentId = async (
   }
 };
 
+export const getLastVisitsByResidentId = async (
+  id: string
+): Promise<VisitResponse[]> => {
+  try {
+    const response = await axios.get<VisitResponse[]>(
+      `${API_URL}/visits/resident/document/${id}`
+    );
+    const visits = response.data.map((visit: any) => ({
+      ...visit,
+      createdAt: new Date(visit.createdAt),
+      updatedAt: new Date(visit.updatedAt),
+      authorization: {
+        ...visit.authorization,
+        date: new Date(visit.authorization.date),
+        exp: visit.authorization.exp
+          ? new Date(visit.authorization.exp)
+          : undefined,
+      },
+      registry: visit.registry
+        ? {
+            ...visit.registry,
+            entry: visit.registry.entry
+              ? {
+                  ...visit.registry.entry,
+                  date: visit.registry.entry.date
+                    ? new Date(visit.registry.entry.date)
+                    : undefined,
+                }
+              : undefined,
+            exit: visit.registry.exit
+              ? {
+                  ...visit.registry.exit,
+                  date: visit.registry.entry.date
+                    ? new Date(visit.registry.exit.date)
+                    : undefined,
+                }
+              : undefined,
+          }
+        : undefined,
+    }));
+    return visits;
+  } catch (error: any) {
+    console.error(`Error al obtener los datos de la visita`, error);
+    throw error;
+  }
+};
+
 export const getAllVisits = async (): Promise<VisitResponse[]> => {
   try {
     const response = await axios.get<VisitResponse[]>(`${API_URL}/visits`);

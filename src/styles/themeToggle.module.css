@@ -1,0 +1,30 @@
+.toggleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    font-size: 1.1rem;
+    color: var(--text);
+    background-color: var(--white);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .toggleButton:hover {
+    color: var(--white);
+    background-color: var(--blue-hover);
+  }
+  
+  .toggleButton.dark {
+    color: var(--text);
+    background-color: var(--bg);
+  }
+  
+  .toggleButton.light {
+    color: var(--text);
+    background-color: var(--bg);
+  }
+  

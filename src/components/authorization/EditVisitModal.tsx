@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { updateVisit } from "../../api/visit.api";
 import { UpdateVisitData, VisitResponse } from "../../types/visit.types";
 import styles from "../../styles/visitForm.module.css";
-import { loadToken, setAuthToken } from "../../services/auth.service";;
+import { loadToken, setAuthToken } from "../../services/auth.service";
 
 interface EditVisitModalProps {
   isOpen: boolean;
@@ -99,16 +99,16 @@ const EditVisitModal: React.FC<EditVisitModalProps> = ({
 
     try {
       const token = loadToken();
-      setAuthToken(token);;
+      setAuthToken(token);
 
-      const visitData: UpdateVisitData= {
+      const visitData: UpdateVisitData = {
         visit: {
           name: formData.name,
-          email: formData.email
+          email: formData.email,
         },
         authorization: {
-          reason: formData.reason
-        }
+          reason: formData.reason,
+        },
       };
 
       await updateVisit(visit.visit.document, visitData);

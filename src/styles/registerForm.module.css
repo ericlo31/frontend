@@ -11,7 +11,7 @@
 .registerCard {
   width: 100%;
   padding: 30px;
-  background-color: white;
+  background-color: var(--white);
   animation: fadeIn 0.5s ease-in-out;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
@@ -24,10 +24,16 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes pulse {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
 .title {
   font-size: 28px;
   text-align: center;
-  color: #2563eb;
+  color: var(--blue);
   margin-bottom: 5px;
 }
 
@@ -51,45 +57,40 @@
   gap: 5px;
 }
 
-.input {
+.input,
+.select {
   padding: 12px 15px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   font-size: 14px;
+  color: var(--text);
   border-radius: 6px;
   transition: border-color 0.3s;
 }
 
-.input:focus {
-  border-color: #2563eb;
+.input {
+  background-color: var(--white);
+}
+
+.input:focus,
+.select:focus {
+  border-color: var(--blue);
   box-shadow: 0 0 0 2px rgb(37 99 235 / 20%);
   outline: none;
 }
 
-.input.error {
+.input.error,
+.select.error {
   border-color: #ef4444;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .select {
-  padding: 12px 15px;
-  border: 1px solid #e5e7eb;
-  font-size: 14px;
-  background-color: white;
+  background-color: var(--white);
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   appearance: none;
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 1em;
-  border-radius: 6px;
-}
-
-.select:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgb(37 99 235 / 20%);
-  outline: none;
-}
-
-.select.error {
-  border-color: #ef4444;
 }
 
 .submitButton {
@@ -97,8 +98,8 @@
   border: none;
   font-size: 16px;
   font-weight: 600;
-  color: white;
-  background-color: #2563eb;
+  color: var(--white);
+  background-color: var(--blue);
   border-radius: 6px;
   cursor: pointer;
   margin-top: 10px;
@@ -106,23 +107,12 @@
 }
 
 .submitButton:hover {
-  background-color: #1d4ed8;
+  background-color: var(--blue-hover);
 }
 
 .submitButton:disabled {
   background-color: #93c5fd;
   cursor: not-allowed;
-}
-
-.loadingText {
-  display: inline-block;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
 }
 
 .errorText {
@@ -141,6 +131,11 @@
   margin-bottom: 15px;
 }
 
+.loadingText {
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
 .alert {
   position: relative;
   padding: 0.625rem 0.9375rem;
@@ -149,13 +144,13 @@
 }
 
 .alertError {
-  border: 0.0625rem solid #ef9a9a;
+  border: 1px solid #ef9a9a;
   color: #c62828;
   background-color: #ffebee;
 }
 
 .alertSuccess {
-  border: 0.0625rem solid #a5d6a7;
+  border: 1px solid #a5d6a7;
   color: #2e7d32;
   background-color: #e8f5e9;
 }
@@ -166,7 +161,7 @@
   right: 0.625rem;
   font-size: 1.125rem;
   font-weight: bold;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .closeBtn:hover {
