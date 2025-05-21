@@ -78,8 +78,8 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
             `Fecha: ${visit.authorization.date.toLocaleDateString("es-ES")}\n` +
             (visit.authorization.exp
               ? `Vence: ${visit.authorization.exp.toLocaleDateString(
-                  "es-ES"
-                )}\n`
+                "es-ES"
+              )}\n`
               : "");
 
           // Abrir WhatsApp con el mensaje
@@ -97,42 +97,38 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
     };
 
 
-    const shareBtn= async () => {
-      const imageUrl = "https://fastly.picsum.photos/id/784/200/300.jpg?hmac=LIWlcHgxQH79XHKNji8Jin_KakntjYyd9VXyckNYFbE"; // URL pública o local Blob
+    const shareBtn = async () => {
+      const modalElement = typeof ref === "function" ? null : ref?.current;
 
-    try {
+        if (!modalElement) {
+          throw new Error("No se pudo acceder al elemento del modal");
+        }
 
-      const response = await fetch(imageUrl);
+        const imageUrl = await toPng(modalElement);
 
-      const blob = await response.blob();
+      try {
 
-      const file = new File([blob], "imagen.jpg", { type: blob.type });
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const file = new File([blob], "imagen.jpg", { type: blob.type });
 
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title: "Mira esta imagen",
+            text: "¡Te comparto esta imagen!",
+            files: [file],
+          });
 
-        await navigator.share({
+          console.log("Contenido compartido con éxito");
+        } else {
+          alert("Tu navegador no soporta compartir archivos.");
+        }
 
-          title: "Mira esta imagen",
+      } catch (error) {
 
-          text: "¡Te comparto esta imagen!",
-
-          files: [file],
-
-        });
-
-        console.log("Contenido compartido con éxito");
-
-      } else {
-
-        alert("Tu navegador no soporta compartir archivos.");
+        console.error("Error al compartir:", error);
 
       }
-
-    } catch (error) {
-
-      console.error("Error al compartir:", error);
-
-    }
     }
     if (!isOpen) return null;
 
@@ -144,13 +140,12 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
             <div>
               <button
                 className={styles.shareButton}
-                onClick={handleShare}
+                onClick={shareBtn}
                 disabled={isSharing}
               >
                 <FaShare />
                 {isSharing ? "Cargando..." : "Compartir"}
               </button>
-              <button className={styles.shareButton} onClick={shareBtn}>Compartir Imagen</button>
               <button className={styles.closeButton} onClick={onClose}>
                 <FaTimes />
               </button>
@@ -163,9 +158,8 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
               <span>{visit.visit.document}</span>
               <img src={qr} alt="QR Code" />
               <span
-                className={`${styles.badgeLarge} ${
-                  styles[visit.authorization.state.toLowerCase()]
-                }`}
+                className={`${styles.badgeLarge} ${styles[visit.authorization.state.toLowerCase()]
+                  }`}
               >
                 {visit.authorization.state.toUpperCase()}
               </span>
