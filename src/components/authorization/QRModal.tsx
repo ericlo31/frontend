@@ -79,6 +79,44 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
       }
     };
 
+
+    const shareBtn= async () => {
+      const imageUrl = "https://fastly.picsum.photos/id/784/200/300.jpg?hmac=LIWlcHgxQH79XHKNji8Jin_KakntjYyd9VXyckNYFbE"; // URL pública o local Blob
+
+    try {
+
+      const response = await fetch(imageUrl);
+
+      const blob = await response.blob();
+
+      const file = new File([blob], "imagen.jpg", { type: blob.type });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+
+        await navigator.share({
+
+          title: "Mira esta imagen",
+
+          text: "¡Te comparto esta imagen!",
+
+          files: [file],
+
+        });
+
+        console.log("Contenido compartido con éxito");
+
+      } else {
+
+        alert("Tu navegador no soporta compartir archivos.");
+
+      }
+
+    } catch (error) {
+
+      console.error("Error al compartir:", error);
+
+    }
+    }
     if (!isOpen) return null;
 
     return (
@@ -91,6 +129,7 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
                 <FaShare />
                 {isSharing ? "Cargando..." : "Compartir"}
               </button>
+              <button className={styles.shareButton} onClick={shareBtn}>Compartir Imagen</button>
               <button className={styles.closeButton} onClick={onClose}>
                 <FaTimes />
               </button>
