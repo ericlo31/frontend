@@ -89,7 +89,7 @@ html {
   display: block;
   border: none;
   font-size: 1.8rem;
-  color: #374151;
+  color: var(--text);
   background: none;
   cursor: pointer;
   margin-right: 35px;
@@ -99,7 +99,7 @@ html {
 .logo {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--text);
   margin-top: 1rem;
 }
 
@@ -124,7 +124,7 @@ html {
 }
 
 .nav {
-  color: #65c9fb;
+  color: var(--blue);
 }
 
 .nav ul {
@@ -154,7 +154,7 @@ html {
 }
 
 .navItem:hover {
-  background-color: #f3f4f6;
+  background-color: var(--bg-sidebar);
 }
 
 .activeNavItem {
@@ -218,7 +218,7 @@ html {
   padding: 16px 24px;
   font-size: 20px;
   font-weight: 600;
-  color: #374151;
+  color: var(--text);
   background: var(--white);
   border-radius: 12px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
@@ -603,7 +603,7 @@ html {
 }
 
 .expirada {
-  color: #374151;
+  color: var(--text);
   background-color: #e5e7eb;
 }
 
@@ -628,7 +628,7 @@ html {
 
 .formGroup label {
   font-weight: 500;
-  color: #374151;
+  color: var(--text);
   margin-bottom: 6px;
 }
 

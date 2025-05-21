@@ -1,18 +1,21 @@
-import React from "react";
-import { useTheme } from "../contexts/ThemeContext";
+// ThemeToggle.tsx
+import { useTheme } from "./ThemeContext";
+import { FaSun, FaMoon } from "react-icons/fa";
+import styles from "../styles/themeToggle.module.css";
 
-const ThemeToggle: React.FC = () => {
+const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div style={{ marginTop: "2rem" }}>
-      <label style={{ fontWeight: "bold", marginRight: "1rem" }}>
-        Modo {theme === "light" ? "Claro" : "Oscuro"}
-      </label>
-      <button onClick={toggleTheme}>
-        {theme === "light" ? "Activar Oscuro" : "Activar Claro"}
-      </button>
-    </div>
+    <button
+      onClick={toggleTheme}
+      className={`${styles.toggleButton} ${
+        theme === "dark" ? styles.dark : styles.light
+      }`}
+      aria-label="Cambiar tema"
+    >
+      {theme === "dark" ? <FaSun /> : <FaMoon />}
+    </button>
   );
 };
 

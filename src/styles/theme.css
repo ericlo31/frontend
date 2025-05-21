@@ -1,18 +1,32 @@
 /* Variables Globales de los Colores del Proyecto */
 body.light {
-    --white: #fff;
-    --text: #111827;
-    --bg: #f9fafb;
-    --border: #e5e7eb;
-    --blue: #0787f6;
-    --blue-hover: #005fa3;
-  }
+  --white: #fff;
+  --text: #111827;
+  --bg: #f9fafb;
+  --bg-sidebar: #f3f4f6; /* Arreglar */
+  --border: #e5e7eb;
+  --blue: #0787f6;
+  --blue-hover: #005fa3;
+  --blue-light: #e0ecff;
+  --blue-soft: #60a5fa;
+  --gray-light: #f1f5f9;
+  --gray-muted: #6b7280;
+  --red: #ef4444;
+  --green: #22c55e;
+}
   
-  body.dark {
-    --white: #1e1e1e;
-    --text: #f9fafb;
-    --bg: #2b2b2b;
-    --border: #3d3d3d;
-    --blue: #0ea5e9;
-    --blue-hover: #0284c7;
-  }
+body.dark {
+  --white: #1e1e1e;
+  --text: #f9fafb;
+  --bg: #2b2b2b;
+  --bg-sidebar: #f3f4f6; /* Arreglar */
+  --border: #3d3d3d;
+  --blue: #0ea5e9;
+  --blue-hover: #0284c7;
+  --blue-light: #1d4ed8;
+  --blue-soft: #3b82f6;
+  --gray-light: #374151;
+  --gray-muted: #94a3b8;
+  --red: #f87171;
+  --green: #4ade80;
+}
