@@ -6,15 +6,13 @@ import History from "./pages/main/History";
 import { SidebarProvider } from "./contexts/SidebarContext";
 import Home from "./pages/login/Home";
 import Report from "./pages/main/Report";
-import { ThemeProvider } from "./contexts/ThemeContext"; // Asegúrate de crear este archivo
-import ThemeToggle from './components/settings/ThemeToggle';
-import './App.css'
+import { ThemeProvider } from "./contexts/ThemeContext";
+import "./styles/theme.css";
 
 const App = () => {
   return (
     <ThemeProvider>
       <SidebarProvider>
-        <ThemeToggle />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Dashboard />} />

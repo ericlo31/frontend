@@ -1,45 +1,3 @@
-:root {
-  --sidebar-bg-light: #ffffff;
-  --sidebar-text-light: #374151;
-  --sidebar-border-light: #e5e7eb;
-  --sidebar-hover-light: #f3f4f6;
-  --sidebar-active-light: #e0f2fe;
-  --sidebar-icon-light: #374151;
-  --sidebar-primary-light: #0787f6;
-  --sidebar-primary-hover-light: #12395b;
-
-  --sidebar-bg-dark: #1e293b;
-  --sidebar-text-dark: #f8fafc;
-  --sidebar-border-dark: #334155;
-  --sidebar-hover-dark: #334155;
-  --sidebar-active-dark: #475569;
-  --sidebar-icon-dark: #94a3b8;
-  --sidebar-primary-dark: #3b82f6;
-  --sidebar-primary-hover-dark: #1d4ed8;
-}
-
-[data-theme="light"] .sidebar {
-  --sidebar-bg: var(--sidebar-bg-light);
-  --sidebar-text: var(--sidebar-text-light);
-  --sidebar-border: var(--sidebar-border-light);
-  --sidebar-hover: var(--sidebar-hover-light);
-  --sidebar-active: var(--sidebar-active-light);
-  --sidebar-icon: var(--sidebar-icon-light);
-  --sidebar-primary: var(--sidebar-primary-light);
-  --sidebar-primary-hover: var(--sidebar-primary-hover-light);
-}
-
-[data-theme="dark"] .sidebar {
-  --sidebar-bg: var(--sidebar-bg-dark);
-  --sidebar-text: var(--sidebar-text-dark);
-  --sidebar-border: var(--sidebar-border-dark);
-  --sidebar-hover: var(--sidebar-hover-dark);
-  --sidebar-active: var(--sidebar-active-dark);
-  --sidebar-icon: var(--sidebar-icon-dark);
-  --sidebar-primary: var(--sidebar-primary-dark);
-  --sidebar-primary-hover: var(--sidebar-primary-hover-dark);
-}
-
 body,
 html {
   width: 100%;
@@ -52,7 +10,7 @@ html {
   position: relative;
   display: flex;
   width: 100vw;
-  background-color: var(--sidebar-bg);
+  background-color: var(--bg);
   min-height: 100vh;
   overflow: hidden;
 }
@@ -79,8 +37,8 @@ html {
   width: 300px;
   height: 100vh;
   padding: 24px;
-  background-color: var(--sidebar-bg);
-  border-right: 1px solid var(--sidebar-border);
+  background-color: var(--white);
+  border-right: 1px solid var(--border);
   box-sizing: border-box;
   flex-direction: column;
   transition: transform 0.3s ease;
@@ -131,7 +89,7 @@ html {
   display: block;
   border: none;
   font-size: 1.8rem;
-  color: var(--sidebar-icon);
+  color: var(--text);
   background: none;
   cursor: pointer;
   margin-right: 35px;
@@ -141,7 +99,7 @@ html {
 .logo {
   font-size: 1.6rem;
   font-weight: 500;
-  color: var(--sidebar-text);
+  color: var(--text);
   margin-top: 1rem;
 }
 
@@ -166,7 +124,7 @@ html {
 }
 
 .nav {
-  color: var(--sidebar-text);
+  color: var(--blue);
 }
 
 .nav ul {
@@ -196,7 +154,7 @@ html {
 }
 
 .navItem:hover {
-  background-color: var(--sidebar-hover);
+  background-color: var(--bg-sidebar);
 }
 
 .activeNavItem {
@@ -205,7 +163,7 @@ html {
   width: 100%;
   font-weight: 600;
   color: #0284c7;
-  background-color: var(--sidebar-active);
+  background-color: #e0f2fe;
   border-radius: 8px;
   cursor: pointer;
   gap: 20px;
@@ -216,7 +174,7 @@ html {
 }
 
 .activeNavItem:hover {
-  background-color: var(--sidebar-hover);
+  background-color: #f3f4f6;
 }
 
 .logout {
@@ -226,14 +184,14 @@ html {
   padding: 18px 12px;
   border: none;
   font-weight: 600;
-  color: white;
-  background-color: var(--sidebar-primary);
+  color: var(--white);
+  background-color: var(--blue);
   border-radius: 8px;
   cursor: pointer;
 }
 
 .logout:hover {
-  background-color: var(--sidebar-primary-hover);
+  background-color: #12395b;
 }
 
 .FaOpen {
@@ -260,8 +218,8 @@ html {
   padding: 16px 24px;
   font-size: 20px;
   font-weight: 600;
-  color: #374151;
-  background: white;
+  color: var(--text);
+  background: var(--white);
   border-radius: 12px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
   margin-bottom: 1rem;
@@ -289,9 +247,9 @@ html {
 .statCard {
   flex: 1;
   padding: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   text-align: center;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 12px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 5%);
 }
@@ -299,13 +257,14 @@ html {
 .statValue {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #111827;
+  color: var(--text);
 }
 
 .statLabel {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--text);
   margin-top: 0.5rem;
+  opacity: 0.7
 }
 
 /* Quick Actions */
@@ -326,8 +285,8 @@ html {
   font-size: 14px;
   font-weight: 600;
   text-align: center;
-  color: #111827;
-  background-color: #fff;
+  color: var(--text);
+  background-color: var(--white);
   border-radius: 8px;
   cursor: pointer;
   gap: 10px;
@@ -350,8 +309,8 @@ html {
   border: 1px solid #d1d5db;
   font-weight: 600;
   text-align: center;
-  color: #111827;
-  background-color: #fff;
+  color: var(--text);
+  background-color: var(--white);
   border-radius: 8px;
   cursor: pointer;
   gap: 10px;
@@ -366,7 +325,7 @@ html {
 
 .actionIcon {
   font-size: 1.2rem;
-  color: #0787f6;
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -382,8 +341,8 @@ html {
 
 .section {
   padding: 1px 20px 20px;
-  border: 1px solid #e5e7eb;
-  background: white;
+  border: 1px solid var(--border);
+  background: var(--white);
   border-radius: 12px;
   margin-bottom: 1rem;
 }
@@ -400,14 +359,14 @@ html {
 .section h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--text);
   margin-bottom: 1.5rem;
   margin-top: 1.2rem;
 }
 
 .table {
   width: 100%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-collapse: separate;
   border-radius: 12px;
   border-spacing: 0;
@@ -418,15 +377,15 @@ html {
 .table td {
   padding: 16px;
   text-align: left;
-  color: #111827;
-  border-bottom: 1px solid #e5e7eb;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
 }
 
 .table th {
   font-size: 0.9rem;
   font-weight: 700;
   color: #6b7280;
-  background-color: #f9fafb;
+  background-color: var(--bg);
   text-transform: uppercase;
 }
 
@@ -457,7 +416,7 @@ html {
 .modal {
   width: 100%;
   padding: 20px;
-  background: white;
+  background: var(--white);
   border-radius: 8px;
   max-width: 400px;
 }
@@ -479,7 +438,7 @@ html {
   position: relative;
   width: 90%;
   padding: 2rem;
-  background: white;
+  background: var(--white);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   max-width: 400px;
@@ -547,7 +506,7 @@ html {
 }
 
 .confirmBtn {
-  color: white;
+  color: var(--white);
   background-color: #e74c3c;
 }
 
@@ -563,7 +522,7 @@ html {
   align-items: center;
   padding: 0.5rem;
   border: none;
-  color: white;
+  color: var(--white);
   background-color: #25D366;
   border-radius: 4px;
   cursor: pointer;
@@ -578,7 +537,7 @@ html {
   align-items: center;
   padding: 0.5rem;
   border: none;
-  color: white;
+  color: var(--white);
   background-color: #25D366;
   border-radius: 4px;
   cursor: pointer;
@@ -644,7 +603,7 @@ html {
 }
 
 .expirada {
-  color: #374151;
+  color: var(--text);
   background-color: #e5e7eb;
 }
 
@@ -669,7 +628,7 @@ html {
 
 .formGroup label {
   font-weight: 500;
-  color: #374151;
+  color: var(--text);
   margin-bottom: 6px;
 }
 
@@ -698,8 +657,8 @@ html {
   border: none;
   font-size: medium;
   font-weight: 500;
-  color: white;
-  background-color: #0787f6;
+  color: var(--white);
+  background-color: var(--blue);
   border-radius: 8px;
   cursor: pointer;
   margin-top: 1rem;
@@ -752,15 +711,15 @@ html {
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
-  color: white;
-  background-color: #0787f6;
+  color: var(--white);
+  background-color: var(--blue);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .filterBar button:hover {
-  background-color: #005fa3;
+  background-color: var(--blue-hover);
 }
 
 @keyframes spin {
@@ -784,7 +743,7 @@ html {
 .loginCard {
   width: 350px;
   padding: 2.5rem;
-  background-color: white;
+  background-color: var(--white);
   animation: slide-up 0.6s ease;
   border-radius: 10px;
   box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
@@ -793,7 +752,7 @@ html {
 .loginCard h2 {
   font-size: 2rem;
   text-align: center;
-  color: #0787f6;
+  color: var(--blue);
   margin-bottom: 0.5rem;
 }
 
@@ -842,8 +801,8 @@ html {
   padding: 12px;
   border: none;
   font-weight: bold;
-  color: white;
-  background-color: #0787f6;
+  color: var(--white);
+  background-color: var(--blue);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;

@@ -2,14 +2,14 @@
 .reportContainer {
   width: 100%;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 /* Secciones */
 .section {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 30px;
   padding-bottom: 20px;
 }
@@ -21,7 +21,7 @@
 .sectionTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--blue-soft);
   margin-bottom: 1rem;
 }
 
@@ -29,19 +29,19 @@
   margin: 1.5rem 0 1rem;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #1d4ed8;
+  color: var(--blue);
 }
 
 .dateRange {
   font-size: 1rem;
-  color: #3b82f6;
+  color: var(--blue);
   margin-bottom: 1.5rem;
 }
 
 /* Información de usuario */
 .userInfoContainer {
   padding: 1rem;
-  background-color: #f8fafc;
+  background-color: var(--gray-light);
   border-radius: 8px;
   margin-top: 1rem;
 }
@@ -49,7 +49,7 @@
 .userInfoTitle {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #1d4ed8;
+  color: var(--blue);
   margin-bottom: 0.8rem;
 }
 
@@ -61,7 +61,7 @@
 
 .userInfoLabel {
   font-weight: 500;
-  color: #374151;
+  color: var(--gray-muted);
   margin-right: 0.5rem;
 }
 
@@ -76,7 +76,7 @@
 .statCard {
   padding: 1.5rem;
   text-align: center;
-  background-color: #f8fafc;
+  background-color: var(--gray-light);
   border-radius: 8px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
@@ -84,13 +84,13 @@
 .statValue {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--blue-soft);
   margin-bottom: 0.5rem;
 }
 
 .statLabel {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--gray-muted);
 }
 
 /* Tablas */
@@ -107,7 +107,7 @@
 
 .table {
   width: 100%;
-  background-color: white;
+  background-color: var(--white);
   border-collapse: collapse;
 }
 
@@ -116,16 +116,16 @@
   font-size: 0.8rem;
   font-weight: 600;
   text-align: left;
-  color: #334155;
-  background-color: #f1f5f9;
+  color: var(--gray-muted);
+  border-color: var(--border);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 .table td {
   padding: 12px 15px;
-  color: #334155;
-  border-bottom: 1px solid #e5e7eb;
+  color: var(--gray-muted);
+  border-color: var(--border);
 }
 
 .table tr:last-child td {
@@ -133,7 +133,7 @@
 }
 
 .table tr:hover td {
-  background-color: #f8fafc;
+  background-color: var(--gray-light);
 }
 
 /* Elementos destacados */
@@ -144,7 +144,7 @@
 .highlightCard {
   display: grid;
   padding: 1.5rem;
-  background-color: #f8fafc;
+  background-color: var(--gray-light);
   border-radius: 8px;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -153,14 +153,14 @@
 
 .highlightLabel {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--gray-500);
   margin-bottom: 0.3rem;
 }
 
 .highlightValue {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #1e3a8a;
+  color: var(--blue-soft);
 }
 
 /* Responsive */
@@ -169,10 +169,7 @@
     grid-template-columns: 1fr 1fr;
   }
   
-  .userInfoGrid {
-    grid-template-columns: 1fr;
-  }
-  
+  .userInfoGrid,
   .highlightCard {
     grid-template-columns: 1fr;
   }
@@ -186,7 +183,7 @@
 
 .container {
   padding: 1rem;
-  background-color: #f0f8ff;
+  background-color: var(--blue-50);
   min-height: 100vh;
 }
 
@@ -199,14 +196,14 @@
 .title {
   font-size: 1.875rem;
   font-weight: bold;
-  color: #1e3a8a;
+  color: var(--blue-800);
   margin-bottom: 1.5rem;
 }
 
 /* Estilos del formulario */
 .formContainer {
   padding: 1.5rem;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
   margin-bottom: 2rem;
@@ -215,12 +212,12 @@
 .formTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--blue);
   margin-bottom: 1rem;
 }
 
 .errorMessage {
-  color: #ef4444;
+  color: var(--red);
   margin-bottom: 1rem;
 }
 
@@ -238,7 +235,7 @@
 
 .formLabel {
   display: block;
-  color: #1d4ed8;
+  color: var(--blue);
   margin-bottom: 0.25rem;
 }
 
@@ -250,44 +247,30 @@
 }
 
 .formInput:focus {
-  border-color: #1d4ed8;
+  border-color: var(--blue-hover);
   outline: none;
 }
 
 .submitButton {
   padding: 0.5rem 1.5rem;
   font-weight: 500;
-  color: white;
-  background-color: #2563eb;
+  color: var(--white);
+  background-color: var(--blue);
   border-radius: 0.25rem;
   transition: background-color 0.2s;
 }
 
 .submitButton:hover {
-  background-color: #1d4ed8;
+  background-color: var(--blue-hover);
 }
 
 .submitButton:disabled {
   opacity: 0.5;
 }
 
-
-
-@media (width >= 768px) {
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (width >= 1024px) {
-  .statsGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-
+/* Tabla destacada */
 .tableHeader {
-  color: white;
+  color: var(--white);
   background-color: #2563eb;
 }
 
@@ -302,7 +285,7 @@
 
 .tableCell {
   padding: 0.5rem 1rem;
-  color: #1e3a8a;
+  color: var(--blue-800);
 }
 
 /* Elementos destacados */
@@ -331,7 +314,7 @@
   border: 4px solid rgb(0 0 0 / 10%);
   animation: spin 1s linear infinite;
   border-radius: 50%;
-  border-top: 4px solid #2563eb;
+  border-top: 4px solid var(--blue);
   margin-bottom: 1rem;
 }
 
@@ -350,77 +333,72 @@ select.formInput {
   padding-right: 2rem;
 }
 
-/* Responsive adjustments */
+/* Responsive table (mobile fallback) */
 @media (width <= 768px) {
   .formGrid {
     grid-template-columns: 1fr;
   }
-  
-  select.formInput {
-    width: 100%;
-  }
-}
 
-@media (width <= 768px) {
   .tableContainer {
     border: 1px solid #e5e7eb;
   }
-  
+
   .table {
     display: block;
     width: 100%;
   }
-  
+
   .table thead {
     display: none;
   }
-  
-  .table tbody, .table tr, .table td {
+
+  .table tbody,
+  .table tr,
+  .table td {
     display: block;
     width: 100%;
   }
-  
+
   .table tr {
     padding: 0.5rem;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     margin-bottom: 1rem;
   }
-  
+
   .table td {
     position: relative;
     padding: 0.75rem;
     border-bottom: 1px solid #f1f5f9;
     padding-left: 50%;
   }
-  
+
   .table td::before {
     position: absolute;
     left: 1rem;
     width: 45%;
     font-weight: 600;
     text-align: left;
-    color: #1d4ed8;
+    color: var(--blue);
     content: attr(data-label);
     padding-right: 1rem;
   }
-  
+
   .table td:last-child {
     border-bottom: none;
   }
-  
-  /* Para tablas con encabezado especial */
+
   .tableHeader {
     display: none;
   }
-  
+
   .tableRow {
     padding: 0.5rem;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     margin-bottom: 1rem;
   }
-  
+
   .tableCell {
     position: relative;
     display: block;
@@ -428,18 +406,18 @@ select.formInput {
     border-bottom: 1px solid #f1f5f9;
     padding-left: 50%;
   }
-  
+
   .tableCell::before {
     position: absolute;
     left: 1rem;
     width: 45%;
     font-weight: 600;
     text-align: left;
-    color: #1d4ed8;
+    color: var(--blue);
     content: attr(data-label);
     padding-right: 1rem;
   }
-  
+
   .tableCell:last-child {
     border-bottom: none;
   }
@@ -447,11 +425,13 @@ select.formInput {
 
 /* Estilos para pantallas muy pequeñas */
 @media (width <= 480px) {
-  .table td, .tableCell {
+  .table td,
+  .tableCell {
     padding-left: 40%;
   }
-  
-  .table td::before, .tableCell::before {
+
+  .table td::before,
+  .tableCell::before {
     width: 35%;
     font-size: 0.8rem;
   }
