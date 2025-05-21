@@ -1,0 +1,18 @@
+/* Variables Globales de los Colores del Proyecto */
+body.light {
+    --white: #fff;
+    --text: #111827;
+    --bg: #f9fafb;
+    --border: #e5e7eb;
+    --blue: #0787f6;
+    --blue-hover: #005fa3;
+  }
+  
+  body.dark {
+    --white: #1e1e1e;
+    --text: #f9fafb;
+    --bg: #2b2b2b;
+    --border: #3d3d3d;
+    --blue: #0ea5e9;
+    --blue-hover: #0284c7;
+  }
