@@ -29,10 +29,10 @@ html {
 }
 
 .sidebar {
-    position: fixed;
-      top: 0;
+  position: fixed;
+  top: 0;
   left: 0;
-    z-index: 1000;
+  z-index: 1000;
   display: flex;
   width: 300px;
   height: 100vh;
@@ -70,7 +70,6 @@ html {
   align-items: center;
   justify-content: center;
   width: 25%;
-  
 }
 
 .navArea {
@@ -120,7 +119,31 @@ html {
   justify-content: space-between;
   width: 100%;
   flex-direction: row-reverse;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
+}
+
+.themeBar {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  flex-direction: row;
+  margin-left: 13px;
+}
+
+.themeText {
+  color: var(--text);
+  margin-bottom: 8.5px;
+  margin-left: 12px;
+}
+
+.themeBarClosed {
+  flex-direction: row-reverse;
+  margin-left: 0;
+  padding-right: 32px;
+}
+
+.themeTextClosed {
+  display: none;
 }
 
 .nav {
@@ -142,13 +165,13 @@ html {
 
 .navItem {
   display: flex;
-    justify-content: flex-start;
+  justify-content: flex-start;
   width: 100%;
   border-radius: 8px;
   cursor: pointer;
   gap: 20px;
   margin-bottom: 15px;
-    padding-bottom: 18px;
+  padding-bottom: 18px;
   padding-top: 18px;
   transition: background-color 0.2s;
 }
@@ -264,7 +287,7 @@ html {
   font-size: 0.9rem;
   color: var(--text);
   margin-top: 0.5rem;
-  opacity: 0.7
+  opacity: 0.7;
 }
 
 /* Quick Actions */
@@ -426,13 +449,12 @@ html {
   margin-top: 12px;
 }
 
-.modalHeader{
+.modalHeader {
   display: inline-flex;
   justify-content: space-between;
   flex-wrap: nowrap;
   gap: 140px;
 }
-
 
 .qrModal {
   position: relative;
@@ -523,14 +545,14 @@ html {
   padding: 0.5rem;
   border: none;
   color: var(--white);
-  background-color: #25D366;
+  background-color: #25d366;
   border-radius: 4px;
   cursor: pointer;
   gap: 0.5rem;
 }
 
 .shareButton:hover {
-  background-color: #128C7E;
+  background-color: #128c7e;
 }
 
 .sharingButton {
@@ -538,13 +560,13 @@ html {
   padding: 0.5rem;
   border: none;
   color: var(--white);
-  background-color: #25D366;
+  background-color: #25d366;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .sharingButton:hover {
-  background-color: #128C7E;
+  background-color: #128c7e;
 }
 
 .qrContainer {
@@ -569,7 +591,7 @@ html {
 }
 
 .badge {
-  display: inline-block ;
+  display: inline-block;
   padding: 3px 5px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -578,7 +600,7 @@ html {
 }
 
 .badgeLarge {
-  display: inline-block ;
+  display: inline-block;
   padding: 6px 50px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -726,7 +748,7 @@ html {
   to {
     transform: rotate(360deg);
   }
-}  
+}
 
 /* Login */
 .loginResidentContainer {
@@ -735,9 +757,10 @@ html {
   justify-content: center;
   height: 100vh;
   background-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
-  url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-position: center;
-  background-size: cover;  font-family: 'Segoe UI', sans-serif;
+  background-size: cover;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .loginCard {
@@ -861,7 +884,7 @@ html {
 .fadeIn {
   animation: fadeIn 0.7s ease-in-out;
 }
-  
+
 .loginInput {
   transition: all 0.3s ease;
 }
@@ -872,7 +895,9 @@ html {
   transform: scale(1.02);
 }
 
-.hamburger:hover, .closeButton:hover, .modalCloseBtn:hover {
+.hamburger:hover,
+.closeButton:hover,
+.modalCloseBtn:hover {
   transform: scale(1.1);
 }
 
@@ -909,7 +934,6 @@ html {
   .userProfile {
     font-size: 0.9rem;
   }
-
 }
 
 @media (width <= 874px) {
@@ -933,6 +957,16 @@ html {
   .logo {
     display: none;
   }
+  
+  .themeBar{
+  flex-direction: row-reverse;
+  margin-left: 0;
+  padding-right: 7px;
+}
+
+.themeText {
+  display: none;
+}
 
   .navText {
     display: none;
@@ -967,24 +1001,24 @@ html {
   }
 
   .actionGroup {
-  display: flex;
-  width: 30px;
-  height: 60px;
-  align-content: flex-start;
-  flex-flow: column wrap;
-  gap: 5px;
-  margin-right: 10px;
-}
+    display: flex;
+    width: 30px;
+    height: 60px;
+    align-content: flex-start;
+    flex-flow: column wrap;
+    gap: 5px;
+    margin-right: 10px;
+  }
 
   .authBtn {
-  display: flex;
-  flex: 0 0 calc(50% - 2.5px);
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 18px;
-  padding: 6px;
-}
+    display: flex;
+    flex: 0 0 calc(50% - 2.5px);
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 18px;
+    padding: 6px;
+  }
 
   .topBar {
     margin-bottom: 30px;
@@ -1082,6 +1116,10 @@ html {
     font-size: 1.5rem;
     margin-left: 0;
   }
+
+  .themeBarClosed {
+    padding-right: 19px;
+  }
 }
 
 /* Animations Login */
@@ -1095,4 +1133,4 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
-}  
+}

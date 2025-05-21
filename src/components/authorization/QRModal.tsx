@@ -95,35 +95,6 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
       }
     };
 
-    const shareBtn = async () => {
-      const modalElement = typeof ref === "function" ? null : ref?.current;
-
-      if (!modalElement) {
-        throw new Error("No se pudo acceder al elemento del modal");
-      }
-
-      const imageUrl = await toPng(modalElement);
-
-      try {
-        const response = await fetch(imageUrl);
-        const blob = await response.blob();
-        const file = new File([blob], "imagen.jpg", { type: blob.type });
-
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            title: "Mira esta imagen",
-            text: "¡Te comparto esta imagen!",
-            files: [file],
-          });
-
-          console.log("Contenido compartido con éxito");
-        } else {
-          alert("Tu navegador no soporta compartir archivos.");
-        }
-      } catch (error) {
-        console.error("Error al compartir:", error);
-      }
-    };
     if (!isOpen) return null;
 
     return (
@@ -134,7 +105,7 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
             <div>
               <button
                 className={styles.shareButton}
-                onClick={shareBtn}
+                onClick={handleShare}
                 disabled={isSharing}
               >
                 <FaShare />
