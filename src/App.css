@@ -1,10 +1,46 @@
+/* Variables CSS para los temas */
+:root {
+  /* Tema claro (default) */
+  --bg-color: #ffffff;
+  --text-color: #213547;
+  --primary-color: #646cff;
+  --primary-hover: #535bf2;
+  --secondary-color: #61dafb;
+  --border-color: #e1e1e1;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --muted-text: #888;
+}
+
+[data-theme="dark"] {
+  /* Tema oscuro */
+  --bg-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --primary-color: #747bff;
+  --primary-hover: #9499ff;
+  --secondary-color: #61dafb;
+  --border-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --muted-text: #aaa;
+}
+
+/* Estilos base */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #root {
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 1rem; */
   text-align: center;
   max-width: 1280px;
 }
 
+/* Componentes */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -13,18 +49,56 @@
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--primary-hover));
 }
 
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--secondary-color));
 }
 
+.card {
+  padding: 2em;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.read-the-docs {
+  color: var(--muted-text);
+}
+
+/* Elementos interactivos */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Animaciones */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -36,10 +110,3 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}

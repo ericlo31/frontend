@@ -1,3 +1,45 @@
+:root {
+  --sidebar-bg-light: #ffffff;
+  --sidebar-text-light: #374151;
+  --sidebar-border-light: #e5e7eb;
+  --sidebar-hover-light: #f3f4f6;
+  --sidebar-active-light: #e0f2fe;
+  --sidebar-icon-light: #374151;
+  --sidebar-primary-light: #0787f6;
+  --sidebar-primary-hover-light: #12395b;
+
+  --sidebar-bg-dark: #1e293b;
+  --sidebar-text-dark: #f8fafc;
+  --sidebar-border-dark: #334155;
+  --sidebar-hover-dark: #334155;
+  --sidebar-active-dark: #475569;
+  --sidebar-icon-dark: #94a3b8;
+  --sidebar-primary-dark: #3b82f6;
+  --sidebar-primary-hover-dark: #1d4ed8;
+}
+
+[data-theme="light"] .sidebar {
+  --sidebar-bg: var(--sidebar-bg-light);
+  --sidebar-text: var(--sidebar-text-light);
+  --sidebar-border: var(--sidebar-border-light);
+  --sidebar-hover: var(--sidebar-hover-light);
+  --sidebar-active: var(--sidebar-active-light);
+  --sidebar-icon: var(--sidebar-icon-light);
+  --sidebar-primary: var(--sidebar-primary-light);
+  --sidebar-primary-hover: var(--sidebar-primary-hover-light);
+}
+
+[data-theme="dark"] .sidebar {
+  --sidebar-bg: var(--sidebar-bg-dark);
+  --sidebar-text: var(--sidebar-text-dark);
+  --sidebar-border: var(--sidebar-border-dark);
+  --sidebar-hover: var(--sidebar-hover-dark);
+  --sidebar-active: var(--sidebar-active-dark);
+  --sidebar-icon: var(--sidebar-icon-dark);
+  --sidebar-primary: var(--sidebar-primary-dark);
+  --sidebar-primary-hover: var(--sidebar-primary-hover-dark);
+}
+
 body,
 html {
   width: 100%;
@@ -10,7 +52,7 @@ html {
   position: relative;
   display: flex;
   width: 100vw;
-  background-color: #f9fafb;
+  background-color: var(--sidebar-bg);
   min-height: 100vh;
   overflow: hidden;
 }
@@ -37,8 +79,8 @@ html {
   width: 300px;
   height: 100vh;
   padding: 24px;
-  background-color: #fff;
-  border-right: 1px solid #e5e7eb;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
   box-sizing: border-box;
   flex-direction: column;
   transition: transform 0.3s ease;
@@ -89,7 +131,7 @@ html {
   display: block;
   border: none;
   font-size: 1.8rem;
-  color: #374151;
+  color: var(--sidebar-icon);
   background: none;
   cursor: pointer;
   margin-right: 35px;
@@ -99,7 +141,7 @@ html {
 .logo {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--sidebar-text);
   margin-top: 1rem;
 }
 
@@ -124,7 +166,7 @@ html {
 }
 
 .nav {
-  color: #65c9fb;
+  color: var(--sidebar-text);
 }
 
 .nav ul {
@@ -154,7 +196,7 @@ html {
 }
 
 .navItem:hover {
-  background-color: #f3f4f6;
+  background-color: var(--sidebar-hover);
 }
 
 .activeNavItem {
@@ -163,7 +205,7 @@ html {
   width: 100%;
   font-weight: 600;
   color: #0284c7;
-  background-color: #e0f2fe;
+  background-color: var(--sidebar-active);
   border-radius: 8px;
   cursor: pointer;
   gap: 20px;
@@ -174,7 +216,7 @@ html {
 }
 
 .activeNavItem:hover {
-  background-color: #f3f4f6;
+  background-color: var(--sidebar-hover);
 }
 
 .logout {
@@ -185,13 +227,13 @@ html {
   border: none;
   font-weight: 600;
   color: white;
-  background-color: #0787f6;
+  background-color: var(--sidebar-primary);
   border-radius: 8px;
   cursor: pointer;
 }
 
 .logout:hover {
-  background-color: #12395b;
+  background-color: var(--sidebar-primary-hover);
 }
 
 .FaOpen {
