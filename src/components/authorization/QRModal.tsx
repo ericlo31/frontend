@@ -101,7 +101,7 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
       <div className={styles.modalOverlay}>
         <div className={styles.qrModal} ref={ref}>
           <div className={styles.qrModalHeader}>
-            <h3 className={styles.qrModalTitle}>Visita Autorizada</h3>
+            <h3 className={styles.qrModalTitle}>Visita Solicitada</h3>
             <div>
               <button
                 className={styles.shareButton}

@@ -85,7 +85,7 @@ const VisitTable = () => {
 
   return (
     <div className={styles.section}>
-      <h3>Todas las Autorizaciones</h3>
+      <h3>Todas las Solicitudes</h3>
       <div className={styles.filterBar}>
         <input
           type="text"

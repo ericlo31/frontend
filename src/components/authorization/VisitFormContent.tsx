@@ -9,10 +9,18 @@ type VisitFormContentProps = {
     document: string;
     reason: string;
   };
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  onNameChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  onDocumentChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  onLastVisitChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  onNameChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  onDocumentChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  onLastVisitChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
   onSubmit: (e: React.FormEvent) => void;
   error: string | null;
   success: boolean;
@@ -37,7 +45,9 @@ const VisitFormContent: React.FC<VisitFormContentProps> = ({
   resetSuccess,
 }) => {
   const setCustomRequired = (e: React.FormEvent<Element>) => {
-    (e.target as HTMLInputElement | HTMLSelectElement).setCustomValidity("Por favor completa este campo");
+    (e.target as HTMLInputElement | HTMLSelectElement).setCustomValidity(
+      "Por favor completa este campo"
+    );
   };
 
   const clearCustomValidity = (e: React.FormEvent<Element>) => {
@@ -173,7 +183,7 @@ const VisitFormContent: React.FC<VisitFormContentProps> = ({
                 Procesando...
               </>
             ) : (
-              "Autorizar Visita"
+              "Solicitar Autorización"
             )}
           </button>
         </div>

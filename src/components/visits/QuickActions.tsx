@@ -24,7 +24,7 @@ const QuickActions = ({ openModal }: QuickActionsProps) => {
       <h3>Acciones Rápidas</h3>
       <div className={styles.actionsWrapper}>
         <Link to="" onClick={openModal} className={styles.actionBtn}>
-          <FaEdit className={styles.actionIcon} /> Crear Autorización
+          <FaEdit className={styles.actionIcon} /> Crear Solicitud
         </Link>
         <Link to="/visit-history" className={styles.actionBtn}>
           <FaClipboardList className={styles.actionIcon} /> Historial de Visitas

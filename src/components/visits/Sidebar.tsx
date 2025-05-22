@@ -116,7 +116,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
                     isOpen ? styles.navTextOpen : styles.navTextClosed
                   }`}
                 >
-                  Autorización
+                  Solicitudes
                 </span>
               </li>
             </Link>
@@ -190,19 +190,19 @@ const Sidebar: React.FC<SidebarProps> = ({ setShowLogoutModal }) => {
         </nav>
 
         <div
-        className={`${styles.themeBar} ${
-          isOpen ? styles.themeBarOpen : styles.themeBarClosed
-        }`}
-      >
-        <ThemeToggle />
-        <span
-          className={`${styles.themeText} ${
-            isOpen ? styles.themeTextOpen : styles.themeTextClosed
+          className={`${styles.themeBar} ${
+            isOpen ? styles.themeBarOpen : styles.themeBarClosed
           }`}
         >
-          Light │ Dark
-        </span>
-      </div>
+          <ThemeToggle />
+          <span
+            className={`${styles.themeText} ${
+              isOpen ? styles.themeTextOpen : styles.themeTextClosed
+            }`}
+          >
+            Light │ Dark
+          </span>
+        </div>
 
         <div
           style={{

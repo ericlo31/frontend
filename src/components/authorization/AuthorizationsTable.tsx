@@ -112,12 +112,12 @@ const AuthorizationsTable: React.FC = () => {
 
   return (
     <div className={styles.section}>
-      <h3>Mis Autorizaciones</h3>
+      <h3>Mis Solicitudes</h3>
 
       {isLoading ? (
         <div className={styles.spinnerContainer}>
           <span className={styles.spinner}></span>
-          <p>Cargando autorizaciones...</p>
+          <p>Cargando solicitudes...</p>
         </div>
       ) : (
         <table className={styles.table}>
@@ -215,7 +215,7 @@ const AuthorizationsTable: React.FC = () => {
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
-              <h3>Compartir autorización</h3>
+              <h3>Compartir solicitud</h3>
               <div className={styles.modalCloseBtnContainer}>
                 <button
                   className={styles.modalCloseBtn}
@@ -226,7 +226,7 @@ const AuthorizationsTable: React.FC = () => {
               </div>
             </div>
             <p>
-              Para compartir esta autorización, abre el código QR y usa el botón
+              Para compartir esta solicitud, abre el código QR y usa el botón
               "Compartir" en la esquina superior izquierda.
             </p>
             <div className={styles.modalFooter}>
