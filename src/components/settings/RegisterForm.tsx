@@ -76,19 +76,25 @@ const RegisterForm: React.FC = () => {
 
     // Validaciones específicas por rol
     if (formData.role === "residente") {
-      if (!formData.apartment?.trim()) {
-        newErrors.apartment = "El apartamento es requerido";
-        valid = false;
-      } else if (/^[A-Za-z]-\d{1,3}$/.test(formData.apartment)) {
-        newErrors.apartment = "El apartamento introducido es inválido. Ej: A-1";
-        valid = false;
-      }
-      if (!formData.tel?.trim()) {
-        newErrors.tel = "El teléfono es requerido";
-        valid = false;
-      } else if (/^\+\d{1,4}-\d{3}-\d{4}$/.test(formData.tel)) {
-        newErrors.tel = "El teléfono introducido es inválido";
-        valid = false;
+      if (formData.role === "residente") {
+        // Validación de apartamento
+        if (!formData.apartment?.trim()) {
+          newErrors.apartment = "El apartamento es requerido";
+          valid = false;
+        } else if (!/^[A-Za-z]-\d{1,3}$/.test(formData.apartment)) {
+          newErrors.apartment =
+            "El apartamento introducido es inválido. Ej: A-1";
+          valid = false;
+        }
+
+        // Validación de teléfono
+        if (!formData.tel?.trim()) {
+          newErrors.tel = "El teléfono es requerido";
+          valid = false;
+        } else if (!/^\+\d{1,3}[-\s]?\d{1,4}([-\s]?\d+)*$/.test(formData.tel)) {
+          newErrors.tel = "El teléfono introducido es inválido";
+          valid = false;
+        }
       }
     } else if (formData.role === "guardia") {
       if (!formData.shift) {
@@ -109,6 +115,15 @@ const RegisterForm: React.FC = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleChangeTel = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    if (value === "" || /^[0-9-+--]+$/.test(value)) {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -163,13 +178,16 @@ const RegisterForm: React.FC = () => {
           )}
 
           {isSuccess && (
-        <div className={`${styles.alert} ${styles.alertSuccess}`}>
-          <span className={styles.closeBtn} onClick={() => setSuccess(false)}>
-            &times;
-          </span>
-          {" ¡Usuario registrado con éxito!"}
-        </div>
-      )}
+            <div className={`${styles.alert} ${styles.alertSuccess}`}>
+              <span
+                className={styles.closeBtn}
+                onClick={() => setSuccess(false)}
+              >
+                &times;
+              </span>
+              {" ¡Usuario registrado con éxito!"}
+            </div>
+          )}
 
           {/* Email */}
           <div className={styles.formGroup}>
@@ -255,14 +273,14 @@ const RegisterForm: React.FC = () => {
               {/* Phone */}
               <div className={styles.formGroup}>
                 <input
-                  name="phone"
+                  name="tel"
                   type="tel"
                   placeholder="Teléfono"
                   value={formData.tel || ""}
                   className={`${styles.input} ${
                     errors.tel ? styles.error : ""
                   }`}
-                  onChange={handleChange}
+                  onChange={handleChangeTel}
                 />
                 {errors.tel && (
                   <span className={styles.errorText}>{errors.tel}</span>

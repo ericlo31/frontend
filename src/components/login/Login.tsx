@@ -112,7 +112,7 @@ const Login: React.FC = () => {
       } else if (error.message.includes("Usuario no puede ser guardia")) {
         setErrors((prev) => ({
           ...prev,
-          credentials: "El usuario no puede ser residente",
+          credentials: "El usuario no puede ser guardia",
         }));
       } else {
         setErrors((prev) => ({
