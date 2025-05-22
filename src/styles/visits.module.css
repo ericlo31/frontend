@@ -736,7 +736,7 @@ html {
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--white);
+  color: #fff;
   background-color: var(--blue);
   border-radius: 6px;
   cursor: pointer;
