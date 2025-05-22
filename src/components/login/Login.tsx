@@ -10,6 +10,7 @@ import {
   saveToken,
   setAuthToken,
 } from "../../services/auth.service";
+import ThemeToggle from "../settings/ThemeToggle";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -134,6 +135,7 @@ const Login: React.FC = () => {
   } else
     return (
       <div className={`${style.loginResidentContainer} ${style.fadein}`}>
+        <div className={style.loginThemeToggle}><ThemeToggle /></div>
         <div className={`${style["loginCard"]}`}>
           <h2>SecurePass</h2>
           <h3>Residentes</h3>

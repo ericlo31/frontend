@@ -1,25 +1,25 @@
 /* Variables CSS para los temas */
 :root {
   /* Tema claro (default) */
-  --bg-color: #ffffff;
+  --bg-color: #fff;
   --text-color: #213547;
   --primary-color: #646cff;
   --primary-hover: #535bf2;
   --secondary-color: #61dafb;
   --border-color: #e1e1e1;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgb(0 0 0 / 10%);
   --muted-text: #888;
 }
 
 [data-theme="dark"] {
   /* Tema oscuro */
   --bg-color: #242424;
-  --text-color: rgba(255, 255, 255, 0.87);
+  --text-color: rgb(255 255 255 / 87%);
   --primary-color: #747bff;
   --primary-hover: #9499ff;
   --secondary-color: #61dafb;
   --border-color: #333;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgb(0 0 0 / 30%);
   --muted-text: #aaa;
 }
 
@@ -27,14 +27,15 @@
 html, body, #root {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  background-color: var(--bg-color);
   color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
   margin: 0 auto;
+
   /* padding: 1rem; */
   text-align: center;
   max-width: 1280px;
@@ -58,8 +59,8 @@ html, body, #root {
 
 .card {
   padding: 2em;
-  background-color: var(--bg-color);
   border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--shadow-color);
   transition: all 0.3s ease;
@@ -81,10 +82,10 @@ a:hover {
 }
 
 button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
   padding: 0.6em 1.2em;
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -99,6 +100,7 @@ button:hover {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

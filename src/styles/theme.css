@@ -2,8 +2,11 @@
 body.light {
   --white: #fff;
   --text: #111827;
+  --text-blue: #0284c7;
   --bg: #f9fafb;
   --bg-sidebar: #f3f4f6; /* Arreglar */
+  --bg-active: #e0f2fe;
+  --btnhover: #f3f4f6;
   --border: #e5e7eb;
   --blue: #0787f6;
   --blue-hover: #005fa3;
@@ -13,20 +16,27 @@ body.light {
   --gray-muted: #6b7280;
   --red: #ef4444;
   --green: #22c55e;
+  --bg-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
-  
+
 body.dark {
   --white: #1e1e1e;
   --text: #f9fafb;
+  --text-blue: #f9fafb;
   --bg: #2b2b2b;
   --bg-sidebar: #3d3d3d; /* Arreglar */
+  --bg-active: #3b3b3b;
+  --btnhover: #676767;
   --border: #3d3d3d;
   --blue: #0ea5e9;
   --blue-hover: #0284c7;
   --blue-light: #1d4ed8;
   --blue-soft: #3b82f6;
-  --gray-light: #374151;
+  --gray-light: #242424;
   --gray-muted: #94a3b8;
   --red: #f87171;
   --green: #4ade80;
+  --bg-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+  url("https://million-wallpapers.ru/wallpapers/5/66/502374154510369/atardecer-en-la-playa-junto-al-mar.jpg")
 }
