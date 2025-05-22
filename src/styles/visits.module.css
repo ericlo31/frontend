@@ -580,7 +580,9 @@ html {
 .qrContainer img {
   width: 100%;
   height: auto;
-  margin-bottom: 0.2rem;
+  filter: var(--qrfilter);
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   max-width: 300px;
 }
 

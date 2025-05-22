@@ -18,6 +18,7 @@ body.light {
   --green: #22c55e;
   --bg-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
     url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  --qrfilter: invert(0);
 }
 
 body.dark {
@@ -38,5 +39,6 @@ body.dark {
   --red: #f87171;
   --green: #4ade80;
   --bg-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
-  url("https://million-wallpapers.ru/wallpapers/5/66/502374154510369/atardecer-en-la-playa-junto-al-mar.jpg")
+    url("https://million-wallpapers.ru/wallpapers/5/66/502374154510369/atardecer-en-la-playa-junto-al-mar.jpg");
+  --qrfilter: invert(88.2%);
 }
