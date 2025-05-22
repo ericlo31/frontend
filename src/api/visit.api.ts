@@ -26,6 +26,18 @@ export const authorizeVisit = async (
   }
 };
 
+export const getVisit = async (id: string): Promise<VisitResponse> => {
+  try{
+    const response = await axios.get<VisitResponse>(
+      `${API_URL}/visits/${id}`
+    )
+    return response.data;
+  }catch(error: any){
+    console.error(`Error al obtener la visita`, error);
+    throw error;
+  }
+}
+
 export const deleteVisit = async (id: string): Promise<void> => {
   try{
     const response = await axios.delete(`${API_URL}/visits/${id}`);

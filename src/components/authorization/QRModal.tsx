@@ -5,11 +5,14 @@ import { FaTimes, FaShare } from "react-icons/fa";
 import { QRModalProps } from "../../types/types";
 import { VisitResponse } from "../../types/visit.types";
 import { toPng } from "html-to-image";
+import { getVisit } from "../../api/visit.api";
 
 const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
   ({ isOpen, visit, onClose }, ref) => {
+    const [actualVisit, setActualVisit] = useState<VisitResponse>(visit);
     const [qr, setQr] = useState("");
     const [isSharing, setIsSharing] = useState(false);
+    const [isGenerated, setIsGenerated] = useState(false);
 
     useEffect(() => {
       const generateQr = async (visit: VisitResponse) => {
@@ -17,19 +20,30 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
           if (!visit.qrId) {
             throw new Error("qrId Inválido");
           }
+          setActualVisit(await getVisit(visit.id));
           const qrCode = await QRCode.toDataURL(visit.qrId);
           setQr(qrCode);
         } catch (error: any) {
           console.error(error);
         }
       };
-      if (visit && isOpen) {
-        generateQr(visit);
+      if (visit && isOpen && isGenerated) {
+        const interval = setInterval(() => {
+          generateQr(visit);
+        }, 2000);
+        return () => {
+          clearInterval(interval);
+        };
       }
-    }, [visit, isOpen]);
+      if (!isGenerated) {
+        generateQr(visit);
+        setIsGenerated(true);
+      }
+      if (!isOpen) setIsGenerated(false);
+    }, [isGenerated, isOpen, visit]);
 
     const handleShare = async () => {
-      if (!ref || !visit) return;
+      if (!ref || !actualVisit) return;
 
       setIsSharing(true);
 
@@ -49,15 +63,19 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
 
         // Convertir data URL a Blob
         const blob = await (await fetch(dataUrl)).blob();
-        const file = new File([blob], `Autorización-${visit.visit.name}.png`, {
-          type: "image/png",
-        });
+        const file = new File(
+          [blob],
+          `Autorización-${actualVisit.visit.name}.png`,
+          {
+            type: "image/png",
+          }
+        );
 
         // Verificar si el navegador soporta compartir archivos
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           const shareData = {
-            title: `Autorización de visita - ${visit.visit.name}`,
-            text: `Te comparto mi autorización de visita para ${visit.visit.name}`,
+            title: `Autorización de visita - ${actualVisit.visit.name}`,
+            text: `Te comparto mi autorización de visita para ${actualVisit.visit.name}`,
             files: [file],
           };
 
@@ -65,18 +83,20 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
         } else {
           // Fallback para navegadores que no soportan compartir archivos
           const link = document.createElement("a");
-          link.download = `Autorización-${visit.visit.name}.png`;
+          link.download = `Autorización-${actualVisit.visit.name}.png`;
           link.href = dataUrl;
           link.click();
 
           const message =
             `Te comparto mi autorización de visita:\n\n` +
-            `Nombre: ${visit.visit.name}\n` +
-            `Documento: ${visit.visit.document}\n` +
-            `Estado: ${visit.authorization.state.toUpperCase()}\n` +
-            `Fecha: ${visit.authorization.date.toLocaleDateString("es-ES")}\n` +
-            (visit.authorization.exp
-              ? `Vence: ${visit.authorization.exp.toLocaleDateString(
+            `Nombre: ${actualVisit.visit.name}\n` +
+            `Documento: ${actualVisit.visit.document}\n` +
+            `Estado: ${actualVisit.authorization.state.toUpperCase()}\n` +
+            `Fecha: ${actualVisit.authorization.date.toLocaleDateString(
+              "es-ES"
+            )}\n` +
+            (actualVisit.authorization.exp
+              ? `Vence: ${actualVisit.authorization.exp.toLocaleDateString(
                   "es-ES"
                 )}\n`
               : "");
@@ -119,34 +139,40 @@ const QRModal = forwardRef<HTMLDivElement, QRModalProps>(
 
           {qr ? (
             <div className={styles.qrContainer}>
-              <span>{visit.visit.name}</span>
-              <span>{visit.visit.document}</span>
+              <span>{actualVisit.visit.name}</span>
+              <span>{actualVisit.visit.document}</span>
               <img src={qr} alt="QR Code" />
               <span
                 className={`${styles.badgeLarge} ${
-                  styles[visit.authorization.state.toLowerCase()]
+                  styles[actualVisit.authorization.state.toLowerCase()]
                 }`}
               >
-                {visit.authorization.state.toUpperCase()}
+                {actualVisit.authorization.state.toUpperCase()}
               </span>
               <p>
-                {visit.authorization.date.toLocaleDateString("es-ES", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              {visit.authorization.exp && (
-                <span>
-                  Vence:{" "}
-                  {visit.authorization.exp.toLocaleDateString("es-ES", {
+                {new Date(actualVisit.authorization.date).toLocaleDateString(
+                  "es-ES",
+                  {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
-                  })}
+                  }
+                )}
+              </p>
+              {actualVisit.authorization.exp && (
+                <span>
+                  Vence:{" "}
+                  {new Date(actualVisit.authorization.exp).toLocaleDateString(
+                    "es-ES",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }
+                  )}
                 </span>
               )}
-              <p className={styles.qrId}>{visit.qrId}</p>
+              <p className={styles.qrId}>{actualVisit.qrId}</p>
             </div>
           ) : (
             <div className={styles.spinnerContainer}>
