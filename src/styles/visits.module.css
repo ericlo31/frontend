@@ -343,7 +343,7 @@ html {
 }
 
 .authBtn:hover {
-  background-color: #f3f4f6;
+  background-color: var(--bg-active);
   border-color: #cbd5e1;
 }
 
