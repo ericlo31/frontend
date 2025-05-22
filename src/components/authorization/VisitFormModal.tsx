@@ -134,9 +134,7 @@ const VisitFormModal: React.FC<VisitFormModalProps> = ({ isOpen, onClose }) => {
       setSuccess(true);
       setFormData({ name: "", email: "", document: "", reason: "" });
     } catch (err: any) {
-      setError(
-        err.message ? err.message : "Ocurrió un error al autorizar el visitante"
-      );
+      setError("Ya existe una visita activa con este documento");
     } finally {
       setLoading(false);
     }
