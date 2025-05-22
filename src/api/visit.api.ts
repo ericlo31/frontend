@@ -21,12 +21,8 @@ export const authorizeVisit = async (
     console.log(`Se autorizó la visita correctamente`, response.data);
     return response.data;
   } catch (error: any) {
-    if(error.message.contains("Ya existe una visita activa")){
-      console.error(`Ya existe una visita activa con este documento`);
-    }else{
       console.error(`Error autorizando la visita`, error);
-    }
-    throw error;
+      throw error;
   }
 };
 
